@@ -1,0 +1,59 @@
+<div>
+    <h1>do you have what it takes to win?</h1>
+    <form name="userForm" novalidate>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName"
+                ng-model="register.user.firstName"
+                ng-minlength="2"
+                required>
+            <div ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched">
+                <p ng-message="minlength">Your first name is too short.</p>
+                <p ng-message="required">Your first name is required.</p>
+            </div>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName"
+                ng-model="register.user.lastName"
+                ng-minlength="2"
+                required>
+            <div ng-messages="userForm.lastName.$error" ng-if="userForm.lastName.$touched">
+                <p ng-message="minlength">Your last name is too short.</p>
+                <p ng-message="required">Your last name is required.</p>
+            </div>
+        </div>
+        <div>
+            <label for="workEmail">Work Email:</label>
+            <input type="email" id="workEmail" name="workEmail"
+                ng-model="register.user.workEmail"
+                required>
+            <div ng-messages="userForm.workEmail.$error" ng-if="userForm.workEmail.$touched">
+                <p ng-message="email">This needs to be a valid email.</p>
+                <p ng-message="required">Your work email is required.</p>
+            </div>
+        </div>
+        <div>
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" name="jobTitle"
+                ng-model="register.user.jobTitle"
+                required>
+            <div ng-messages="userForm.jobTitle.$error" ng-if="userForm.jobTitle.$touched">
+                <p ng-message="required">Your job title is required.</p>
+            </div>
+        </div>
+        <div>
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company"
+                ng-model="register.user.company"
+                required>
+            <div ng-messages="userForm.company.$error" ng-if="userForm.company.$touched">
+                <p ng-message="required">Your company is required.</p>
+            </div>
+        </div>
+        <div>
+            <button type="submit" ng-click="register.submit()">yes! sign me up!</button>
+        </div>
+    </form>
+    <a ui-sref="start">Cancel</a>
+</div>

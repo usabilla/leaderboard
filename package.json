@@ -1,0 +1,17 @@
+{
+  "name": "usabilla-leaderboard",
+  "version": "1.0.0",
+  "description": "Usabilla Leaderboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Spyros Ioakeimidis",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.4.5",
+    "angular-local-storage": "^0.2.2",
+    "angular-messages": "^1.4.5",
+    "angular-ui-router": "^0.2.15"
+  }
+}
