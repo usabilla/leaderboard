@@ -1,16 +1,15 @@
 angular.module('usabilla.leaderboard')
-  .controller('CountController', ['$scope', '$stateParams', '$state', 'StorageService',
-    function($scope, $stateParams, $state, StorageService) {
+  .controller('CountController', ['$scope', '$state', 'StorageService', 'UserService',
+    function($scope, $state, StorageService, UserService) {
       var count = this;
 
-      var workEmail = $stateParams.workEmail;
-      count.user = StorageService.get(workEmail);
+      count.user = UserService.getUser();
 
       count.begin = function begin () {
         $scope.$apply(function () {
           count.shouldCountdown = false
         });
-        $state.go('play', {workEmail: workEmail});
+        $state.go('play');
       };
     }
   ]);

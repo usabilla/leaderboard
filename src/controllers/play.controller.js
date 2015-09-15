@@ -1,9 +1,9 @@
 angular.module('usabilla.leaderboard')
-  .controller('PlayController', ['$scope', '$stateParams', 'StorageService', 'hotkeys',
-    function($scope, $stateParams, StorageService, hotkeys) {
+  .controller('PlayController', ['$scope', '$state', 'StorageService', 'hotkeys', 'UserService',
+    function($scope, $state, StorageService, hotkeys, UserService) {
       var play = this;
 
-      play.user = StorageService.get($stateParams.workEmail);
+      play.user = UserService.getUser();
 
       play.begin = function begin () {
         $scope.$apply(function () {
@@ -24,6 +24,8 @@ angular.module('usabilla.leaderboard')
         var time = (data.minutes * 60000) + (data.seconds * 1000) + (data.millis / 10.0);
         play.user.time = time;
         StorageService.update(play.user);
+        UserService.setUser(play.user);
+        $state.go('result');
       });
     }
   ]);

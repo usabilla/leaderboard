@@ -1,6 +1,6 @@
 angular.module('usabilla.leaderboard')
-  .controller('RegisterController', ['$scope', '$state', 'StorageService',
-    function ($scope, $state, StorageService) {
+  .controller('RegisterController', ['$scope', '$state', 'StorageService', 'UserService',
+    function ($scope, $state, StorageService, UserService) {
       var register = this;
 
       register.user = {};
@@ -8,7 +8,8 @@ angular.module('usabilla.leaderboard')
       register.submit = function () {
         // check if fails
         StorageService.save(register.user);
-        $state.go('count', {workEmail: register.user.workEmail});
+        UserService.setUser(register.user);
+        $state.go('count');
       }
     }
   ]);

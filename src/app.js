@@ -16,16 +16,22 @@ angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMe
         controllerAs: 'register'
       })
       .state('count', {
-        url: '/count/:workEmail',
+        url: '/count',
         templateUrl: 'src/partials/count.html',
         controller: 'CountController',
         controllerAs: 'count'
       })
       .state('play', {
-        url: '/play/:workEmail',
+        url: '/play',
         templateUrl: 'src/partials/play.html',
         controller: 'PlayController',
         controllerAs: 'play',
+      })
+      .state('result', {
+        url: '/result',
+        templateUrl: 'src/partials/result.html',
+        controller: 'ResultController',
+        controllerAs: 'result',
       })
       .state('leaderboard', {
         url: '/leaderboard',
@@ -34,7 +40,7 @@ angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMe
         controllerAs: 'leaderboard'
       });
 
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
     // Local storage configuration
     localStorageServiceProvider
