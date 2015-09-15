@@ -1,4 +1,4 @@
-angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMessages'])
+angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMessages', 'timer', 'cfp.hotkeys'])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, localStorageServiceProvider) {
     $urlRouterProvider.otherwise('/');
 
@@ -15,16 +15,17 @@ angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMe
         controller: 'RegisterController',
         controllerAs: 'register'
       })
+      .state('count', {
+        url: '/count/:workEmail',
+        templateUrl: 'src/partials/count.html',
+        controller: 'CountController',
+        controllerAs: 'count'
+      })
       .state('play', {
-        url: '/play',
+        url: '/play/:workEmail',
         templateUrl: 'src/partials/play.html',
         controller: 'PlayController',
         controllerAs: 'play',
-        resolve: {
-          user: function ($stateParams) {
-            return $stateParams.user;
-          }
-        }
       })
       .state('leaderboard', {
         url: '/leaderboard',
@@ -33,7 +34,7 @@ angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMe
         controllerAs: 'leaderboard'
       });
 
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
     // Local storage configuration
     localStorageServiceProvider

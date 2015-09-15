@@ -14,5 +14,14 @@ angular.module('usabilla.leaderboard')
       localStorageService.set(key, user);
     };
 
+    service.get = function get (workEmail) {
+      return localStorageService.get(workEmail);
+    };
+
+    service.update = function update (user) {
+      var key = user.workEmail;
+      localStorageService.set(key, user);
+    };
+
     return service;
   }]);
