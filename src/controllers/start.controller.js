@@ -1,4 +1,4 @@
 angular.module('usabilla.leaderboard')
-  .controller('StartController', ['$scope', function($scope) {
-
+  .controller('StartController', ['GameService', function (GameService) {
+    GameService.resetCurrentUser();
   }]);

@@ -9,7 +9,8 @@ angular.module('usabilla.leaderboard')
       getUsers: getUsers,
       setUserTime: setUserTime,
       getBestTime: getBestTime,
-      getUserPosition: getUserPosition
+      getUserPosition: getUserPosition,
+      resetCurrentUser: resetCurrentUser
     };
 
     function registerUser (user) {
@@ -46,19 +47,21 @@ angular.module('usabilla.leaderboard')
       return index + 1;
     }
 
+    function resetCurrentUser () {
+      currentUser = undefined;
+    }
+
     function sortUsers () {
-      // TODO: sorting users does not save the new user array
       var users = service.getUsers();
-      // sort user list according to time
       var users = users.sort(compareUsers);
       StorageService.saveUsers(users);
     }
 
     function compareUsers(userA, userB) {
       if (userA.time < userB.time)
-        return 1;
-      if (userA.time > userB.time)
         return -1;
+      if (userA.time > userB.time)
+        return 1;
       return 0;
     }
 

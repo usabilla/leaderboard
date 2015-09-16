@@ -5,7 +5,9 @@ angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMe
     $stateProvider
       .state('start', {
         url: '/',
-        templateUrl: 'src/partials/start.html'
+        templateUrl: 'src/partials/start.html',
+        controller: 'StartController',
+        controllerAs: 'start'
       })
       .state('register', {
         url: '/register',
@@ -52,10 +54,14 @@ angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMe
           // If there is no current user, or if the current user has played already
           // then redirect to start
           // TODO: maybe move this to model
-          if (angular.isUndefined(user) || (angular.isDefined(user.time) && user.time > -1)) {
+          if (angular.isUndefined(user) || isTimeAndNotResult(user, toState.name)) {
             event.preventDefault();
             $state.go('start');
           }
+        }
+
+        function isTimeAndNotResult (user, state) {
+          return state !== 'result' && angular.isDefined(user.time) && user.time > -1;
         }
       });
   });
