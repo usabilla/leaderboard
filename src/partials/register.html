@@ -27,10 +27,12 @@
             <label for="workEmail">Work Email:</label>
             <input type="email" id="workEmail" name="workEmail"
                 ng-model="register.user.workEmail"
-                required>
+                required
+                available>
             <div ng-messages="userForm.workEmail.$error" ng-if="userForm.workEmail.$touched">
                 <p ng-message="email">This needs to be a valid email.</p>
                 <p ng-message="required">Your work email is required.</p>
+                <p ng-message="available">This email is already registered.</p>
             </div>
         </div>
         <div>
@@ -60,7 +62,6 @@
         <div>
             <button type="submit" ng-disabled="userForm.$invalid" ng-click="register.submit()">yes! sign me up!</button>
         </div>
-        {{}}
     </form>
     <a ui-sref="start">Cancel</a>
 </div>

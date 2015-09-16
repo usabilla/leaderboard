@@ -6,8 +6,10 @@ angular.module('usabilla.leaderboard')
       register.user = {};
 
       register.submit = function () {
-        // TODO: same user is saved, fix it
-        GameService.registerUser(register.user);
+        var user = GameService.registerUser(register.user);
+        if (angular.isUndefined(user)) {
+          return;
+        }
         $state.go('count');
       }
     }

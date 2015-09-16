@@ -14,8 +14,12 @@ angular.module('usabilla.leaderboard')
     };
 
     function registerUser (user) {
-      StorageService.save(user);
-      service.setCurrentUser(user);
+      var newUser = StorageService.save(user);
+      if (angular.isUndefined(newUser)) {
+        return;
+      }
+      service.setCurrentUser(newUser);
+      return newUser;
     }
 
     function setCurrentUser (user) {
@@ -53,7 +57,7 @@ angular.module('usabilla.leaderboard')
 
     function sortUsers () {
       var users = service.getUsers();
-      var users = users.sort(compareUsers);
+      users = users.sort(compareUsers);
       StorageService.saveUsers(users);
     }
 

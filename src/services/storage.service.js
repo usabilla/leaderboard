@@ -24,6 +24,7 @@ angular.module('usabilla.leaderboard')
       var users = service.list();
       users.push(user);
       localStorageService.set(key, users);
+      return user;
     }
 
     function get (user) {
