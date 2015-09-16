@@ -5,9 +5,7 @@ angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMe
     $stateProvider
       .state('start', {
         url: '/',
-        templateUrl: 'src/partials/start.html',
-        controller: 'StartController',
-        controllerAs: 'start'
+        templateUrl: 'src/partials/start.html'
       })
       .state('register', {
         url: '/register',
@@ -40,10 +38,24 @@ angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMe
         controllerAs: 'leaderboard'
       });
 
-    $locationProvider.html5Mode(true);
-
     // Local storage configuration
     localStorageServiceProvider
       .setPrefix('ub.lead')
       .setNotify(true, true);
+  })
+  .run(function ($rootScope, $state, GameService) {
+    $rootScope.$on('$stateChangeStart',
+      function (event, toState, toParams, fromState, fromParams) {
+        var states = ['count', 'play', 'result'];
+        if (states.indexOf(toState.name) !== -1) {
+          var user = GameService.getCurrentUser();
+          // If there is no current user, or if the current user has played already
+          // then redirect to start
+          // TODO: maybe move this to model
+          if (angular.isUndefined(user) || (angular.isDefined(user.time) && user.time > -1)) {
+            event.preventDefault();
+            $state.go('start');
+          }
+        }
+      });
   });

@@ -1,19 +1,22 @@
 <div>
     <h1>usabilla smilie countdown</h1>
     <h1>top ranking players</h1>
-    <table>
+    <table ng-show="leaderboard.areUsers()">
         <tr>
             <th>Rank</th>
             <th>Name</th>
             <th>Company</th>
             <th>Time</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Spyros Ioakeimidis</td>
-            <td>Usabilla</td>
-            <td>00:08:11</td>
+        <tr ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail">
+            <td>{{ $index + 1 }}</td>
+            <td>{{ user.firstName + ' ' + user.lastName }}</td>
+            <td>{{ user.company }}</td>
+            <td>{{ user.time | date: 'mm:ss:sss' }}</td>
         </tr>
     </table>
+    <div ng-hide="leaderboard.areUsers()">
+        Let's do this!
+    </div>
     <a ui-sref="start">Start</a>
 </div>

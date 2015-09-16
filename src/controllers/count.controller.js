@@ -1,9 +1,9 @@
 angular.module('usabilla.leaderboard')
-  .controller('CountController', ['$scope', '$state', 'StorageService', 'UserService',
-    function($scope, $state, StorageService, UserService) {
+  .controller('CountController', ['$scope', '$state', 'GameService',
+    function($scope, $state, GameService) {
       var count = this;
 
-      count.user = UserService.getUser();
+      count.user = GameService.getCurrentUser();
 
       count.begin = function begin () {
         $scope.$apply(function () {

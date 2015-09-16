@@ -51,9 +51,16 @@
                 <p ng-message="required">Your company is required.</p>
             </div>
         </div>
-        <div>
-            <button type="submit" ng-click="register.submit()">yes! sign me up!</button>
+        <div ng-if="inputForm.$dirty &amp;&amp; inputForm.$invalid" ng-messages="inputForm.$error" class="error-messages">
+            <div ng-message="required">One/more mandatory fields are missing values</div>
+            <div ng-message="pattern">Data is in incorrect format</div>
+            <div ng-message="greaterThan">Invalid range</div>
+            <div ng-message="nonExistingName">Name already exists</div>
         </div>
+        <div>
+            <button type="submit" ng-disabled="userForm.$invalid" ng-click="register.submit()">yes! sign me up!</button>
+        </div>
+        {{}}
     </form>
     <a ui-sref="start">Cancel</a>
 </div>

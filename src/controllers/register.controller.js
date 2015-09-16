@@ -1,14 +1,13 @@
 angular.module('usabilla.leaderboard')
-  .controller('RegisterController', ['$scope', '$state', 'StorageService', 'UserService',
-    function ($scope, $state, StorageService, UserService) {
+  .controller('RegisterController', ['$scope', '$state', 'GameService',
+    function ($scope, $state, GameService) {
       var register = this;
 
       register.user = {};
 
       register.submit = function () {
-        // check if fails
-        StorageService.save(register.user);
-        UserService.setUser(register.user);
+        // TODO: same user is saved, fix it
+        GameService.registerUser(register.user);
         $state.go('count');
       }
     }

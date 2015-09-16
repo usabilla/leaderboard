@@ -1,8 +1,8 @@
 <div>
     <h1>Thank you for playing!</h1>
     <h2>Your final time</h2>
-    <div>00:08:11</div>
+    <div>{{ result.user.time | date : 'mm:ss:sss' }}</div>
     <div>You ranked:</div>
-    <div>1st</div>
+    <div>{{ result.position | ordinal }}</div>
     <a ui-sref="leaderboard">Leaderboard</a>
 </div>

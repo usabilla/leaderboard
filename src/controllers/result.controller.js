@@ -1,8 +1,9 @@
 angular.module('usabilla.leaderboard')
-  .controller('ResultController', ['$scope', 'UserService',
-    function($scope, UserService) {
+  .controller('ResultController', ['$scope', 'GameService',
+    function($scope, GameService) {
       var result = this;
 
-      result.user = UserService.getUser();
+      result.user = GameService.getCurrentUser();
+      result.position = GameService.getUserPosition(result.user);
     }
   ]);

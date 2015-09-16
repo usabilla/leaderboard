@@ -1,9 +1,10 @@
 angular.module('usabilla.leaderboard')
-  .controller('PlayController', ['$scope', '$state', 'StorageService', 'hotkeys', 'UserService',
-    function($scope, $state, StorageService, hotkeys, UserService) {
+  .controller('PlayController', ['$scope', '$state', 'hotkeys', 'GameService',
+    function($scope, $state, hotkeys, GameService) {
       var play = this;
 
-      play.user = UserService.getUser();
+      play.user = GameService.getCurrentUser();
+      play.bestTime = GameService.getBestTime();
 
       play.begin = function begin () {
         $scope.$apply(function () {
@@ -22,9 +23,7 @@ angular.module('usabilla.leaderboard')
 
       $scope.$on('timer-stopped', function (event, data){
         var time = (data.minutes * 60000) + (data.seconds * 1000) + (data.millis / 10.0);
-        play.user.time = time;
-        StorageService.update(play.user);
-        UserService.setUser(play.user);
+        GameService.setUserTime(play.user, time);
         $state.go('result');
       });
     }
