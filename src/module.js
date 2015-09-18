@@ -1,4 +1,7 @@
+require('./templates');
+
 angular.module('usabilla.leaderboard', [
+    'templates',
     'ui.router',
     'LocalStorageModule',
     'ngMessages',

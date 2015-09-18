@@ -4,37 +4,37 @@ function Config ($stateProvider, $urlRouterProvider, $locationProvider, localSto
     $stateProvider
       .state('start', {
         url: '/',
-        templateUrl: 'src/partials/start.html',
+        templateUrl: 'start.html',
         controller: 'StartController',
         controllerAs: 'start'
       })
       .state('register', {
         url: '/register',
-        templateUrl: 'src/partials/register.html',
+        templateUrl: 'register.html',
         controller: 'RegisterController',
         controllerAs: 'register'
       })
       .state('count', {
         url: '/count',
-        templateUrl: 'src/partials/count.html',
+        templateUrl: 'count.html',
         controller: 'CountController',
         controllerAs: 'count'
       })
       .state('play', {
         url: '/play',
-        templateUrl: 'src/partials/play.html',
+        templateUrl: 'play.html',
         controller: 'PlayController',
         controllerAs: 'play',
       })
       .state('result', {
         url: '/result',
-        templateUrl: 'src/partials/result.html',
+        templateUrl: 'result.html',
         controller: 'ResultController',
         controllerAs: 'result',
       })
       .state('leaderboard', {
         url: '/leaderboard',
-        templateUrl: 'src/partials/leaderboard.html',
+        templateUrl: 'leaderboard.html',
         controller: 'LeaderboardController',
         controllerAs: 'leaderboard'
       });
