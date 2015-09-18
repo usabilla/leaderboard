@@ -20,10 +20,14 @@
     "moment": "^2.10.6"
   },
   "devDependencies": {
+    "browserify": "^11.1.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.3.0",
-    "gulp-uglify": "^1.4.1"
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-uglify": "^1.4.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

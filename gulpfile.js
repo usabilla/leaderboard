@@ -1,10 +1,15 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
+var ngAnnotate = require('gulp-ng-annotate');
+var uglify = require('gulp-uglify');
+var browserify = require('browserify');
 var del = require('del');
+var buffer = require('vinyl-buffer');
+var source = require('vinyl-source-stream');
 
 var paths = {
+  module: 'src/module.js',
   scripts: 'src/**/*.js',
   vendor: [
     'node_modules/angular/angular.min.js',
@@ -25,20 +30,18 @@ gulp.task('clean', function() {
 });
 
 gulp.task('scripts', ['clean'], function() {
-  return gulp.src(paths.scripts)
-    // .pipe(sourcemaps.init())
-      .pipe(uglify())
-      .pipe(concat('app.min.js'))
-    // .pipe(sourcemaps.write())
+  return browserify(paths.module)
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(ngAnnotate())
+    .pipe(concat('app.min.js'))
     .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('vendor', ['clean'], function() {
   return gulp.src(paths.vendor)
-    // .pipe(sourcemaps.init())
-      .pipe(uglify())
       .pipe(concat('vendor.min.js'))
-    // .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/js'));
 });
 
@@ -49,6 +52,7 @@ gulp.task('images', ['clean'], function() {
 });
 
 gulp.task('watch', function() {
+  gulp.watch(paths.scripts, ['scripts', 'vendor']);
   gulp.watch(paths.images, ['images']);
 });
 

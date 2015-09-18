@@ -1,4 +1,6 @@
-angular.module('usabilla.leaderboard')
-  .controller('StartController', ['GameService', function (GameService) {
-    GameService.resetCurrentUser();
-  }]);
+/*@ngInject*/
+function StartController (GameService) {
+  GameService.resetCurrentUser();
+}
+
+module.exports = StartController;
