@@ -5,6 +5,7 @@ function RegisterController ($scope, $state, GameService) {
   register.user = {};
   register.selectedUser = undefined;
   register.users = GameService.getUsers();
+  register.heading = 'Do you have what it takes to win?';
 
   register.submit = function submit (user) {
     var registeredUser = GameService.registerUser(user);
