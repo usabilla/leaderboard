@@ -4,12 +4,22 @@ angular.module('usabilla.leaderboard')
       var register = this;
 
       register.user = {};
+      register.selectedUser = undefined;
+      register.users = GameService.getUsers();
 
-      register.submit = function () {
-        var user = GameService.registerUser(register.user);
+      register.submit = function submit (user) {
+        var registeredUser = GameService.registerUser(user);
+        if (angular.isUndefined(registeredUser)) {
+          return;
+        }
+        $state.go('count');
+      }
+
+      register.select = function select (user) {
         if (angular.isUndefined(user)) {
           return;
         }
+        GameService.setCurrentUser(user);
         $state.go('count');
       }
     }

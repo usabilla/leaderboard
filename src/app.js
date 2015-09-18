@@ -1,4 +1,11 @@
-angular.module('usabilla.leaderboard', ['ui.router', 'LocalStorageModule', 'ngMessages', 'timer', 'cfp.hotkeys'])
+angular.module('usabilla.leaderboard', [
+    'ui.router',
+    'LocalStorageModule',
+    'ngMessages',
+    'timer',
+    'cfp.hotkeys',
+    'angucomplete-alt'
+  ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, localStorageServiceProvider) {
     $urlRouterProvider.otherwise('/');
 

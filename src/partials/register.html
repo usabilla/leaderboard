@@ -60,8 +60,20 @@
             <div ng-message="nonExistingName">Name already exists</div>
         </div>
         <div>
-            <button type="submit" ng-disabled="userForm.$invalid" ng-click="register.submit()">yes! sign me up!</button>
+            <button type="submit" ng-disabled="userForm.$invalid" ng-click="register.submit(register.user)">yes! sign me up!</button>
         </div>
     </form>
+    <pre>{{register.selectedUser}}</pre>
+    <div>
+        <angucomplete-alt
+              placeholder="Search user"
+              pause="100"
+              selected-object="register.selectedUser"
+              local-data="register.users"
+              search-fields="workEmail"
+              title-field="workEmail"
+              minlength="1" />
+    </div>
+    <button ng-disabled="!register.selectedUser" ng-click="register.select(register.selectedUser.originalObject)">lets do it!</button>
     <a ui-sref="start">Cancel</a>
 </div>
