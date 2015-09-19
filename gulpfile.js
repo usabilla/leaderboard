@@ -62,6 +62,7 @@ gulp.task('images', ['clean'], function() {
 
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['scripts', 'vendor']);
+  gulp.watch(paths.partials, ['scripts', 'vendor']);
   gulp.watch(paths.images, ['images']);
 });
 
