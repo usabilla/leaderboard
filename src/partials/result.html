@@ -1,7 +1,12 @@
+<div class="bubbles--left"></div>
+<div class="bubbles--right-smiley"></div>
 <div>
-    <div>Your Final Time</div>
-    <div>{{ result.user.time | date : 'mm:ss:sss' }}</div>
-    <div>You ranked:</div>
-    <div>{{ result.position | ordinal }}</div>
-    <a ui-sref="leaderboard">Leaderboard</a>
+    <a ui-sref="start" class="logo logo--small"></a>
+</div>
+<h1 class="uk-margin-top">Your Final Time</h1>
+<div class="timer--huge">{{ result.user.time | date : 'mm:ss:sss' }}</div>
+<h1 class="uk-margin-large-top">You ranked:</h1>
+<div class="position">{{ result.position | ordinal }}</div>
+<div class="uk-margin-top">
+    <a ui-sref="leaderboard" >Show Leaderboard</a>
 </div>

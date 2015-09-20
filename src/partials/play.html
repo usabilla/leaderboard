@@ -1,7 +1,9 @@
-<h1>Your Time</h1>
-<timer>
-    {{mminutes}}:{{sseconds}}:{{millis}}
-</timer>
-<hr />
-<h1>Time to Beat</h1>
-<div>{{play.bestTime | date : 'mm:ss:sss'}}</div>
+<div class="bubbles--left-smiley"></div>
+<div class="bubbles--right"></div>
+<div>
+    <a class="logo logo--small"></a>
+</div>
+<h1 class="uk-margin-top">Your Time</h1>
+<timer class="timer--huge">{{ mminutes }}:{{ sseconds }}:{{ millis % 1000 }}</timer>
+<h1 class="uk-margin-large-top">Time to Beat</h1>
+<div class="timer--beat">{{play.bestTime | date : 'mm:ss:sss'}}</div>

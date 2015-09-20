@@ -1,9 +1,11 @@
+<div class="bubbles--left-smiley"></div>
+<div class="bubbles--right"></div>
 <div>
-    <div>
-        <a class="logo"></a>
-    </div>
+    <a ui-sref="start" class="logo logo--small"></a>
+</div>
+<div>
     <h1>Balls of Fame</h1>
-    <table id="leaderboard" ng-show="leaderboard.areUsers()" class="uk-table uk-table-hover">
+    <table id="leaderboard" ng-show="leaderboard.areUsers()" class="uk-table uk-table-middle uk-table-hover">
         <thead>
             <tr>
                 <th class="uk-text-center">Rank</th>
@@ -24,5 +26,4 @@
     <div ng-hide="leaderboard.areUsers()">
         Let's do this!
     </div>
-    <a ui-sref="start">Start</a>
 </div>

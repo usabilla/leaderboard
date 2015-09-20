@@ -7,11 +7,12 @@ $grey-light: #6B6B6B;
 $white: #fff;
 
 $base-body-color: $grey;
+$base-heading-color: $grey;
 
 .logo {
     background-image: url('logo.svg');
-    background-size: 100% 164px;
-    width: 100%;
+    background-size: 50% 164px;
+    width: 50%;
     height: 164px;
     display: inline-block;
     background-repeat: no-repeat;
@@ -20,7 +21,6 @@ $base-body-color: $grey;
 
 .logo--small {
     background-size: 50% 82px;
-    width: 50%;
     height: 82px;
 }
 
@@ -34,6 +34,8 @@ $button-hover-color: $white;
 
 $button-active-background: $blue-dark;
 $button-active-color: $white;
+
+$button-height: 50px;
 
 $button-large-height: 80px;
 $button-large-padding-horizontal: 60px;
@@ -54,7 +56,6 @@ $base-link-text-decoration: underline;
 
 @mixin bubbles ($image, $width, $height) {
     background: url($image) no-repeat center center;
-    position: absolute;
     background-size: $width $height;
     width: $width;
     height: $height;
@@ -63,24 +64,88 @@ $base-link-text-decoration: underline;
 .bubbles {
     &--left-smiley {
         @include bubbles('bubbles-left-smiley.png', 100px, 401px);
+        position: absolute;
         left: 0;
         top: 0;
     }
     &--left {
         @include bubbles('bubbles-left.png', 94px, 516px);
+        position: absolute;
         left: 0;
         bottom: 0;
     }
     &--right-smiley {
         @include bubbles('bubbles-right-smiley.png', 112px, 396px);
+        position: absolute;
         right: 0;
         top: 0;
     }
     &--right {
         @include bubbles('bubbles-right.png', 101px, 549px);
+        position: absolute;
         right: 0;
         bottom: 0;
     }
+}
+
+@mixin hook-form-stacked-label () {
+    font-variant: small-caps;
+}
+
+$form-medium-width: 300px;
+
+@mixin hook-form-misc () {
+    .uk-form-row {
+        width: $form-medium-width;
+        max-width: 100%;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@mixin hook-form () {
+    width: 100%;
+}
+
+$form-height: 40px;
+
+.count-bubbles {
+    @include bubbles('count-bubbles.png', 300px, 349px);
+    display: inline-block;
+
+    > div {
+        font-size: 118px;
+        color: $white;
+        margin-right: 40px;
+        margin-bottom: 20px;
+    }
+}
+
+@mixin hook-table () {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+$utility-margin-large: 80px;
+
+.timer--huge {
+    font-size: 114px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.timer--beat {
+    font-size: 84px;
+    height: 100px;
+    line-height: 100px;
+    color: $usabilla-blue;
+}
+
+.position {
+    font-size: 94px;
+    height: 100px;
+    line-height: 100px;
+    color: $usabilla-blue;
 }
 
 @import 'uikit/uikit';

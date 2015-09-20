@@ -1,7 +1,7 @@
 <div class="bubbles--left"></div>
 <div class="bubbles--right-smiley"></div>
 <div>
-    <a class="logo logo--small"></a>
+    <a ui-sref="start" class="logo logo--small"></a>
 </div>
 <div>
     <h1>{{ register.heading }}</h1>
@@ -41,14 +41,14 @@
                         required
                         available>
                 </div>
-                <div ng-messages="userForm.workEmail.$error" ng-if="userForm.workEmail.$touched">
+                <div ng-messages="userForm.workEmail.$error" ng-if="userForm.workEmail.$touched || userForm.$submitted">
                     <p ng-message="email">This needs to be a valid email.</p>
                     <p ng-message="required">Your work email is required.</p>
                     <p ng-message="available">This email is already registered.</p>
                 </div>
             </div>
             <div class="uk-form-row">
-                <label class="uk-form-label" for="jobTitle">Job Title</label>
+                <label class="uk-form-label" for="jobTitle">job title</label>
                 <div class="uk-form-controls">
                     <input type="text" name="jobTitle"
                         ng-model="register.user.jobTitle"
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="uk-form-row">
-                <label class="uk-form-label" for="company">Company</label>
+                <label class="uk-form-label" for="company">company</label>
                 <div class="uk-form-controls">
                     <input type="text" id="company" name="company"
                         ng-model="register.user.company"
@@ -69,23 +69,17 @@
                     <p ng-message="required">Your company is required.</p>
                 </div>
             </div>
-            <div ng-if="inputForm.$dirty &amp;&amp; inputForm.$invalid" ng-messages="inputForm.$error" class="error-messages" class="uk-form-row">
-                <div ng-message="required">One/more mandatory fields are missing values</div>
-                <div ng-message="pattern">Data is in incorrect format</div>
-                <div ng-message="greaterThan">Invalid range</div>
-                <div ng-message="nonExistingName">Name already exists</div>
-            </div>
             <div class="uk-form-row">
                 <div class="uk-form-controls">
                     <button type="submit"
                         ng-click="register.submit(register.user)"
-                        class="uk-button">yes! let's go!
+                        class="uk-button uk-width-1-1">yes! let's go!
                     </button>
                 </div>
             </div>
         </fieldset>
     </form>
-    <!-- <div>
+    <div>
         <angucomplete-alt
               placeholder="Search user"
               pause="100"
@@ -98,6 +92,5 @@
     <button
         ng-disabled="!register.selectedUser"
         ng-click="register.select(register.selectedUser.originalObject)">let's go!
-    </button> -->
-    <!-- <a ui-sref="start">Cancel</a> -->
+    </button>
 </div>

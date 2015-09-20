@@ -20,8 +20,8 @@ function PlayController ($scope, $state, hotkeys, GameService) {
     }
   });
 
-  $scope.$on('timer-stopped', function (event, data){
-    var time = (data.minutes * 60000) + (data.seconds * 1000) + (data.millis / 10.0);
+  $scope.$on('timer-stopped', function (event, data) {
+    var time = (data.minutes * 60000) + (data.seconds * 1000) + (data.millis % 1000);
     GameService.setUserTime(play.user, time);
     $state.go('result');
   });
