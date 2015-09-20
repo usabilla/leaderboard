@@ -1,18 +1,25 @@
 <div>
+    <div>
+        <a class="logo"></a>
+    </div>
     <h1>Balls of Fame</h1>
-    <table id="leaderboard" ng-show="leaderboard.areUsers()">
-        <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Company</th>
-            <th>Time</th>
-        </tr>
-        <tr ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail">
-            <td>{{ $index + 1 }}</td>
-            <td>{{ user.firstName + ' ' + user.lastName }}</td>
-            <td>{{ user.company }}</td>
-            <td>{{ user.time | date: 'mm:ss:sss' }}</td>
-        </tr>
+    <table id="leaderboard" ng-show="leaderboard.areUsers()" class="uk-table uk-table-hover">
+        <thead>
+            <tr>
+                <th class="uk-text-center">Rank</th>
+                <th class="uk-text-left">Name</th>
+                <th class="uk-text-left">Company</th>
+                <th class="uk-text-left">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail">
+                <td>{{ $index + 1 }}</td>
+                <td class="uk-text-left">{{ user.firstName + ' ' + user.lastName }}</td>
+                <td class="uk-text-left">{{ user.company }}</td>
+                <td class="uk-text-left">{{ user.time | date: 'mm:ss:sss' }}</td>
+            </tr>
+        </tbody>
     </table>
     <div ng-hide="leaderboard.areUsers()">
         Let's do this!

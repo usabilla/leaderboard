@@ -1,0 +1,86 @@
+@import 'uikit/uikit-mixins';
+
+$usabilla-blue: #00A5C9;
+$blue-dark: #008AAB;
+$grey: #303030;
+$grey-light: #6B6B6B;
+$white: #fff;
+
+$base-body-color: $grey;
+
+.logo {
+    background-image: url('logo.svg');
+    background-size: 100% 164px;
+    width: 100%;
+    height: 164px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.logo--small {
+    background-size: 50% 82px;
+    width: 50%;
+    height: 82px;
+}
+
+$base-heading-font-family: 'FF Milo', Helvetica, Arial, sans-serif;
+
+$button-background: $usabilla-blue;
+$button-color: $white;
+
+$button-hover-background: $blue-dark;
+$button-hover-color: $white;
+
+$button-active-background: $blue-dark;
+$button-active-color: $white;
+
+$button-large-height: 80px;
+$button-large-padding-horizontal: 60px;
+$button-large-line-height: 80px;
+$button-large-font-size: 32px;
+
+@mixin hook-button () {
+    font-variant: small-caps;
+    border-style: none;
+    border-bottom: 2px solid $blue-dark;
+    border-radius: 2px;
+}
+
+$utility-margin: 30px;
+
+$base-link-color: $grey-light;
+$base-link-text-decoration: underline;
+
+@mixin bubbles ($image, $width, $height) {
+    background: url($image) no-repeat center center;
+    position: absolute;
+    background-size: $width $height;
+    width: $width;
+    height: $height;
+}
+
+.bubbles {
+    &--left-smiley {
+        @include bubbles('bubbles-left-smiley.png', 100px, 401px);
+        left: 0;
+        top: 0;
+    }
+    &--left {
+        @include bubbles('bubbles-left.png', 94px, 516px);
+        left: 0;
+        bottom: 0;
+    }
+    &--right-smiley {
+        @include bubbles('bubbles-right-smiley.png', 112px, 396px);
+        right: 0;
+        top: 0;
+    }
+    &--right {
+        @include bubbles('bubbles-right.png', 101px, 549px);
+        right: 0;
+        bottom: 0;
+    }
+}
+
+@import 'uikit/uikit';
