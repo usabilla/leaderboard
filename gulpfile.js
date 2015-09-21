@@ -15,7 +15,7 @@ var source = require('vinyl-source-stream');
 var paths = {
   dist: 'dist',
   module: 'src/js/module.js',
-  scripts: 'src/**/*.js',
+  scripts: 'src/js/**/*.js',
   partials: 'src/partials/**/*.html',
   styles: 'src/scss/**/*.scss',
   vendor: [
@@ -29,7 +29,9 @@ var paths = {
     'node_modules/angular-hotkeys/build/hotkeys.min.js',
     'node_modules/angucomplete-alt/dist/angucomplete-alt.min.js'
   ],
-  images: 'images/**/*'
+  images: 'src/images/**/*',
+  index: 'src/index.html',
+  fonts: 'src/fonts/**/*'
 };
 
 function templates () {
@@ -72,12 +74,22 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(paths.dist));
 });
 
+gulp.task('index', function() {
+  return gulp.src(paths.index)
+    .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('fonts', function() { 
+    return gulp.src(paths.fonts) 
+      .pipe(gulp.dest(paths.dist)); 
+});
+
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.vendor, ['vendor']);
-  gulp.watch(paths.partials, ['scripts']);
+  gulp.watch([paths.partials], ['scripts']);
   gulp.watch(paths.styles, ['sass']);
   gulp.watch(paths.images, ['images']);
 });
 
-gulp.task('default', ['clean', 'scripts', 'vendor', 'sass', 'images', 'watch']);
+gulp.task('default', ['clean', 'scripts', 'vendor', 'sass', 'images', 'fonts', 'index', 'watch']);

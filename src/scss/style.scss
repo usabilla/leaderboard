@@ -1,5 +1,10 @@
 @import 'uikit/uikit-mixins';
 
+@font-face {
+    font-family: MiloOT;
+    src: url('../fonts/MiloOT.otf') format('otf');
+}
+
 $usabilla-blue: #00A5C9;
 $blue-dark: #008AAB;
 $grey: #303030;
@@ -24,7 +29,8 @@ $base-heading-color: $grey;
     height: 82px;
 }
 
-$base-heading-font-family: 'FF Milo', Helvetica, Arial, sans-serif;
+$base-body-font-family: MiloOT, Helvetica, Arial, sans-serif;
+$base-heading-font-family: MiloOT, Helvetica, Arial, sans-serif;
 
 $button-background: $usabilla-blue;
 $button-color: $white;
@@ -37,10 +43,14 @@ $button-active-color: $white;
 
 $button-height: 50px;
 
-$button-large-height: 80px;
-$button-large-padding-horizontal: 60px;
-$button-large-line-height: 80px;
-$button-large-font-size: 32px;
+$button-large-height: 90px;
+$button-large-padding-horizontal: 90px;
+$button-large-line-height: 90px;
+$button-large-font-size: 40px;
+
+$button-height: 60px;
+$button-line-height: 60px;
+$button-font-size: 28px;
 
 @mixin hook-button () {
     font-variant: small-caps;
@@ -64,25 +74,25 @@ $base-link-text-decoration: underline;
 .bubbles {
     &--left-smiley {
         @include bubbles('bubbles-left-smiley.png', 100px, 401px);
-        position: absolute;
+        position: fixed;
         left: 0;
         top: 0;
     }
     &--left {
         @include bubbles('bubbles-left.png', 94px, 516px);
-        position: absolute;
+        position: fixed;
         left: 0;
         bottom: 0;
     }
     &--right-smiley {
         @include bubbles('bubbles-right-smiley.png', 112px, 396px);
-        position: absolute;
+        position: fixed;
         right: 0;
         top: 0;
     }
     &--right {
         @include bubbles('bubbles-right.png', 101px, 549px);
-        position: absolute;
+        position: fixed;
         right: 0;
         bottom: 0;
     }
@@ -90,6 +100,7 @@ $base-link-text-decoration: underline;
 
 @mixin hook-form-stacked-label () {
     font-variant: small-caps;
+    font-size: 18px;
 }
 
 $form-medium-width: 300px;
@@ -115,10 +126,10 @@ $form-height: 40px;
     display: inline-block;
 
     > div {
-        font-size: 118px;
+        font-size: 148px;
         color: $white;
         margin-right: 40px;
-        margin-bottom: 20px;
+        margin-bottom: 55px;
     }
 }
 
@@ -146,6 +157,21 @@ $utility-margin-large: 80px;
     height: 100px;
     line-height: 100px;
     color: $usabilla-blue;
+}
+
+.angucomplete-dropdown {
+    border: 1px solid #ddd;
+
+    > div {
+        line-height: 40px;
+        height: 40px;
+        padding: 4px 6px;
+    }
+
+    > .angucomplete-selected-row {
+        background-color: $usabilla-blue;
+        color: $white;
+    }
 }
 
 @import 'uikit/uikit';

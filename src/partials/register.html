@@ -73,24 +73,32 @@
                 <div class="uk-form-controls">
                     <button type="submit"
                         ng-click="register.submit(register.user)"
-                        class="uk-button uk-width-1-1">yes! let's go!
+                        class="uk-button uk-width-1-1">yes, let's go!
+                    </button>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <div class="uk-form-controls">
+                    <angucomplete-alt
+                        placeholder="Select an existing user (work email)"
+                        pause="100"
+                        selected-object="register.selectedUser"
+                        local-data="register.incompleteUsers"
+                        search-fields="workEmail"
+                        title-field="workEmail"
+                        minlength="1">
+                    </angucomplete-alt>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <div class="uk-form-controls">
+                    <button
+                        class="uk-button uk-width-1-1"
+                        ng-disabled="!register.selectedUser"
+                        ng-click="register.select(register.selectedUser.originalObject)">yes, let's go!
                     </button>
                 </div>
             </div>
         </fieldset>
     </form>
-    <div>
-        <angucomplete-alt
-              placeholder="Search user"
-              pause="100"
-              selected-object="register.selectedUser"
-              local-data="register.incompleteUsers"
-              search-fields="workEmail"
-              title-field="workEmail"
-              minlength="1" />
-    </div>
-    <button
-        ng-disabled="!register.selectedUser"
-        ng-click="register.select(register.selectedUser.originalObject)">let's go!
-    </button>
 </div>

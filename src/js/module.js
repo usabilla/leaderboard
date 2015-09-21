@@ -9,8 +9,8 @@ angular.module('usabilla.leaderboard', [
     'cfp.hotkeys',
     'angucomplete-alt'
   ])
-  .config(require('./config'))
-  .run(require('./run'))
+  .config(require('./config/config'))
+  .run(require('./config/run'))
   .factory('StorageService', require('./services/storage.service'))
   .factory('GameService', require('./services/game.service'))
   .controller('CountController', require('./controllers/count.controller'))
