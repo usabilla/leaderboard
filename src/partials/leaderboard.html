@@ -24,7 +24,8 @@
         </tbody>
     </table>
     <div>
-        <a href="" ng-click="" class="link uk-text-large">Load More</a>
+        <a href="" ng-click="leaderboard.load()" class="link uk-text-large" ng-show="leaderboard.show">Load More</a>
+        <a href="" ng-click="leaderboard.less()" class="link uk-text-large" ng-hide="leaderboard.show">Show less</a>
     </div>
     <div ng-hide="leaderboard.areUsers()">
         Let's do this!
