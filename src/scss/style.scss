@@ -174,4 +174,21 @@ $utility-margin-large: 80px;
     }
 }
 
+.leaderboard {
+    margin-left: 160px;
+    margin-right: 160px;
+}
+
+$table-hover-background: $usabilla-blue;
+
+@mixin hook-table-hover () {
+    color: $white;
+}
+
+.link {
+    &:hover, &:active {
+        color: $usabilla-blue;
+    }
+}
+
 @import 'uikit/uikit';

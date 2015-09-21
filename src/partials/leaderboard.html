@@ -3,19 +3,19 @@
 <div>
     <a ui-sref="start" class="logo logo--small"></a>
 </div>
-<div>
+<div class="leaderboard">
     <h1>Balls of Fame</h1>
-    <table id="leaderboard" ng-show="leaderboard.areUsers()" class="uk-table uk-table-middle uk-table-hover">
+    <table id="leaderboard" ng-show="leaderboard.areUsers()" class="uk-table uk-table-middle uk-table-hover uk-text-large">
         <thead>
             <tr>
-                <th class="uk-text-center">Rank</th>
-                <th class="uk-text-left">Name</th>
-                <th class="uk-text-left">Company</th>
-                <th class="uk-text-left">Time</th>
+                <th class="uk-text-center">RANK</th>
+                <th class="uk-text-left">NAME</th>
+                <th class="uk-text-left">COMPANY</th>
+                <th class="uk-text-left">TIME</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail">
+            <tr class="uk-text-bold" ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail">
                 <td>{{ $index + 1 }}</td>
                 <td class="uk-text-left">{{ user.firstName + ' ' + user.lastName }}</td>
                 <td class="uk-text-left">{{ user.company }}</td>
@@ -23,6 +23,9 @@
             </tr>
         </tbody>
     </table>
+    <div>
+        <a href="" ng-click="" class="link uk-text-large">Load More</a>
+    </div>
     <div ng-hide="leaderboard.areUsers()">
         Let's do this!
     </div>
