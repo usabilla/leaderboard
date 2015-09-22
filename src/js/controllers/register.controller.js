@@ -9,6 +9,7 @@ function RegisterController ($scope, $state, GameService) {
     return !('time' in user);
   })
   register.heading = 'Do you have what it takes to win?';
+  register.existing = false;
 
   register.submit = function submit (user) {
     var registeredUser = GameService.registerUser(user);
@@ -26,6 +27,10 @@ function RegisterController ($scope, $state, GameService) {
     GameService.setCurrentUser(user);
     $state.go('count');
   }
+
+  register.toggleExisting = function toggleExisting (existing) {
+    register.existing = !register.existing;
+  };
 }
 
 module.exports = RegisterController;

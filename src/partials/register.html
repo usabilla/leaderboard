@@ -5,7 +5,7 @@
 </div>
 <div>
     <h1>{{ register.heading }}</h1>
-    <form name="userForm" class="uk-form uk-form-stacked">
+    <form name="userForm" class="uk-form uk-form-stacked" ng-hide="register.existing">
         <fieldset>
             <div class="uk-form-row">
                 <label class="uk-form-label" for="firstName">first name</label>
@@ -77,6 +77,10 @@
                     </button>
                 </div>
             </div>
+        </fieldset>
+    </form>
+    <form name="userForm" class="uk-form uk-form-stacked" ng-show="register.existing">
+        <fieldset>
             <div class="uk-form-row">
                 <div class="uk-form-controls">
                     <angucomplete-alt
@@ -86,7 +90,8 @@
                         local-data="register.incompleteUsers"
                         search-fields="workEmail"
                         title-field="workEmail"
-                        minlength="1">
+                        minlength="1"
+                        field-required="true">
                     </angucomplete-alt>
                 </div>
             </div>
@@ -101,4 +106,10 @@
             </div>
         </fieldset>
     </form>
+    <div class="uk-margin-top">
+        <a ui-sref="existing" class="link uk-text-large" ng-click="register.toggleExisting()">
+            <span ng-if="register.existing">Create new player</span>
+            <span ng-if="!register.existing">Select existing</span>
+        </a>
+    </div>
 </div>
