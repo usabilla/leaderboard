@@ -14,8 +14,8 @@ $white: #fff;
 $base-body-color: $grey;
 $base-heading-color: $grey;
 
-$logo-large-height: 300px;
-$logo-height: 200px;
+$logo-height: 300px;
+$logo-small-height: 200px;
 
 $base-h1-font-size: 70px;
 $base-h1-line-height: 80px;
@@ -23,19 +23,32 @@ $base-h1-line-height: 80px;
 $base-h2-font-size: 56px;
 $base-h2-line-height: 70px;
 
+$base-h3-font-size: 48px;
+$base-h3-line-height: 58px;
+
+$text-huge-font-size: 250px;
+$text-huge-line-height: 270px;
+
+.text--huge {
+  font-size: $text-huge-font-size;
+  line-height: $text-huge-line-height;
+  height: $text-huge-line-height;
+  font-weight: 300;
+}
+
 .logo {
     background-image: url('logo.svg');
-    background-size: 50% $logo-large-height;
+    background-size: 50% $logo-height;
     width: 50%;
-    height: $logo-large-height;
+    height: $logo-height;
     display: inline-block;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 .logo--small {
-    background-size: 50% $logo-height;
-    height: $logo-height;
+    background-size: 50% $logo-small-height;
+    height: $logo-small-height;
 }
 
 $base-body-font-family: MiloOT, Helvetica, Arial, sans-serif;
@@ -154,24 +167,21 @@ $form-height: 72px;
 
 $utility-margin-large: 80px;
 
-.timer--huge {
-    font-size: 114px;
-    height: 100px;
-    line-height: 100px;
+.text--blue-light {
+  color: $usabilla-blue;
+  font-weight: 300;
 }
 
 .timer--beat {
-    font-size: 84px;
-    height: 100px;
-    line-height: 100px;
-    color: $usabilla-blue;
+  font-size: 150px;
+  height: 150px;
+  line-height: 150px;
 }
 
 .position {
-    font-size: 94px;
-    height: 100px;
-    line-height: 100px;
-    color: $usabilla-blue;
+  font-size: 200px;
+  height: 200px;
+  line-height: 200px;
 }
 
 .angucomplete-dropdown {

@@ -1,9 +1,11 @@
 <div class="bubbles--left"></div>
 <div class="bubbles--right"></div>
-<div>
-    <a class="logo logo--small"></a>
+<div class="uk-margin-top uk-margin-bottom">
+    <div>
+        <a class="logo logo--small"></a>
+    </div>
+    <h3 class="uk-margin-top">Your Time</h3>
+    <timer class="text--huge">{{ mminutes }}:{{ sseconds }}:{{ millis % 1000 }}</timer>
+    <h3 class="uk-margin-large-top">Time to Beat</h3>
+    <div class="timer--beat text--blue-light">{{play.bestTime | date : 'mm:ss:sss'}}</div>
 </div>
-<h1 class="uk-margin-top">Your Time</h1>
-<timer class="timer--huge">{{ mminutes }}:{{ sseconds }}:{{ millis % 1000 }}</timer>
-<h1 class="uk-margin-large-top">Time to Beat</h1>
-<div class="timer--beat">{{play.bestTime | date : 'mm:ss:sss'}}</div>
