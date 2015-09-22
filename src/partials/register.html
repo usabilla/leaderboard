@@ -1,14 +1,11 @@
 <div class="bubbles--left"></div>
-<div class="bubbles--right-smiley"></div>
+<div class="bubbles--right"></div>
 <div>
-    <a ui-sref="start" class="logo logo--small"></a>
-</div>
-<div>
-    <h1>{{ register.heading }}</h1>
-    <form name="userForm" class="uk-form uk-form-stacked" ng-hide="register.existing">
+    <h2>{{ register.heading }}</h2>
+    <form name="userForm" class="uk-form uk-form-stacked uk-margin-top" ng-hide="register.existing">
         <fieldset>
             <div class="uk-form-row">
-                <label class="uk-form-label" for="firstName">first name</label>
+                <label class="uk-form-label" for="firstName">FIRST NAME</label>
                 <div class="uk-form-controls">
                     <input type="text" id="firstName" name="firstName"
                     ng-model="register.user.firstName"
@@ -21,7 +18,7 @@
                 </div>
             </div>
             <div class="uk-form-row">
-                <label class="uk-form-label" for="lastName">last name</label>
+                <label class="uk-form-label" for="lastName">LAST NAME</label>
                 <div class="uk-form-controls">
                     <input type="text" id="lastName" name="lastName"
                         ng-model="register.user.lastName"
@@ -34,7 +31,7 @@
                 </div>
             </div>
             <div class="uk-form-row">
-                <label class="uk-form-label" for="workEmail">work email</label>
+                <label class="uk-form-label" for="workEmail">WORK EMAIL</label>
                 <div class="uk-form-controls">
                     <input type="email" id="workEmail" name="workEmail"
                         ng-model="register.user.workEmail"
@@ -48,7 +45,7 @@
                 </div>
             </div>
             <div class="uk-form-row">
-                <label class="uk-form-label" for="jobTitle">job title</label>
+                <label class="uk-form-label" for="jobTitle">JOB TITLE</label>
                 <div class="uk-form-controls">
                     <input type="text" name="jobTitle"
                         ng-model="register.user.jobTitle"
@@ -59,7 +56,7 @@
                 </div>
             </div>
             <div class="uk-form-row">
-                <label class="uk-form-label" for="company">company</label>
+                <label class="uk-form-label" for="company">COMPANY</label>
                 <div class="uk-form-controls">
                     <input type="text" id="company" name="company"
                         ng-model="register.user.company"
@@ -69,11 +66,11 @@
                     <p ng-message="required">Your company is required.</p>
                 </div>
             </div>
-            <div class="uk-form-row">
+            <div class="uk-form-row uk-margin-top">
                 <div class="uk-form-controls">
                     <button type="submit"
                         ng-click="register.submit(register.user)"
-                        class="uk-button uk-width-1-1">yes, let's go!
+                        class="uk-button uk-width-1-1 uk-button-large">YES, LET'S GO!
                     </button>
                 </div>
             </div>

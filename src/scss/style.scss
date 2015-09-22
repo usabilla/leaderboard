@@ -1,32 +1,41 @@
 @import 'uikit/uikit-mixins';
 
-@font-face {
-    font-family: MiloOT;
-    src: url('../fonts/MiloOT.otf') format('otf');
-}
+@import 'typography';
 
 $usabilla-blue: #00A5C9;
 $blue-dark: #008AAB;
-$grey: #303030;
+
+$grey: #59636B;
 $grey-light: #6B6B6B;
+$grey-03: #41474C;
+
 $white: #fff;
 
 $base-body-color: $grey;
 $base-heading-color: $grey;
 
+$logo-large-height: 300px;
+$logo-height: 200px;
+
+$base-h1-font-size: 70px;
+$base-h1-line-height: 80px;
+
+$base-h2-font-size: 56px;
+$base-h2-line-height: 70px;
+
 .logo {
     background-image: url('logo.svg');
-    background-size: 50% 164px;
+    background-size: 50% $logo-large-height;
     width: 50%;
-    height: 164px;
+    height: $logo-large-height;
     display: inline-block;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 .logo--small {
-    background-size: 50% 82px;
-    height: 82px;
+    background-size: 50% $logo-height;
+    height: $logo-height;
 }
 
 $base-body-font-family: MiloOT, Helvetica, Arial, sans-serif;
@@ -43,9 +52,9 @@ $button-active-color: $white;
 
 $button-height: 50px;
 
-$button-large-height: 90px;
-$button-large-padding-horizontal: 90px;
-$button-large-line-height: 90px;
+$button-large-height: 133px;
+// $button-large-padding-horizontal: 130px;
+$button-large-line-height: 133px;
 $button-large-font-size: 40px;
 
 $button-height: 60px;
@@ -53,13 +62,16 @@ $button-line-height: 60px;
 $button-font-size: 28px;
 
 @mixin hook-button () {
-    font-variant: small-caps;
+    font-weight: 600;
     border-style: none;
     border-bottom: 2px solid $blue-dark;
     border-radius: 2px;
+    text-shadow: 0 2px $blue-dark;
+    width: 500px;
+    max-width: 100%;
 }
 
-$utility-margin: 30px;
+$utility-margin: 40px;
 
 $base-link-color: $grey-light;
 $base-link-text-decoration: underline;
@@ -72,38 +84,35 @@ $base-link-text-decoration: underline;
 }
 
 .bubbles {
-    &--left-smiley {
-        @include bubbles('bubbles-left-smiley.png', 100px, 401px);
-        position: fixed;
-        left: 0;
-        top: 0;
-    }
     &--left {
-        @include bubbles('bubbles-left.png', 94px, 516px);
+        @include bubbles('bubbles-left.svg', 170px, 800px);
         position: fixed;
         left: 0;
-        bottom: 0;
-    }
-    &--right-smiley {
-        @include bubbles('bubbles-right-smiley.png', 112px, 396px);
-        position: fixed;
-        right: 0;
         top: 0;
     }
     &--right {
-        @include bubbles('bubbles-right.png', 101px, 549px);
+        @include bubbles('bubbles-right.svg', 150px, 800px);
         position: fixed;
         right: 0;
         bottom: 0;
     }
 }
 
+$form-gutter: 20px;
+$form-stacked-margin-bottom: 5px;
+$form-stacked-font-weight: 500;
+$form-color: $grey-03;
+$form-line-height: 32px;
+$form-font-size: 23px;
+$form-padding: 4px 20px;
+
 @mixin hook-form-stacked-label () {
-    font-variant: small-caps;
-    font-size: 18px;
+    font-size: 23px;
+    line-height: 32px;
+    color: $grey-03;
 }
 
-$form-medium-width: 300px;
+$form-medium-width: 500px;
 
 @mixin hook-form-misc () {
     .uk-form-row {
@@ -117,9 +126,11 @@ $form-medium-width: 300px;
 
 @mixin hook-form () {
     width: 100%;
+    line-height: $form-line-height;
+    font-size: $form-font-size;
 }
 
-$form-height: 40px;
+$form-height: 72px;
 
 .count-bubbles {
     @include bubbles('count-bubbles.png', 300px, 349px);
@@ -190,5 +201,7 @@ $table-hover-background: $usabilla-blue;
         color: $usabilla-blue;
     }
 }
+
+$text-large-font-size: 24px;
 
 @import 'uikit/uikit';
