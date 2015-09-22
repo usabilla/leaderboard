@@ -132,14 +132,19 @@ $form-medium-width: 500px;
 $form-height: 72px;
 
 .count-bubbles {
-    @include bubbles('count-bubbles.png', 300px, 349px);
+    @include bubbles('count-bubbles.svg', 511px, 597px);
     display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 
-    > div {
-        font-size: 148px;
-        color: $white;
-        margin-right: 40px;
-        margin-bottom: 55px;
+    > timer {
+      font-size: 200px;
+      color: $white;
+      font-weight: 500;
+      position: absolute;
+      left: 172px;
+      top: 243px;
     }
 }
 

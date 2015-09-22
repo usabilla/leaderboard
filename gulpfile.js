@@ -92,4 +92,4 @@ gulp.task('watch', function () {
   gulp.watch(paths.images, ['images']);
 });
 
-gulp.task('default', ['clean', 'scripts', 'vendor', 'sass', 'images', 'fonts', 'index', 'watch']);
+gulp.task('default', ['scripts', 'vendor', 'sass', 'images', 'fonts', 'index', 'watch']);
