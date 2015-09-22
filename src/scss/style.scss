@@ -53,7 +53,6 @@ $button-active-color: $white;
 $button-height: 50px;
 
 $button-large-height: 133px;
-// $button-large-padding-horizontal: 130px;
 $button-large-line-height: 133px;
 $button-large-font-size: 40px;
 
@@ -174,9 +173,10 @@ $utility-margin-large: 80px;
     border: 1px solid #ddd;
 
     > div {
-        line-height: 40px;
-        height: 40px;
-        padding: 4px 6px;
+        line-height: $form-height;
+        height: $form-height;
+        font-size: $form-font-size;
+        padding: $form-padding;
     }
 
     > .angucomplete-selected-row {
