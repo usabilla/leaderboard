@@ -29,14 +29,18 @@ function LeaderBoard ($location, $anchorScroll, GameService) {
   }
 
   function goTo (position) {
+    if (angular.isUndefined(position)) {
+      return;
+    }
     $location.hash(position.toString());
     $anchorScroll();
   }
 
   if (position > 8) {
     leaderboard.load();
-    goTo(position);
   }
+
+  goTo(position);
 }
 
 module.exports = LeaderBoard;
