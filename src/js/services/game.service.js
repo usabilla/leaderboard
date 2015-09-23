@@ -48,7 +48,7 @@ function GameService (StorageService) {
 
   function getUserPosition (user) {
     var index = StorageService.indexOf(user);
-    return index + 1;
+    return index === -1 ? undefined : index + 1;
   }
 
   function resetCurrentUser () {

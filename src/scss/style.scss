@@ -217,6 +217,11 @@ $table-hover-background: $usabilla-blue;
     }
 }
 
+.leaderboard-row--active {
+  color: $white;
+  background-color: $table-hover-background;
+}
+
 $text-large-font-size: 24px;
 
 @import 'uikit/uikit';

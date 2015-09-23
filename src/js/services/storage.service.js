@@ -50,6 +50,9 @@ function StorageService (localStorageService) {
   }
 
   function indexOf (user) {
+    if (angular.isUndefined(user) || angular.isUndefined(user.workEmail)) {
+      return -1;
+    }
     var users = service.list();
     if (angular.isUndefined(users)) {
       return -1;
