@@ -2,6 +2,10 @@
 
 @import 'typography';
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 $usabilla-blue: #00A5C9;
 $blue-dark: #008AAB;
 
