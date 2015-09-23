@@ -32,7 +32,8 @@ function LeaderBoard ($location, $anchorScroll, GameService) {
     if (angular.isUndefined(position)) {
       return;
     }
-    $location.hash(position.toString());
+    var to = position > 4 ? position - 4 : position;
+    $location.hash(to.toString());
     $anchorScroll();
   }
 

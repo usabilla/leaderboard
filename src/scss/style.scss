@@ -5,14 +5,16 @@
 $usabilla-blue: #00A5C9;
 $blue-dark: #008AAB;
 
-$grey: #59636B;
-$grey-light: #6B6B6B;
+$grey: #C8D2DA;
+$grey-01: #6B6B6B;
+$grey-02: #59636B;
 $grey-03: #41474C;
+$grey-04: #23272A;
 
 $white: #fff;
 
-$base-body-color: $grey;
-$base-heading-color: $grey;
+$base-body-color: $grey-02;
+$base-heading-color: $grey-02;
 
 $logo-height: 300px;
 $logo-small-height: 200px;
@@ -37,78 +39,77 @@ $text-huge-line-height: 270px;
 }
 
 .logo {
-    background-image: url('logo.svg');
-    background-size: 50% $logo-height;
-    width: 50%;
-    height: $logo-height;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-position: center center;
+  background-image: url('logo.svg');
+  background-size: 50% $logo-height;
+  width: 50%;
+  height: $logo-height;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .logo--small {
-    background-size: 50% $logo-small-height;
-    height: $logo-small-height;
+  background-size: 50% $logo-small-height;
+  height: $logo-small-height;
 }
 
 $base-body-font-family: MiloOT, Helvetica, Arial, sans-serif;
 $base-heading-font-family: MiloOT, Helvetica, Arial, sans-serif;
 
+// Buttons
+
 $button-background: $usabilla-blue;
 $button-color: $white;
-
 $button-hover-background: $blue-dark;
 $button-hover-color: $white;
-
 $button-active-background: $blue-dark;
 $button-active-color: $white;
-
 $button-height: 50px;
-
 $button-large-height: 133px;
 $button-large-line-height: 133px;
 $button-large-font-size: 40px;
-
 $button-height: 60px;
 $button-line-height: 60px;
 $button-font-size: 28px;
 
 @mixin hook-button () {
-    font-weight: 600;
-    border-style: none;
-    border-bottom: 2px solid $blue-dark;
-    border-radius: 2px;
-    text-shadow: 0 2px $blue-dark;
-    width: 500px;
-    max-width: 100%;
+  font-weight: 600;
+  border-style: none;
+  border-bottom: 2px solid $blue-dark;
+  border-radius: 2px;
+  text-shadow: 0 2px $blue-dark;
+  width: 500px;
+  max-width: 100%;
 }
 
 $utility-margin: 40px;
 
-$base-link-color: $grey-light;
+$base-link-color: $grey-01;
 $base-link-text-decoration: underline;
 
 @mixin bubbles ($image, $width, $height) {
-    background: url($image) no-repeat center center;
-    background-size: $width $height;
-    width: $width;
-    height: $height;
+  background: url($image) no-repeat center center;
+  background-size: $width $height;
+  width: $width;
+  height: $height;
 }
 
 .bubbles {
-    &--left {
-        @include bubbles('bubbles-left.svg', 170px, 800px);
-        position: fixed;
-        left: 0;
-        top: 0;
-    }
-    &--right {
-        @include bubbles('bubbles-right.svg', 150px, 800px);
-        position: fixed;
-        right: 0;
-        bottom: 0;
-    }
+  &--left {
+    @include bubbles('bubbles-left.svg', 170px, 800px);
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+  &--right {
+    @include bubbles('bubbles-right.svg', 150px, 800px);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+  }
 }
+
+// Form
 
 $form-gutter: 20px;
 $form-stacked-margin-bottom: 5px;
@@ -117,52 +118,46 @@ $form-color: $grey-03;
 $form-line-height: 32px;
 $form-font-size: 23px;
 $form-padding: 4px 20px;
+$form-medium-width: 500px;
+$form-height: 72px;
 
 @mixin hook-form-stacked-label () {
-    font-size: 23px;
-    line-height: 32px;
-    color: $grey-03;
+  font-size: 23px;
+  line-height: 32px;
+  color: $grey-03;
 }
 
-$form-medium-width: 500px;
-
 @mixin hook-form-misc () {
-    .uk-form-row {
-        width: $form-medium-width;
-        max-width: 100%;
-        text-align: left;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .uk-form-row {
+    width: $form-medium-width;
+    max-width: 100%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @mixin hook-form () {
-    width: 100%;
-    line-height: $form-line-height;
-    font-size: $form-font-size;
+  width: 100%;
+  line-height: $form-line-height;
+  font-size: $form-font-size;
 }
-
-$form-height: 72px;
 
 .count-bubbles {
-    @include bubbles('count-bubbles.svg', 511px, 597px);
-    display: inline-block;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  @include bubbles('count-bubbles.svg', 511px, 597px);
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 
-    > timer {
-      font-size: 200px;
-      color: $white;
-      font-weight: 500;
-      position: absolute;
-      left: 172px;
-      top: 243px;
-    }
-}
-
-@mixin hook-table () {
-    border-bottom: 1px solid #e5e5e5;
+  > timer {
+    font-size: 200px;
+    color: $white;
+    font-weight: 500;
+    position: absolute;
+    left: 172px;
+    top: 243px;
+  }
 }
 
 $utility-margin-large: 80px;
@@ -185,43 +180,60 @@ $utility-margin-large: 80px;
 }
 
 .angucomplete-dropdown {
-    border: 1px solid #ddd;
+  border: 1px solid #ddd;
 
-    > div {
-        line-height: $form-height;
-        height: $form-height;
-        font-size: $form-font-size;
-        padding: $form-padding;
-    }
+  > div {
+    line-height: $form-height;
+    height: $form-height;
+    font-size: $form-font-size;
+    padding: $form-padding;
+  }
 
-    > .angucomplete-selected-row {
-        background-color: $usabilla-blue;
-        color: $white;
-    }
+  > .angucomplete-selected-row {
+    background-color: $usabilla-blue;
+    color: $white;
+  }
 }
 
 .leaderboard {
-    margin-left: 160px;
-    margin-right: 160px;
+  margin-left: 360px;
+  margin-right: 360px;
 }
 
 $table-hover-background: $usabilla-blue;
+$text-large-font-size: 23px;
 
 @mixin hook-table-hover () {
-    color: $white;
+  color: $white;
+}
+
+@mixin hook-table-active () {
+  color: $white;
+  text-shadow: 0 2px $blue-dark;
+}
+
+@mixin hook-table-misc () {
+  .uk-table .table__header {
+    border-bottom: 2px solid $grey;
+    color: $grey-04;
+    font-weight: 500;
+    font-size: $text-large-font-size;
+    line-height: 32px;
+  }
+
+  .uk-table .table__data {
+    border-bottom: 1px solid $grey;
+    color: $grey-02;
+    line-height: 80px;
+    font-size: 33px;
+    font-weight: 400;
+  }
 }
 
 .link {
-    &:hover, &:active {
-        color: $usabilla-blue;
-    }
+  &:hover, &:active {
+    color: $usabilla-blue;
+  }
 }
-
-.leaderboard-row--active {
-  color: $white;
-  background-color: $table-hover-background;
-}
-
-$text-large-font-size: 24px;
 
 @import 'uikit/uikit';

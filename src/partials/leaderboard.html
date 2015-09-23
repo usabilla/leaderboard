@@ -2,28 +2,28 @@
 <div class="bubbles--right"></div>
 <div>
     <a ui-sref="start" class="logo logo--small"></a>
-</div>
-<div class="leaderboard">
     <h1>Balls of Fame</h1>
-    <table id="leaderboard" ng-show="leaderboard.areUsers()" class="uk-table uk-table-middle uk-table-hover uk-text-large">
+</div>
+<div class="leaderboard uk-margin-top uk-margin-bottom">
+    <table id="leaderboard" ng-show="leaderboard.areUsers()" class="uk-table uk-table-middle uk-table-hover">
         <thead>
             <tr>
-                <th class="uk-text-center">RANK</th>
-                <th class="uk-text-left">NAME</th>
-                <th class="uk-text-left">COMPANY</th>
-                <th class="uk-text-left">TIME</th>
+                <th class="uk-text-center table__header">RANK</th>
+                <th class="uk-text-left table__header">NAME</th>
+                <th class="uk-text-left table__header">COMPANY</th>
+                <th class="uk-text-left table__header">TIME</th>
             </tr>
         </thead>
         <tbody>
-            <tr id="{{ $index + 1 }}" class="uk-text-bold" ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail" ng-class="{'leaderboard-row--active': leaderboard.isActive({{ $index + 1 }})}">
-                <td>{{ $index + 1 }}</td>
-                <td class="uk-text-left">{{ user.firstName + ' ' + user.lastName }}</td>
-                <td class="uk-text-left">{{ user.company }}</td>
-                <td class="uk-text-left">{{ user.time | date: 'mm:ss:sss' }}</td>
+            <tr id="{{ $index + 1 }}" ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail" ng-class="{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
+                <td class="table__inner-text">{{ $index + 1 }}</td>
+                <td class="uk-text-left table__inner-text">{{ user.firstName + ' ' + user.lastName }}</td>
+                <td class="uk-text-left table__inner-text">{{ user.company }}</td>
+                <td class="uk-text-left table__inner-text">{{ user.time | date: 'mm:ss:sss' }}</td>
             </tr>
         </tbody>
     </table>
-    <div>
+    <div class="uk-margin-top">
         <a href="" ng-click="leaderboard.load()" class="link uk-text-large" ng-show="leaderboard.show">Load More</a>
         <a href="" ng-click="leaderboard.less()" class="link uk-text-large" ng-hide="leaderboard.show">Show less</a>
     </div>
