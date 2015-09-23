@@ -8,11 +8,12 @@
                 <label class="uk-form-label" for="firstName">FIRST NAME</label>
                 <div class="uk-form-controls">
                     <input type="text" id="firstName" name="firstName"
-                    ng-model="register.user.firstName"
-                    ng-minlength="2"
-                    required>
+                        ng-model="register.user.firstName"
+                        ng-minlength="2"
+                        required />
                 </div>
-                <div ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched">
+                {{userForm.firstName}}
+                <div ng-messages="userForm.firstName.$error" ng-show="userForm.firstName.$touched">
                     <p ng-message="minlength">First name is too short</p>
                     <p ng-message="required">First name is required</p>
                 </div>
@@ -23,7 +24,7 @@
                     <input type="text" id="lastName" name="lastName"
                         ng-model="register.user.lastName"
                         ng-minlength="2"
-                        required>
+                        required />
                 </div>
                 <div ng-messages="userForm.lastName.$error" ng-if="userForm.lastName.$touched">
                     <p ng-message="minlength">Your last name is too short.</p>
@@ -85,7 +86,7 @@
                         placeholder="Select an existing user"
                         pause="100"
                         selected-object="register.selectedUser"
-                        local-data="register.incompleteUsers"
+                        local-data="register.users"
                         search-fields="workEmail"
                         title-field="workEmail"
                         minlength="1"

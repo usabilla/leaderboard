@@ -4,17 +4,11 @@ function Run ($rootScope, $state, GameService) {
     var states = ['count', 'play', 'result'];
     if (states.indexOf(toState.name) !== -1) {
       var user = GameService.getCurrentUser();
-      // If there is no current user, or if the current user has played already
-      // then redirect to start
-      // TODO: maybe move this to model
-      if (angular.isUndefined(user) || isTimeAndNotResult(user, toState.name)) {
+      // If there is no current user then redirect to start
+      if (angular.isUndefined(user)) {
         event.preventDefault();
         $state.go('start');
       }
-    }
-
-    function isTimeAndNotResult (user, state) {
-      return state !== 'result' && angular.isDefined(user.time) && user.time > -1;
     }
   });
 }
