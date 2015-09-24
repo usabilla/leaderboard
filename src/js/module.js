@@ -13,6 +13,7 @@ angular.module('usabilla.leaderboard', [
   .run(require('./config/run'))
   .factory('StorageService', require('./services/storage.service'))
   .factory('GameService', require('./services/game.service'))
+  .factory('ExportService', require('./services/export.service'))
   .controller('CountController', require('./controllers/count.controller'))
   .controller('LeaderboardController', require('./controllers/leaderboard.controller'))
   .controller('PlayController', require('./controllers/play.controller'))
