@@ -7,5 +7,8 @@
     <h3 class="uk-margin-top">Your Time</h3>
     <timer class="text--huge">{{ mminutes }}:{{ sseconds }}:{{ millis % 1000 }}</timer>
     <h3 class="uk-margin-large-top">Time to Beat</h3>
-    <div class="timer--beat text--blue-light">{{play.bestTime | date : 'mm:ss:sss'}}</div>
+    <div class="timer--beat text--blue-light" ng-show="play.bestTimeExists()">
+        {{play.bestTime | date : 'mm:ss:sss'}}
+    </div>
+    <div ng-hide="play.bestTimeExists()" class="timer--beat">--</div>
 </div>

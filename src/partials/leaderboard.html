@@ -24,12 +24,12 @@
                 </tr>
             </tbody>
         </table>
-        <div class="uk-margin-top" >
+        <div class="uk-margin-top" ng-show="leaderboard.shouldShowMore()">
             <a href="" ng-click="leaderboard.load()" class="link uk-text-large" ng-show="leaderboard.show">Load More</a>
             <a href="" ng-click="leaderboard.less()" class="link uk-text-large" ng-hide="leaderboard.show">Show less</a>
         </div>
     </div>
-    <div ng-hide="leaderboard.areUsers()">
+    <div class="uk-margin-large-top" ng-hide="leaderboard.areUsers()">
         <span class="uk-text-large">No players..</span>
     </div>
 </div>

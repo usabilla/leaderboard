@@ -12,6 +12,10 @@ function PlayController ($scope, $state, hotkeys, GameService) {
     $scope.$broadcast('timer-start');
   };
 
+  play.bestTimeExists = function bestTimeExists () {
+    return angular.isDefined(play.bestTime);
+  }
+
   hotkeys.add({
     combo: 'space',
     description: 'Game Over!',

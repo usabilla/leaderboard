@@ -28,6 +28,10 @@ function LeaderBoard ($location, $anchorScroll, GameService) {
     return index === position;
   }
 
+  leaderboard.shouldShowMore = function shouldShowMore () {
+    return users.length > 8;
+  }
+
   function goTo (position) {
     if (angular.isUndefined(position)) {
       return;
