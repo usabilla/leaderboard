@@ -1,33 +1,35 @@
 <div class="bubbles--left"></div>
 <div class="bubbles--right"></div>
-<div>
-    <a ui-sref="start" class="logo logo--small"></a>
-    <h1>Balls of Fame</h1>
+<div class="uk-margin-top">
+    <a ui-sref="start"><img src="logo.svg" width="170" height="200"></a>
+    <h2 class="uk-text-middle uk-display-inline uk-margin-left">Balls of Fame</h2>
 </div>
 <div class="leaderboard uk-margin-top uk-margin-bottom">
-    <table id="leaderboard" ng-show="leaderboard.areUsers()" class="uk-table uk-table-middle uk-table-hover">
-        <thead>
-            <tr>
-                <th class="uk-text-center table__header">RANK</th>
-                <th class="uk-text-left table__header">NAME</th>
-                <th class="uk-text-left table__header">COMPANY</th>
-                <th class="uk-text-left table__header">TIME</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="{{ $index + 1 }}" ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail" ng-class="{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
-                <td class="table__inner-text">{{ $index + 1 }}</td>
-                <td class="uk-text-left table__inner-text">{{ user.firstName + ' ' + user.lastName }}</td>
-                <td class="uk-text-left table__inner-text">{{ user.company }}</td>
-                <td class="uk-text-left table__inner-text">{{ user.time | date: 'mm:ss:sss' }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="uk-margin-top">
-        <a href="" ng-click="leaderboard.load()" class="link uk-text-large" ng-show="leaderboard.show">Load More</a>
-        <a href="" ng-click="leaderboard.less()" class="link uk-text-large" ng-hide="leaderboard.show">Show less</a>
+    <div ng-show="leaderboard.areUsers()">
+        <table id="leaderboard" class="uk-table uk-table-middle uk-table-hover">
+            <thead>
+                <tr>
+                    <th class="uk-text-center table__header">RANK</th>
+                    <th class="uk-text-left table__header">NAME</th>
+                    <th class="uk-text-left table__header">COMPANY</th>
+                    <th class="uk-text-left table__header">TIME</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="{{ $index + 1 }}" ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail" ng-class="{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
+                    <td class="table__inner-text">{{ $index + 1 }}</td>
+                    <td class="uk-text-left table__inner-text">{{ user.firstName + ' ' + user.lastName }}</td>
+                    <td class="uk-text-left table__inner-text">{{ user.company }}</td>
+                    <td class="uk-text-left table__inner-text">{{ user.time | date: 'mm:ss:sss' }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="uk-margin-top" >
+            <a href="" ng-click="leaderboard.load()" class="link uk-text-large" ng-show="leaderboard.show">Load More</a>
+            <a href="" ng-click="leaderboard.less()" class="link uk-text-large" ng-hide="leaderboard.show">Show less</a>
+        </div>
     </div>
     <div ng-hide="leaderboard.areUsers()">
-        Let's do this!
+        <span class="uk-text-large">No players..</span>
     </div>
 </div>
