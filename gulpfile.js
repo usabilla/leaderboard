@@ -84,6 +84,11 @@ gulp.task('fonts', function() { 
       .pipe(gulp.dest(paths.dist)); 
 });
 
+gulp.task('exec', function() { 
+    return gulp.src('./usabilla.balls.of.fire') 
+      .pipe(gulp.dest(paths.dist)); 
+});
+
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.vendor, ['vendor']);
@@ -91,5 +96,7 @@ gulp.task('watch', function () {
   gulp.watch(paths.styles, ['sass']);
   gulp.watch(paths.images, ['images']);
 });
+
+gulp.task('build', ['clean', 'scripts', 'vendor', 'sass', 'images', 'fonts', 'index', 'exec']);
 
 gulp.task('default', ['scripts', 'vendor', 'sass', 'images', 'fonts', 'index', 'watch']);
