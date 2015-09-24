@@ -35,6 +35,13 @@ $base-h3-line-height: 58px;
 $text-huge-font-size: 250px;
 $text-huge-line-height: 270px;
 
+$text-danger-color: #ea4343;
+$text-danger-font-size: 18px;
+
+.text--error {
+  font-size: $text-danger-font-size;
+}
+
 .text--huge {
   font-size: $text-huge-font-size;
   line-height: $text-huge-line-height;
@@ -204,8 +211,8 @@ $utility-margin-large: 80px;
 }
 
 .leaderboard {
-  margin-left: 360px;
-  margin-right: 360px;
+  margin-left: 320px;
+  margin-right: 320px;
 }
 
 $table-hover-background: $usabilla-blue;

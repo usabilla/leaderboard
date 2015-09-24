@@ -20,7 +20,6 @@ function RegisterController ($scope, $state, GameService) {
     if (angular.isUndefined(user)) {
       return;
     }
-    // check if selected user has time, then return message
     GameService.setCurrentUser(user);
     $state.go('count');
   }
