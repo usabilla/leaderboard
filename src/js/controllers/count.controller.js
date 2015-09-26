@@ -1,5 +1,5 @@
 /*@ngInject*/
-function CountController ($scope, $state, GameService) {
+function CountController ($scope, $state, GameService, ngAudio) {
   var count = this;
 
   count.user = GameService.getCurrentUser();
@@ -10,6 +10,13 @@ function CountController ($scope, $state, GameService) {
     });
     $state.go('play');
   };
+
+  $scope.$on('timer-tick', function (event, args) {
+    if (args.millis < 1000) {
+      return;
+    }
+    GameService.playSound('count');
+  })
 }
 
 module.exports = CountController;

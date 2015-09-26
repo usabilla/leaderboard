@@ -1,0 +1,20 @@
+{
+  "name": "usabilla.leaderboard",
+  "version": "0.0.0",
+  "authors": [
+    "Spyros Ioakeimidis <spyrosikmd@gmail.com>"
+  ],
+  "description": "Usabilla Balls of Fire",
+  "main": "index.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-audio": "~1.7.1"
+  }
+}

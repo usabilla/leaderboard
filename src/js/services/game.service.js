@@ -1,6 +1,9 @@
 /*@ngInject*/
-function GameService (StorageService) {
+function GameService (StorageService, ngAudio) {
   var currentUser;
+  var sounds = {
+    'count': ngAudio.load('sounds/count.wav')
+  };
 
   var service = {
     registerUser: registerUser,
@@ -10,7 +13,10 @@ function GameService (StorageService) {
     setUserTime: setUserTime,
     getBestTime: getBestTime,
     getUserPosition: getUserPosition,
-    resetCurrentUser: resetCurrentUser
+    resetCurrentUser: resetCurrentUser,
+    playSound: playSound,
+    muteSound: muteSound,
+    unmuteSound: unmuteSound
   };
 
   function registerUser (user) {
@@ -53,6 +59,18 @@ function GameService (StorageService) {
 
   function resetCurrentUser () {
     currentUser = undefined;
+  }
+
+  function playSound (sound) {
+    sounds[sound].play();
+  }
+
+  function muteSound (sound) {
+    sounds[sound].mute();
+  }
+
+  function unmuteSound (sound) {
+    sounds[sound].unmute();
   }
 
   function sortUsers () {

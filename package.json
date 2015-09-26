@@ -1,10 +1,11 @@
 {
   "name": "usabilla.leaderboard",
   "version": "1.0.0",
-  "description": "Usabilla Leaderboard",
+  "description": "Usabilla Balls of Fire",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower cache clean && bower install"
   },
   "author": "Spyros Ioakeimidis",
   "license": "MIT",

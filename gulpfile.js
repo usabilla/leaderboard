@@ -27,11 +27,13 @@ var paths = {
     'node_modules/humanize-duration/humanize-duration.js',
     'node_modules/moment/min/moment.min.js',
     'node_modules/angular-hotkeys/build/hotkeys.min.js',
-    'node_modules/angucomplete-alt/dist/angucomplete-alt.min.js'
+    'node_modules/angucomplete-alt/dist/angucomplete-alt.min.js',
+    'bower_components/angular-audio/app/angular.audio.js'
   ],
   images: 'src/images/**/*',
   index: 'src/index.html',
-  fonts: 'src/fonts/**/*'
+  fonts: 'src/fonts/**/*',
+  sounds: 'src/sounds/**/*'
 };
 
 function templates () {
@@ -74,15 +76,20 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(paths.dist + '/styles'));
 });
 
-gulp.task('index', function() {
+gulp.task('index', function () {
   return gulp.src(paths.index)
     .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('fonts', function() { 
+gulp.task('fonts', function () { 
     return gulp.src(paths.fonts) 
       .pipe(gulp.dest(paths.dist + '/fonts')); 
 });
+
+gulp.task('sounds', function () {
+  return gulp.src(paths.sounds) 
+      .pipe(gulp.dest(paths.dist + '/sounds')); 
+})
 
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['scripts']);
@@ -94,4 +101,4 @@ gulp.task('watch', function () {
 
 gulp.task('build', ['clean', 'scripts', 'vendor', 'sass', 'images', 'fonts', 'index']);
 
-gulp.task('default', ['scripts', 'vendor', 'sass', 'images', 'fonts', 'index', 'watch']);
+gulp.task('default', ['scripts', 'vendor', 'sass', 'images', 'fonts', 'sounds', 'index', 'watch']);

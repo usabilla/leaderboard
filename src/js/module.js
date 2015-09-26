@@ -7,7 +7,8 @@ angular.module('usabilla.leaderboard', [
     'ngMessages',
     'timer',
     'cfp.hotkeys',
-    'angucomplete-alt'
+    'angucomplete-alt',
+    'ngAudio'
   ])
   .config(require('./config/config'))
   .run(require('./config/run'))
