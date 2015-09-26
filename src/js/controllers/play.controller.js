@@ -5,7 +5,7 @@ function PlayController ($scope, $state, hotkeys, GameService) {
   play.user = GameService.getCurrentUser();
   play.bestTime = GameService.getBestTime();
 
-  GameService.playSound('count');
+  GameService.playSound('play');
 
   play.begin = function begin () {
     $scope.$apply(function () {
@@ -26,7 +26,7 @@ function PlayController ($scope, $state, hotkeys, GameService) {
     combo: 'space',
     description: 'Game Over!',
     callback: function () {
-      GameService.playSound('count');
+      GameService.playSound('buzzer');
       $scope.$broadcast('timer-stop');
     }
   });
