@@ -252,4 +252,10 @@ $text-large-font-size: 23px;
   }
 }
 
+.mute {
+  position: fixed;
+  right: 100px;
+  top: 50px;
+}
+
 @import 'uikit/uikit';
