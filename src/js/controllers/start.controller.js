@@ -7,7 +7,8 @@ function StartController (GameService, ExportService) {
   start.admin = false;
 
   start.generate = function generate () {
-    return ExportService.generate();
+    var data = GameService.getUsers();
+    return ExportService.generate(data);
   };
 }
 

@@ -65,12 +65,12 @@ function GameService (StorageService, ngAudio) {
     sounds[sound].play();
   }
 
-  function muteSound (sound) {
-    sounds[sound].mute();
+  function muteSound () {
+    ngAudio.mute();
   }
 
-  function unmuteSound (sound) {
-    sounds[sound].unmute();
+  function unmuteSound () {
+    ngAudio.unmute();
   }
 
   function sortUsers () {

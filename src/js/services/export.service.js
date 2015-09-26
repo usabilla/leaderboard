@@ -8,8 +8,7 @@ function ExportService (GameService) {
     generate: generate
   };
 
-  function generate () {
-    var data = GameService.getUsers();
+  function generate (data) {
     var json = angular.isObject(data) ? data : angular.fromJson(data);
     var csv = '';
 

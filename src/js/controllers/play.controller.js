@@ -5,6 +5,8 @@ function PlayController ($scope, $state, hotkeys, GameService) {
   play.user = GameService.getCurrentUser();
   play.bestTime = GameService.getBestTime();
 
+  GameService.playSound('count');
+
   play.begin = function begin () {
     $scope.$apply(function () {
       play.shouldCountdown = false
@@ -16,10 +18,15 @@ function PlayController ($scope, $state, hotkeys, GameService) {
     return angular.isDefined(play.bestTime);
   }
 
+  play.mute = function mute () {
+    GameService.muteSound();
+  }
+
   hotkeys.add({
     combo: 'space',
     description: 'Game Over!',
     callback: function () {
+      GameService.playSound('count');
       $scope.$broadcast('timer-stop');
     }
   });
