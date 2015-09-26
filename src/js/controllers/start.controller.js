@@ -4,6 +4,8 @@ function StartController (GameService, ExportService) {
 
   GameService.resetCurrentUser();
 
+  start.admin = false;
+
   start.generate = function generate () {
     return ExportService.generate();
   };

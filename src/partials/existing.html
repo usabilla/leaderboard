@@ -1,0 +1,32 @@
+<div class="bubbles--left"></div>
+<div class="bubbles--right"></div>
+<div class="uk-margin-large-top uk-margin-bottom">
+    <h2>Do you have what it takes to win?</h2>
+    <form class="uk-form uk-form-stacked uk-margin-top">
+        <fieldset>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="company">WORK EMAIL</label>
+                <div class="uk-form-controls">
+                    <angucomplete-alt
+                        placeholder="Select an existing user"
+                        pause="100"
+                        selected-object="existing.selectedUser"
+                        local-data="existing.users"
+                        search-fields="workEmail"
+                        title-field="workEmail"
+                        minlength="1"
+                        field-required="true">
+                    </angucomplete-alt>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <div class="uk-form-controls">
+                    <button
+                        class="uk-button uk-width-1-1 uk-button-large"
+                        ng-click="existing.select(existing.selectedUser.originalObject)">YES, LET'S GO!
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

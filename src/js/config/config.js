@@ -1,4 +1,4 @@
-function Config ($stateProvider, $urlRouterProvider, $locationProvider, localStorageServiceProvider) {
+function Config ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -13,6 +13,12 @@ function Config ($stateProvider, $urlRouterProvider, $locationProvider, localSto
         templateUrl: 'register.html',
         controller: 'RegisterController',
         controllerAs: 'register'
+      })
+      .state('existing', {
+        url: '/existing',
+        templateUrl: 'existing.html',
+        controller: 'ExistingController',
+        controllerAs: 'existing'
       })
       .state('count', {
         url: '/count',

@@ -18,6 +18,7 @@ angular.module('usabilla.leaderboard', [
   .controller('LeaderboardController', require('./controllers/leaderboard.controller'))
   .controller('PlayController', require('./controllers/play.controller'))
   .controller('RegisterController', require('./controllers/register.controller'))
+  .controller('ExistingController', require('./controllers/existing.controller'))
   .controller('ResultController', require('./controllers/result.controller'))
   .controller('StartController', require('./controllers/start.controller'))
   .directive('available', require('./directives/available.directive'))
