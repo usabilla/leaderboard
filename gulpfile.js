@@ -99,6 +99,6 @@ gulp.task('watch', function () {
   gulp.watch(paths.images, ['images']);
 });
 
-gulp.task('build', ['clean', 'scripts', 'vendor', 'sass', 'images', 'fonts', 'index']);
+gulp.task('build', ['clean', 'scripts', 'vendor', 'sass', 'images', 'fonts', 'sounds', 'index']);
 
 gulp.task('default', ['scripts', 'vendor', 'sass', 'images', 'fonts', 'sounds', 'index', 'watch']);

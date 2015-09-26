@@ -23,4 +23,5 @@ angular.module('usabilla.leaderboard', [
   .controller('ResultController', require('./controllers/result.controller'))
   .controller('StartController', require('./controllers/start.controller'))
   .directive('available', require('./directives/available.directive'))
+  .directive('freeEmail', require('./directives/freeEmail.directive'))
   .filter('ordinal', require('./filters/ordinal.filter'));

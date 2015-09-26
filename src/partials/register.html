@@ -36,12 +36,14 @@
                     <input type="email" id="workEmail" name="workEmail"
                         ng-model="register.user.workEmail"
                         required
-                        available>
+                        available
+                        free-email>
                 </div>
                 <div ng-messages="userForm.workEmail.$error" ng-if="userForm.workEmail.$touched || userForm.$submitted" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="email">This needs to be a valid email.</p>
                     <p ng-message="required">Your work email is required.</p>
                     <p ng-message="available">This email is already registered.</p>
+                    <p ng-message="freeEmail">Please use your work email.</p>
                 </div>
             </div>
             <div class="uk-form-row">
