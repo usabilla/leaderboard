@@ -50,7 +50,7 @@ $text-danger-font-size: 18px;
 }
 
 .logo {
-  background-image: url('logo.svg');
+  background-image: url('../images/logo.svg');
   background-size: 50% $logo-height;
   width: 50%;
   height: $logo-height;
@@ -107,13 +107,13 @@ $base-link-text-decoration: underline;
 
 .bubbles {
   &--left {
-    @include bubbles('bubbles-left.svg', 170px, 800px);
+    @include bubbles('../images/bubbles-left.svg', 170px, 800px);
     position: fixed;
     left: 0;
     top: 0;
   }
   &--right {
-    @include bubbles('bubbles-right.svg', 150px, 800px);
+    @include bubbles('../images/bubbles-right.svg', 150px, 800px);
     position: fixed;
     right: 0;
     bottom: 0;
@@ -155,7 +155,7 @@ $form-height: 72px;
 }
 
 .count-bubbles {
-  @include bubbles('count-bubbles.svg', 511px, 597px);
+  @include bubbles('../images/count-bubbles.svg', 511px, 597px);
   display: inline-block;
   position: relative;
   top: 50%;
