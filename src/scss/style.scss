@@ -47,7 +47,12 @@ $text-danger-font-size: 18px;
   line-height: $text-huge-line-height;
   height: $text-huge-line-height;
   font-weight: 300;
-  letter-spacing: 45px;
+}
+
+.text--tabular {
+  -webkit-font-feature-settings: 'tnum';
+  -moz-font-feature-settings: 'tnum';
+  -ms-font-feature-settings: 'tnum';
 }
 
 .logo {
