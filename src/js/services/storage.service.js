@@ -8,7 +8,8 @@ function StorageService (localStorageService) {
     update: update,
     list: list,
     indexOf: indexOf,
-    saveUsers: saveUsers
+    saveUsers: saveUsers,
+    remove: remove
   };
 
   function save (user) {
@@ -31,7 +32,6 @@ function StorageService (localStorageService) {
     // user does not exist
     var index = service.indexOf(user);
     if (index === -1) {
-      // raise validation error
       return;
     }
     var users = service.list();
@@ -76,6 +76,22 @@ function StorageService (localStorageService) {
 
   function saveUsers (users) {
     localStorageService.set(key, users);
+  }
+
+  function remove (user) {
+    // if email is not provided return false
+    if (angular.isUndefined(user.workEmail) || user.workEmail === '') {
+      return false;
+    }
+    // if user does not exist return false
+    var index = service.indexOf(user);
+    if (index === -1) {
+      return false;
+    }
+    var users = service.list();
+    users.splice(index, 1);
+    localStorageService.set(key, users);
+    return true;
   }
 
   return service;

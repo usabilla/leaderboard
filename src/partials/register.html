@@ -12,7 +12,7 @@
                         ng-minlength="2"
                         required />
                 </div>
-                <div ng-messages="userForm.firstName.$error" ng-show="userForm.firstName.$touched" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="userForm.firstName.$error" ng-if="register.isInvalid(userForm.firstName)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="minlength">First name is too short</p>
                     <p ng-message="required">First name is required</p>
                 </div>
@@ -25,7 +25,7 @@
                         ng-minlength="2"
                         required />
                 </div>
-                <div ng-messages="userForm.lastName.$error" ng-if="userForm.lastName.$touched" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="userForm.lastName.$error" ng-if="register.isInvalid(userForm.lastName)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="minlength">Your last name is too short.</p>
                     <p ng-message="required">Your last name is required.</p>
                 </div>
@@ -39,7 +39,7 @@
                         available
                         free-email>
                 </div>
-                <div ng-messages="userForm.workEmail.$error" ng-if="userForm.workEmail.$touched || userForm.$submitted" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="userForm.workEmail.$error" ng-if="register.isInvalid(userForm.workEmail)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="email">This needs to be a valid email.</p>
                     <p ng-message="required">Your work email is required.</p>
                     <p ng-message="available">This email is already registered.</p>
@@ -53,7 +53,7 @@
                         ng-model="register.user.jobTitle"
                         required>
                 </div>
-                <div ng-messages="userForm.jobTitle.$error" ng-if="userForm.jobTitle.$touched" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="userForm.jobTitle.$error" ng-if="register.isInvalid(userForm.jobTitle)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="required">Your job title is required.</p>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         ng-model="register.user.company"
                         required>
                 </div>
-                <div ng-messages="userForm.company.$error" ng-if="userForm.company.$touched" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="userForm.company.$error" ng-if="register.isInvalid(userForm.company)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="required">Your company is required.</p>
                 </div>
             </div>

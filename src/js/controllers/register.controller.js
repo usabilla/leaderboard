@@ -15,6 +15,10 @@ function RegisterController ($scope, $state, GameService) {
     }
     $state.go('count');
   }
+
+  register.isInvalid = function isInvalid (field) {
+    return (field.$touched && field.$invalid) || $scope.userForm.$submitted;
+  }
 }
 
 module.exports = RegisterController;

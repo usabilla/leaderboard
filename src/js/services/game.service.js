@@ -16,6 +16,7 @@ function GameService (StorageService, ngAudio) {
     getBestTime: getBestTime,
     getUserPosition: getUserPosition,
     resetCurrentUser: resetCurrentUser,
+    removeUser: removeUser,
     playSound: playSound,
     muteSound: muteSound,
     unmuteSound: unmuteSound
@@ -61,6 +62,10 @@ function GameService (StorageService, ngAudio) {
 
   function resetCurrentUser () {
     currentUser = undefined;
+  }
+
+  function removeUser (user) {
+    return StorageService.remove(user);
   }
 
   function playSound (sound) {

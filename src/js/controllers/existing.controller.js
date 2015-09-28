@@ -1,5 +1,5 @@
 /*@ngInject*/
-function ExistingController ($state, GameService) {
+function ExistingController ($state, $scope, GameService) {
   var existing = this;
 
   existing.selectedUser = undefined;
@@ -11,6 +11,15 @@ function ExistingController ($state, GameService) {
     }
     GameService.setCurrentUser(user);
     $state.go('count');
+  }
+
+  existing.remove = function remove (user) {
+    if (angular.isUndefined(user)) {
+      return;
+    }
+    if (GameService.removeUser(user)) {
+      $scope.$broadcast('angucomplete-alt:clearInput', 'selectedUser');
+    }
   }
 }
 

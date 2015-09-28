@@ -8,6 +8,7 @@
                 <label class="uk-form-label" for="company">WORK EMAIL</label>
                 <div class="uk-form-controls">
                     <angucomplete-alt
+                        id="selectedUser"
                         placeholder="Select an existing user"
                         pause="100"
                         selected-object="existing.selectedUser"
@@ -29,4 +30,7 @@
             </div>
         </fieldset>
     </form>
+    <div class="uk-margin-large-top">
+        <a ng-click="existing.remove(existing.selectedUser.originalObject)" class="link uk-text-large">Remove Player</a>
+    </div>
 </div>
