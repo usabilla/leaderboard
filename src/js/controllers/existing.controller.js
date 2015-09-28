@@ -2,8 +2,10 @@
 function ExistingController ($state, $scope, GameService) {
   var existing = this;
 
-  existing.selectedUser = undefined;
-  existing.users = GameService.getUsers();
+  function reset () {
+    existing.selectedUser = undefined;
+    existing.users = GameService.getUsers();
+  }
 
   existing.select = function select (user) {
     if (angular.isUndefined(user)) {
@@ -19,8 +21,11 @@ function ExistingController ($state, $scope, GameService) {
     }
     if (GameService.removeUser(user)) {
       $scope.$broadcast('angucomplete-alt:clearInput', 'selectedUser');
+      reset();
     }
   }
+
+  reset();
 }
 
 module.exports = ExistingController;
