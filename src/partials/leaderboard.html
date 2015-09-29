@@ -17,10 +17,12 @@
             </thead>
             <tbody>
                 <tr id="{{ $index + 1 }}" ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail" ng-class="{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
-                    <td class="table__inner-text">{{ $index + 1 }}</td>
-                    <td class="uk-text-left table__inner-text">{{ user.firstName + ' ' + user.lastName }}</td>
-                    <td class="uk-text-left table__inner-text">{{ user.company }}</td>
-                    <td class="uk-text-left table__inner-text">{{ user.time | date: 'mm:ss:sss' }}</td>
+                    <td ng-class="{'smiley-crown': leaderboard.isFirst($index)}">
+                        <span ng-hide="leaderboard.isFirst($index)">{{ $index + 1 }}</span>
+                    </td>
+                    <td class="uk-text-left">{{ user.firstName + ' ' + user.lastName }}</td>
+                    <td class="uk-text-left">{{ user.company }}</td>
+                    <td class="uk-text-left">{{ user.time | date: 'mm:ss:sss' }}</td>
                 </tr>
             </tbody>
         </table>

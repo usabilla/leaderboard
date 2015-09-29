@@ -32,6 +32,10 @@ function LeaderBoard ($location, $anchorScroll, GameService) {
     return users.length > 8;
   }
 
+  leaderboard.isFirst = function isFirst (index) {
+    return index === 0;
+  }
+
   function goTo (position) {
     if (angular.isUndefined(position)) {
       return;
