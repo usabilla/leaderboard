@@ -5,7 +5,7 @@
     <h2 class="uk-text-middle uk-display-inline uk-margin-left">Balls of Fame</h2>
 </div>
 <div class="leaderboard uk-margin-top uk-margin-bottom">
-    <div ng-show="leaderboard.areUsers()">
+    <div ng-if="leaderboard.areUsers()">
         <table id="leaderboard" class="uk-table uk-table-middle uk-table-hover">
             <thead>
                 <tr>
@@ -16,22 +16,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr id="{{ $index + 1 }}" ng-repeat="user in leaderboard.users | orderBy: 'time' track by user.workEmail" ng-class="{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
-                    <td ng-class="{'smiley-crown': leaderboard.isFirst($index)}">
-                        <span ng-hide="leaderboard.isFirst($index)">{{ $index + 1 }}</span>
+                <tr id="::{{ $index + 1 }}" ng-repeat="user in ::leaderboard.users | orderBy: 'time' track by user.workEmail" ng-class="::{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
+                    <td ng-class="::{'smiley-crown': leaderboard.isFirst($index)}">
+                        <span ng-if="!leaderboard.isFirst($index)">{{ ::$index + 1 }}</span>
                     </td>
-                    <td class="uk-text-left">{{ user.firstName + ' ' + user.lastName }}</td>
-                    <td class="uk-text-left">{{ user.company }}</td>
-                    <td class="uk-text-left">{{ user.time | date: 'mm:ss:sss' }}</td>
+                    <td class="uk-text-left">{{ ::user.firstName }} {{ ::user.lastName }}</td>
+                    <td class="uk-text-left">{{ ::user.company }}</td>
+                    <td class="uk-text-left">{{ ::user.time | date: 'mm:ss:sss' }}</td>
                 </tr>
             </tbody>
         </table>
-        <div class="uk-margin-top" ng-show="leaderboard.shouldShowMore()">
-            <a href="" ng-click="leaderboard.load()" class="link uk-text-large" ng-show="leaderboard.show">Load More</a>
-            <a href="" ng-click="leaderboard.less()" class="link uk-text-large" ng-hide="leaderboard.show">Show less</a>
+        <div class="uk-margin-top" ng-if="leaderboard.shouldShowMore()">
+            <a href="" ng-click="leaderboard.load()" class="link uk-text-large" ng-if="leaderboard.show">Load More</a>
+            <a href="" ng-click="leaderboard.less()" class="link uk-text-large" ng-if="!leaderboard.show">Show less</a>
         </div>
     </div>
-    <div class="uk-margin-large-top" ng-hide="leaderboard.areUsers()">
+    <div class="uk-margin-large-top" ng-if="!leaderboard.areUsers()">
         <span class="uk-text-large">No players..</span>
     </div>
 </div>

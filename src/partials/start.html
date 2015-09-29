@@ -16,7 +16,7 @@
     <div class="uk-margin-top">
         <a ui-sref="existing" class="link uk-text-large">Select Existing</a>
     </div>
-    <div class="uk-margin-top" ng-show="start.amdin">
+    <div class="uk-margin-top" ng-if="start.amdin">
         <a ng-click="start.generate()" class="link uk-text-large">Export</a>
     </div>
 </div>

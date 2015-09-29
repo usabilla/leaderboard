@@ -7,10 +7,10 @@
     <h3 class="uk-margin-top">Your Time</h3>
     <timer class="text--huge text--tabular">{{ mminutes }}:{{ sseconds }}:{{ millis % 1000 }}</timer>
     <h3 class="uk-margin-large-top">Time to Beat</h3>
-    <div class="timer--beat text--blue-light" ng-show="play.bestTimeExists()">
-        {{play.bestTime | date : 'mm:ss:sss'}}
+    <div class="timer--beat text--blue-light" ng-if="play.bestTimeExists()">
+        {{ ::play.bestTime | date : 'mm:ss:sss' }}
     </div>
-    <div ng-hide="play.bestTimeExists()" class="timer--beat">--</div>
+    <div ng-if="!play.bestTimeExists()" class="timer--beat">--</div>
     <div class="mute" ng-click="play.toggleSound()">
         <span ng-if="!play.isMuted()"><i class="uk-icon-hover uk-icon-medium uk-icon-bell-o action"></i></span>
         <span ng-if="play.isMuted()"><i class="uk-icon-hover uk-icon-medium uk-icon-bell-slash-o action"></i></span>
