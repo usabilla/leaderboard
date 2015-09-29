@@ -230,7 +230,6 @@ $text-large-font-size: 23px;
 
 @mixin hook-table-active () {
   color: $white;
-  text-shadow: 0 2px $blue-dark;
 }
 
 @mixin hook-table-misc () {

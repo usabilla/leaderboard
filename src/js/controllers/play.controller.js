@@ -26,7 +26,7 @@ function PlayController ($scope, $state, hotkeys, GameService) {
     return GameService.isSoundMuted('play');
   }
 
-  hotkeys.add({
+  hotkeys.bindTo($scope).add({
     combo: 'space',
     description: 'Game Over!',
     callback: function () {
@@ -37,10 +37,14 @@ function PlayController ($scope, $state, hotkeys, GameService) {
   });
 
   $scope.$on('timer-stopped', function (event, data) {
-    var time = (data.minutes * 60000) + (data.seconds * 1000) + (data.millis % 1000);
+    var time = getTime(data);
     GameService.setUserTime(play.user, time);
     $state.go('result');
   });
+
+  function getTime (data) {
+    return (data.minutes * 60000) + (data.seconds * 1000) + (data.millis % 1000);
+  }
 }
 
 module.exports = PlayController;
