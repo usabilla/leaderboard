@@ -18,14 +18,19 @@ function PlayController ($scope, $state, hotkeys, GameService) {
     return angular.isDefined(play.bestTime);
   }
 
-  play.mute = function mute () {
-    GameService.muteSound();
+  play.toggleSound = function toggleSound () {
+    GameService.toggleSound('play');
+  }
+
+  play.isMuted = function isMuted () {
+    return GameService.isSoundMuted('play');
   }
 
   hotkeys.add({
     combo: 'space',
     description: 'Game Over!',
     callback: function () {
+      GameService.stopSound('play');
       GameService.playSound('buzzer');
       $scope.$broadcast('timer-stop');
     }

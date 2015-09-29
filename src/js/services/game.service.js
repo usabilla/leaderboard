@@ -18,8 +18,9 @@ function GameService (StorageService, ngAudio) {
     resetCurrentUser: resetCurrentUser,
     removeUser: removeUser,
     playSound: playSound,
-    muteSound: muteSound,
-    unmuteSound: unmuteSound
+    stopSound: stopSound,
+    toggleSound: toggleSound,
+    isSoundMuted: isSoundMuted
   };
 
   function registerUser (user) {
@@ -68,16 +69,31 @@ function GameService (StorageService, ngAudio) {
     return StorageService.remove(user);
   }
 
+  /**
+   * Play a sound.
+   *
+   * @param  {String} sound The sound string id.
+   */
   function playSound (sound) {
     sounds[sound].play();
   }
 
-  function muteSound () {
-    ngAudio.mute();
+  /**
+   * Stop a sound.
+   *
+   * @param  {String} sound The sound string id.
+   */
+  function stopSound (sound) {
+    sounds[sound].stop();
   }
 
-  function unmuteSound () {
-    ngAudio.unmute();
+  function toggleSound (sound) {
+    var audio = sounds[sound];
+    audio.muting = !audio.muting;
+  }
+
+  function isSoundMuted (sound) {
+    return sounds[sound].muting;
   }
 
   function sortUsers () {

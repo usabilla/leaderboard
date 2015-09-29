@@ -268,4 +268,8 @@ $text-large-font-size: 23px;
   display: inline-block;
 }
 
+.action {
+  cursor: pointer;
+}
+
 @import 'uikit/uikit';

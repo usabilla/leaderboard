@@ -11,5 +11,8 @@
         {{play.bestTime | date : 'mm:ss:sss'}}
     </div>
     <div ng-hide="play.bestTimeExists()" class="timer--beat">--</div>
-    <div class="mute" ng-click="play.mute()">mute</div>
+    <div class="mute" ng-click="play.toggleSound()">
+        <span ng-if="!play.isMuted()"><i class="uk-icon-hover uk-icon-medium uk-icon-bell-o action"></i></span>
+        <span ng-if="play.isMuted()"><i class="uk-icon-hover uk-icon-medium uk-icon-bell-slash-o action"></i></span>
+    </div>
 </div>
