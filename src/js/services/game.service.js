@@ -3,8 +3,14 @@ function GameService (StorageService, ngAudio) {
   var currentUser;
   var sounds = {
     'count': ngAudio.load('sounds/count.wav'),
+    'go': ngAudio.load('sounds/go.mp3'),
     'play': ngAudio.load('sounds/play.mp3'),
-    'buzzer': ngAudio.load('sounds/buzzer.wav')
+    'buzzer': ngAudio.load('sounds/buzzer.wav'),
+    '1': ngAudio.load('sounds/1.mp3'),
+    '2': ngAudio.load('sounds/2.mp3'),
+    '3': ngAudio.load('sounds/3.mp3'),
+    '4': ngAudio.load('sounds/4.mp3'),
+    '5': ngAudio.load('sounds/5.mp3')
   };
 
   var service = {

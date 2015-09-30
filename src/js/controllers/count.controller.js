@@ -8,14 +8,17 @@ function CountController ($scope, $state, GameService, ngAudio) {
     $scope.$apply(function () {
       count.shouldCountdown = false
     });
+    GameService.playSound('go');
     $state.go('play');
   };
 
   $scope.$on('timer-tick', function (event, args) {
-    if (args.millis < 1000) {
+    var millis = args.millis;
+    if (millis < 1000) {
       return;
     }
-    GameService.playSound('count');
+    var countSound = millis / 1000;
+    GameService.playSound(countSound);
   })
 }
 
