@@ -1,42 +1,16 @@
 @import 'uikit/uikit-mixins';
 
 @import 'typography';
+@import 'colors';
+@import 'variables';
+@import 'buttons';
+@import 'form';
+@import 'table';
+@import 'smiley';
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
-
-$usabilla-blue: #00A5C9;
-$blue-dark: #008AAB;
-
-$grey: #C8D2DA;
-$grey-01: #6B6B6B;
-$grey-02: #59636B;
-$grey-03: #41474C;
-$grey-04: #23272A;
-
-$white: #fff;
-
-$base-body-color: $grey-02;
-$base-heading-color: $grey-02;
-
-$logo-height: 300px;
-$logo-small-height: 200px;
-
-$base-h1-font-size: 70px;
-$base-h1-line-height: 80px;
-
-$base-h2-font-size: 56px;
-$base-h2-line-height: 70px;
-
-$base-h3-font-size: 48px;
-$base-h3-line-height: 58px;
-
-$text-huge-font-size: 250px;
-$text-huge-line-height: 270px;
-
-$text-danger-color: #ea4343;
-$text-danger-font-size: 18px;
 
 .text--error {
   font-size: $text-danger-font-size;
@@ -50,9 +24,9 @@ $text-danger-font-size: 18px;
 }
 
 .text--tabular {
-  -webkit-font-feature-settings: 'tnum';
-  -moz-font-feature-settings: 'tnum';
-  -ms-font-feature-settings: 'tnum';
+  -webkit-font-feature-settings: $font-feature-settings;
+  -moz-font-feature-settings: $font-feature-settings;
+  -ms-font-feature-settings: $font-feature-settings;
 }
 
 .logo {
@@ -69,115 +43,6 @@ $text-danger-font-size: 18px;
   background-size: 50% $logo-small-height;
   height: $logo-small-height;
 }
-
-$base-body-font-family: MiloOT, Helvetica, Arial, sans-serif;
-$base-heading-font-family: MiloOT, Helvetica, Arial, sans-serif;
-
-// Buttons
-
-$button-background: $usabilla-blue;
-$button-color: $white;
-$button-hover-background: $blue-dark;
-$button-hover-color: $white;
-$button-active-background: $blue-dark;
-$button-active-color: $white;
-$button-height: 50px;
-$button-large-height: 133px;
-$button-large-line-height: 133px;
-$button-large-font-size: 40px;
-$button-height: 60px;
-$button-line-height: 60px;
-$button-font-size: 28px;
-
-@mixin hook-button () {
-  font-weight: 600;
-  border-style: none;
-  border-bottom: 2px solid $blue-dark;
-  border-radius: 2px;
-  text-shadow: 0 2px $blue-dark;
-  width: 500px;
-  max-width: 100%;
-}
-
-$utility-margin: 40px;
-
-$base-link-color: $grey-01;
-$base-link-text-decoration: underline;
-
-@mixin smiley ($image, $width, $height) {
-  background: url($image) no-repeat center center;
-  background-size: $width $height;
-  width: $width;
-  height: $height;
-}
-
-.bubbles {
-  &--left {
-    @include smiley('../images/bubbles-left.svg', 170px, 800px);
-    position: fixed;
-    left: 0;
-    top: 0;
-  }
-  &--right {
-    @include smiley('../images/bubbles-right.svg', 150px, 800px);
-    position: fixed;
-    right: 0;
-    bottom: 0;
-  }
-}
-
-// Form
-
-$form-gutter: 20px;
-$form-stacked-margin-bottom: 5px;
-$form-stacked-font-weight: 500;
-$form-color: $grey-03;
-$form-line-height: 32px;
-$form-font-size: 23px;
-$form-padding: 4px 20px;
-$form-medium-width: 500px;
-$form-height: 72px;
-
-@mixin hook-form-stacked-label () {
-  font-size: 23px;
-  line-height: 32px;
-  color: $grey-03;
-}
-
-@mixin hook-form-misc () {
-  .uk-form-row {
-    width: $form-medium-width;
-    max-width: 100%;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@mixin hook-form () {
-  width: 100%;
-  line-height: $form-line-height;
-  font-size: $form-font-size;
-}
-
-.count-bubbles {
-  @include smiley('../images/count-bubbles.svg', 511px, 597px);
-  display: inline-block;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-
-  > timer {
-    font-size: 200px;
-    color: $white;
-    font-weight: 500;
-    position: absolute;
-    left: 172px;
-    top: 243px;
-  }
-}
-
-$utility-margin-large: 80px;
 
 .text--blue-light {
   color: $usabilla-blue;
@@ -216,40 +81,6 @@ $utility-margin-large: 80px;
   }
 }
 
-.leaderboard {
-  margin-left: 320px;
-  margin-right: 320px;
-}
-
-$table-hover-background: $usabilla-blue;
-$text-large-font-size: 23px;
-
-@mixin hook-table-hover () {
-  color: $white;
-}
-
-@mixin hook-table-active () {
-  color: $white;
-}
-
-@mixin hook-table-misc () {
-  .uk-table .table__header {
-    border-bottom: 2px solid $grey;
-    color: $grey-04;
-    font-weight: 500;
-    font-size: $text-large-font-size;
-    line-height: 32px;
-  }
-
-  .uk-table .table__data {
-    border-bottom: 1px solid $grey;
-    color: $grey-02;
-    line-height: 80px;
-    font-size: 33px;
-    font-weight: 400;
-  }
-}
-
 .link {
   &:hover, &:active {
     color: $usabilla-blue;
@@ -260,11 +91,6 @@ $text-large-font-size: 23px;
   position: fixed;
   right: 100px;
   top: 50px;
-}
-
-.smiley-crown {
-  @include smiley('../images/smiley-crown.svg', 48px, 66px);
-  display: inline-block;
 }
 
 .action {

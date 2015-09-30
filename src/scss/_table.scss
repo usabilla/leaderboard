@@ -1,0 +1,30 @@
+.leaderboard {
+  margin-left: 320px;
+  margin-right: 320px;
+}
+
+@mixin hook-table-hover () {
+  color: $white;
+}
+
+@mixin hook-table-active () {
+  color: $white;
+}
+
+@mixin hook-table-misc () {
+  .uk-table .table__header {
+    border-bottom: 2px solid $grey;
+    color: $grey-04;
+    font-weight: 500;
+    font-size: $text-large-font-size;
+    line-height: 32px;
+  }
+
+  .uk-table .table__data {
+    border-bottom: 1px solid $grey;
+    color: $grey-02;
+    line-height: 80px;
+    font-size: 33px;
+    font-weight: 400;
+  }
+}
