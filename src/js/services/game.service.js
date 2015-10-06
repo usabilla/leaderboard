@@ -1,6 +1,7 @@
 /*@ngInject*/
 function GameService (StorageService, ngAudio) {
   var currentUser;
+  var previousPosition;
   var sounds = {
     'count': ngAudio.load('sounds/count.wav'),
     'play': ngAudio.load('sounds/play.mp3'),
@@ -26,7 +27,8 @@ function GameService (StorageService, ngAudio) {
     playSound: playSound,
     stopSound: stopSound,
     toggleSound: toggleSound,
-    isSoundMuted: isSoundMuted
+    isSoundMuted: isSoundMuted,
+    isFirst: isFirst
   };
 
   function registerUser (user) {
@@ -40,6 +42,7 @@ function GameService (StorageService, ngAudio) {
 
   function setCurrentUser (user) {
     currentUser = user;
+    previousPosition = service.getUserPosition(user);
   }
 
   function getCurrentUser () {
@@ -59,7 +62,8 @@ function GameService (StorageService, ngAudio) {
 
   function getBestTime () {
     var users = service.getUsers();
-    return users[0].time;
+    var index = (previousPosition === 1 && users.length > 1) ? 1 : 0;
+    return users[index].time;
   }
 
   function getUserPosition (user) {
@@ -100,6 +104,10 @@ function GameService (StorageService, ngAudio) {
 
   function isSoundMuted (sound) {
     return sounds[sound].muting;
+  }
+
+  function isFirst (user) {
+    return service.getUserPosition(user) === 1;
   }
 
   function sortUsers () {

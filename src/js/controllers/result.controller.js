@@ -5,6 +5,10 @@ function ResultController ($scope, $state, $timeout, GameService) {
   result.user = GameService.getCurrentUser();
   result.position = GameService.getUserPosition(result.user);
 
+  if (GameService.isFirst(result.user)) {
+    GameService.playSound('first');
+  }
+
   var toLeaderboard = $timeout(function () {
     $state.go('leaderboard');
   }, 5000);
