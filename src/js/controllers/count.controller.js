@@ -8,7 +8,6 @@ function CountController ($scope, $state, GameService, ngAudio) {
     $scope.$apply(function () {
       count.shouldCountdown = false
     });
-    GameService.playSound('go');
     $state.go('play');
   };
 
