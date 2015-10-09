@@ -4,7 +4,7 @@ function StartController (GameService, ExportService) {
 
   GameService.resetCurrentUser();
 
-  start.admin = false;
+  start.admin = true;
 
   start.generate = function generate () {
     var data = GameService.getUsers();
