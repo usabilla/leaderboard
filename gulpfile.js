@@ -11,6 +11,7 @@ var browserify = require('browserify');
 var del = require('del');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
+var webserver = require('gulp-webserver');
 
 var paths = {
   dist: 'dist',
@@ -89,7 +90,15 @@ gulp.task('fonts', function () { 
 gulp.task('sounds', function () {
   return gulp.src(paths.sounds) 
       .pipe(gulp.dest(paths.dist + '/sounds')); 
-})
+});
+
+gulp.task('webserver', function () {
+  gulp.src('dist')
+    .pipe(webserver({
+      livereload: true,
+      open: true
+    }));
+});
 
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['scripts']);
@@ -101,4 +110,4 @@ gulp.task('watch', function () {
 
 gulp.task('build', ['clean', 'scripts', 'vendor', 'sass', 'images', 'fonts', 'sounds', 'index']);
 
-gulp.task('default', ['scripts', 'vendor', 'sass', 'images', 'fonts', 'sounds', 'index', 'watch']);
+gulp.task('default', ['scripts', 'vendor', 'sass', 'images', 'fonts', 'sounds', 'index', 'watch', 'webserver']);
