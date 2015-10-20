@@ -2,13 +2,20 @@
   "name": "usabilla.leaderboard",
   "version": "1.0.1",
   "description": "Usabilla Balls of Fire",
-  "main": "index.js",
   "scripts": {
     "dev": "./node_modules/.bin/gulp",
     "build": "./node_modules/.bin/gulp build",
     "postinstall": "bower cache clean && bower install"
   },
-  "author": "Spyros Ioakeimidis",
+  "author": {
+    "name" : "Spyros Ioakeimidis",
+    "email" : "spyros@usabilla.com",
+    "url" : "http://www.spyros.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "usabilla/balls.of.fire"
+  },
   "license": "MIT",
   "dependencies": {
     "angucomplete-alt": "^1.2.2",
