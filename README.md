@@ -14,8 +14,12 @@ To build game for production
 $ npm run build
 ```
 
-`dist` contains all static files, which you can then distribute. For development
+`dist` contains all static files, which you can then distribute.
+
+For development
 
 ```sh
 $ npm run dev
 ```
+
+which will spawn a webserver with livereload.
