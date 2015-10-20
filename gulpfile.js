@@ -5,6 +5,7 @@ var browserify = require('browserify');
 var del = require('del');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
+var argv = require('yargs').argv;
 
 var paths = {
   dist: 'dist',
@@ -46,12 +47,14 @@ gulp.task('scripts', function () {
     .pipe(buffer())
     .pipe($.ngAnnotate())
     .pipe(addStream.obj(templates()))
+    .pipe($.if(argv.prod, $.uglify()))
     .pipe($.concat('app.min.js'))
     .pipe(gulp.dest(paths.dist + '/js'));
 });
 
 gulp.task('vendor', function () {
   return gulp.src(paths.vendor)
+      .pipe($.if(argv.prod, $.uglify()))
       .pipe($.concat('vendor.min.js'))
     .pipe(gulp.dest(paths.dist + '/js'));
 });
@@ -65,7 +68,8 @@ gulp.task('images', function () {
 gulp.task('sass', function () {
   return $.rubySass(paths.styles, {style: 'compact'})
     .pipe($.autoprefixer('last 1 version', '> 1%', 'ie 8', 'ie 7'))
-    .pipe($.concat('style.css'))
+    .pipe($.if(argv.prod, $.minifyCss()))
+    .pipe($.concat('style.min.css'))
     .on('error', $.rubySass.logError)
     .pipe(gulp.dest(paths.dist + '/styles'));
 });
