@@ -3,7 +3,6 @@ function GameService (StorageService, ngAudio) {
   var currentUser;
   var previousPosition;
   var sounds = {
-    // 'play': ngAudio.load('sounds/play.mp3'),
     'buzzer': ngAudio.load('sounds/buzzer.mp3'),
     'first': ngAudio.load('sounds/first.mp3'),
     '1': ngAudio.load('sounds/1.mp3'),
