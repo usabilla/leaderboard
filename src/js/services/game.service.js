@@ -83,7 +83,11 @@ function GameService (StorageService, ngAudio) {
    * @param  {String} sound The sound string id.
    */
   function playSound (sound) {
-    sounds[sound].play();
+    var audio = sounds[sound];
+    if (angular.isUndefined(audio)) {
+      return;
+    }
+    audio.play();
   }
 
   /**
@@ -92,16 +96,27 @@ function GameService (StorageService, ngAudio) {
    * @param  {String} sound The sound string id.
    */
   function stopSound (sound) {
-    sounds[sound].stop();
+    var audio = sounds[sound];
+    if (angular.isUndefined(audio)) {
+      return;
+    }
+    audio.stop();
   }
 
   function toggleSound (sound) {
     var audio = sounds[sound];
+    if (angular.isUndefined(audio)) {
+      return;
+    }
     audio.muting = !audio.muting;
   }
 
   function isSoundMuted (sound) {
-    return sounds[sound].muting;
+    var audio = sounds[sound];
+    if (angular.isUndefined(audio)) {
+      return;
+    }
+    return audio.muting;
   }
 
   function isFirst (user) {

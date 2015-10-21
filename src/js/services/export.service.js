@@ -15,7 +15,7 @@ function ExportService (GameService) {
     csv += title + '\r\n\n';
 
     if (showLabel) {
-        var row = "";
+        var row = '';
 
         // This loop will extract the label from 1st index of on array
         for (var index in json[0]) {
@@ -31,11 +31,11 @@ function ExportService (GameService) {
 
     // 1st loop is to extract each row
     for (var i = 0; i < json.length; i++) {
-        var row = "";
+        var row = '';
 
         // 2nd loop will extract each column and convert it in string comma-seprated
         for (var index in json[i]) {
-            row += '"' + json[i][index] + '",';
+            row += '' + json[i][index] + ',';
         }
 
         row.slice(0, row.length - 1);
@@ -51,18 +51,18 @@ function ExportService (GameService) {
 
     // Generate a file name
     // this will remove the blank-spaces from the title and replace it with an underscore
-    var fileName = title.replace(/ /g,"_");
+    var fileName = title.replace(/ /g,'_');
 
     // Initialize file format you want csv or xls
     var uri = format + ',' + escape(csv);
 
     // this trick will generate a temp <a /> tag
-    var link = document.createElement("a");
+    var link = document.createElement('a');
     link.href = uri;
 
     // set the visibility hidden so it will not effect on your web-layout
-    link.style = "visibility:hidden";
-    link.download = fileName + ".csv";
+    link.style = 'visibility:hidden';
+    link.download = fileName + '.csv';
 
     // this part will append the anchor tag and remove it after automatic click
     document.body.appendChild(link);

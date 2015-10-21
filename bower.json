@@ -1,11 +1,10 @@
 {
-  "name": "usabilla.leaderboard",
-  "version": "1.0.0",
+  "name": "balls.of.fire",
+  "version": "1.0.1",
   "authors": [
-    "Spyros Ioakeimidis <spyrosikmd@gmail.com>"
+    "Spyros Ioakeimidis <spyros@usabilla.com>"
   ],
   "description": "Usabilla Balls of Fire",
-  "main": "index.js",
   "license": "MIT",
   "ignore": [
     "**/.*",

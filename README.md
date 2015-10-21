@@ -34,6 +34,6 @@ Adding any sound/song in `src/sounds` with the filename `play.mp3`, you can have
 'play': ngAudio.load('sounds/play.mp3')
 ```
 
-in [game service](src/js/services/game.service.js) so the sound can be played at runtime.
+in [game service](src/js/services/game.service.js) so the sound can be played at runtime. As an extra you can download the result data in csv format.
 
 The game is built with [AngularJS](https://angularjs.org/), [Gulp](http://gulpjs.com/) and several awesome plugins.
