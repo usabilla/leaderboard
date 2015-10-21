@@ -1,4 +1,4 @@
-# ![alt tag](./src/images/smiley-crown.svg) Usabilla Balls of Fire
+# ![alt tag](src/images/smiley-crown.svg) Usabilla Balls of Fire
 
 We developed this game for fun. [eCommerce](http://www.amsterdameweek.com/) attendees had the opportunity to experience it for real.
 
