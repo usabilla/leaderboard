@@ -28,4 +28,12 @@ $ npm run dev
 
 which will spawn a webserver with livereload.
 
-Built with [AngularJS](https://angularjs.org/), [Gulp](http://gulpjs.com/) and many awesome plugins.
+Adding any sound/song in `src/sounds` with the filename `play.mp3`, you can have a song on the background while users are playing. You need to add this line
+
+```javascript
+'play': ngAudio.load('sounds/play.mp3')
+```
+
+in [game service](src/js/services/game.service.js) so the sound can be played at runtime.
+
+The game is built with [AngularJS](https://angularjs.org/), [Gulp](http://gulpjs.com/) and several awesome plugins.
