@@ -54,13 +54,16 @@ function GameService (StorageService, ngAudio) {
   function setUserTime (user, time) {
     user.time = time;
     StorageService.update(user);
-    service.setCurrentUser(user);
     sortUsers();
+    service.setCurrentUser(user);
   }
 
   function getBestTime () {
     var users = service.getUsers();
-    var index = (previousPosition === 1 && users.length > 1) ? 1 : 0;
+    if (users.length <= 1) {
+      return undefined;
+    }
+    var index = (previousPosition === 1) ? 1 : 0;
     return users[index].time;
   }
 
