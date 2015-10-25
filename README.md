@@ -1,6 +1,6 @@
 # Usabilla Balls of Fire
 
-We developed this game for fun. [eCommerce](http://www.amsterdameweek.com/) attendees had the opportunity to experience it for real.
+We developed this game for fun. [emerce eday](http://www.emerceeday.nl/) attendees had the opportunity to experience it for real.
 
 The game is basically suitable for any game that orders results according to time. A player performs an activity and when the activity is completed player hits space and time is registered. We actually had a buzzer that would simulate a space click :)
 
