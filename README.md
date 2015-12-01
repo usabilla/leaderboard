@@ -1,4 +1,4 @@
-# Usabilla Balls of Fire
+# Leaderboard
 
 We developed this game for fun. [emerce eday](http://www.emerceeday.nl/) attendees had the opportunity to experience it for real.
 
