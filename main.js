@@ -18,11 +18,13 @@ function initialize () {
     mainWindow = new BrowserWindow(windowOptions);
     mainWindow.loadURL(path.join('file://', __dirname, '/index.html'));
 
-    // Launch full screen with DevTools open, usage: npm run debug
+    // Launch full screen with DevTools open, usage: npm start
     if (debug) {
       mainWindow.webContents.openDevTools();
-      mainWindow.maximize();
     }
+
+    // Always open window maximized
+    mainWindow.maximize();
 
     mainWindow.on('closed', function () {
       mainWindow = null
