@@ -1,37 +1,40 @@
 # Leaderboard
 
-The game is basically suitable for any game that orders results according to time. A player performs an activity and when the activity is completed player hits space and time is registered. We actually had a buzzer that would simulate a space click :)
+The game is basically suitable for any game that orders results according to time. A player performs an
+activity and when the activity is completed player hits space and time is registered. We actually had
+a buzzer that would simulate a space click :)
 
 The game was developed for high resolution and for people to be able to see it clearly from far away.
 
-Setup is as easy as
+Install node modules
 
 ```sh
 $ npm i
 ```
 
-To build game for production
+To build game for production (currently only for darwin)
 
 ```sh
-$ npm run build
+$ npm run package
 ```
 
-`dist` contains all static files, which you can then distribute.
+`Leaderboard-darwin-x64` contains the electron application, which you can then distribute.
 
 For development
 
 ```sh
-$ npm run dev
+$ npm start
 ```
 
-which will spawn a webserver with livereload.
-
-Adding any sound/song in `src/sounds` with the filename `play.mp3`, you can have a song on the background while users are playing. You need to add this line
+Adding any sound/song in `src/sounds` with the filename `play.mp3`, you can have a song on the background
+while users are playing. Additionally you need to add this line
 
 ```javascript
 'play': ngAudio.load('sounds/play.mp3')
 ```
 
-in [game service](src/js/services/game.service.js) so the sound can be played at runtime. As an extra you can download the result data in csv format.
+in [game service](src/js/services/game.service.js) so the sound can be played at runtime. As an extra
+you can download the result data in csv format.
 
-The game is built with [AngularJS](https://angularjs.org/), [Gulp](http://gulpjs.com/) and several awesome plugins.
+The game is built with [AngularJS](https://angularjs.org/), [Electron](http://electron.atom.io/),
+[Gulp](http://gulpjs.com/) and several other awesome modules.
