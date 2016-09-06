@@ -31,6 +31,16 @@ function initialize () {
     mainWindow.on('closed', function () {
       mainWindow = null
     });
+
+    mainWindow.on('unresponsive', function (err) {
+      // Un-responsive handling
+      console.log(err);
+    });
+
+    mainWindow.webContents.on('crashed', function (err) {
+      // Crash handling
+      console.log(err);
+    });
   }
 
   app.on('ready', function () {
@@ -48,6 +58,11 @@ function initialize () {
       createWindow();
     }
   });
+
+  process.on('uncaughtException', function (err) {
+    // uncaughtException handling
+    console.log(err);
+  })
 }
 
 initialize();
