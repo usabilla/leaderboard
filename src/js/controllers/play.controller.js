@@ -16,15 +16,15 @@ function PlayController ($scope, $state, hotkeys, GameService) {
 
   play.bestTimeExists = function bestTimeExists () {
     return angular.isDefined(play.bestTime);
-  }
+  };
 
   play.toggleSound = function toggleSound () {
     GameService.toggleSound('play');
-  }
+  };
 
   play.isMuted = function isMuted () {
     return GameService.isSoundMuted('play');
-  }
+  };
 
   hotkeys.bindTo($scope).add({
     combo: 'space',

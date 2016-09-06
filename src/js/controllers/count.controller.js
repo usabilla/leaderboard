@@ -1,5 +1,5 @@
 /*@ngInject*/
-function CountController ($scope, $state, GameService, ngAudio) {
+function CountController ($scope, $state, GameService) {
   var count = this;
 
   count.user = GameService.getCurrentUser();

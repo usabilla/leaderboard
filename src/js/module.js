@@ -1,15 +1,23 @@
-require('./templates');
+var angular = require('angular');
+var uiRouter = require('angular-ui-router');
+require('angular-local-storage');
+var ngMessages = require('angular-messages');
+window.moment = require('moment');
+window.humanizeDuration = require('humanize-duration');
+var timer = require('angular-timer');
+require('angular-hotkeys');
+require('angucomplete-alt');
+var ngAudio = require('angular-audio');
 
 angular.module('usabilla.leaderboard', [
-    'templates',
-    'ui.router',
-    'LocalStorageModule',
-    'ngMessages',
-    'timer',
-    'cfp.hotkeys',
-    'angucomplete-alt',
-    'ngAudio'
-  ])
+  uiRouter,
+  'LocalStorageModule',
+  ngMessages,
+  timer.name,
+  'cfp.hotkeys',
+  'angucomplete-alt',
+  ngAudio
+])
   .config(require('./config/config'))
   .run(require('./config/run'))
   .factory('StorageService', require('./services/storage.service'))
