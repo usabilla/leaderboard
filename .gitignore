@@ -39,6 +39,5 @@ jspm_packages
 
 # Custom
 dist
-.sass-cache/
-bower_components/
-Leaderboard-darwin-x64/
+.sass-cache
+Leaderboard-darwin-x64
