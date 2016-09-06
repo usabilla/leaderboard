@@ -47,7 +47,7 @@ gulp.task('images', function () {
 gulp.task('sass', function () {
   return $.rubySass(paths.styles, {style: 'compact'})
     .pipe($.autoprefixer('last 1 version', '> 1%', 'ie 8', 'ie 7'))
-    .pipe($.if(argv.prod, $.minifyCss()))
+    .pipe($.if(argv.prod, $.cleanCss()))
     .pipe($.concat('style.min.css'))
     .on('error', $.rubySass.logError)
     .pipe(gulp.dest(paths.dist + '/styles'));

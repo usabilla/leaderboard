@@ -6,6 +6,8 @@ const app = electron.app;
 
 const debug = /--debug/.test(process.argv[2]);
 
+var mainWindow = null;
+
 function initialize () {
   function createWindow () {
     var windowOptions = {
