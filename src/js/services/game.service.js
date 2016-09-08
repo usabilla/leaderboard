@@ -1,5 +1,6 @@
 var Game = require('../models/game.model');
 var Player = require('../models/player.model');
+var randomstring = require('randomstring');
 var _forEach = require('lodash/forEach');
 
 /*@ngInject*/
@@ -50,9 +51,10 @@ function GameService (StorageService, ngAudio) {
 
     var game = new Game();
 
+    game.setId(randomstring.generate());
     game.setName(name);
 
-    StorageService.save(game);
+    return StorageService.save(game);
   }
 
   /**
@@ -60,31 +62,34 @@ function GameService (StorageService, ngAudio) {
    * @returns {Game[]}
    */
   function getGames () {
-    var objects = StorageService.getAll();
+    return StorageService.getAll()
+      .then(function (docs) {
+        var games = [];
 
-    var games = [];
-    _forEach(objects, function instantiateGame (object) {
-      var game = new Game();
+        _forEach(docs, function (doc) {
+          var game = new Game();
 
-      game.setName(object.name);
+          game.setId(doc.doc._id);
+          game.setName(doc.doc.name);
 
-      _forEach(object.players, function instantiatePlayer (playerObject) {
-        var player = new Player();
+          _forEach(doc.doc.players, function instantiatePlayer (playerObject) {
+            var player = new Player();
 
-        player.setFirstName(playerObject.firstName);
-        player.setLastName(playerObject.lastName);
-        player.setWorkEmail(playerObject.workEmail);
-        player.setJobTitle(playerObject.jobTitle);
-        player.setCompany(playerObject.company);
-        player.setTime(playerObject.time);
+            player.setFirstName(playerObject.firstName);
+            player.setLastName(playerObject.lastName);
+            player.setWorkEmail(playerObject.workEmail);
+            player.setJobTitle(playerObject.jobTitle);
+            player.setCompany(playerObject.company);
+            player.setTime(playerObject.time);
 
-        game.addPlayer(player);
+            game.addPlayer(player);
+          });
+
+          games.push(game);
+        });
+
+        return games;
       });
-
-      games.push(game);
-    });
-
-    return games;
   }
 
   /**
@@ -214,10 +219,13 @@ function GameService (StorageService, ngAudio) {
   }
 
   /**
-   * Save the current game state to storage.
+   * Save the current game state to storage, using the id
+   * of the game and the updated players array.
    */
   function save () {
-    StorageService.update(currentGame);
+    return StorageService.update(currentGame._id, {
+      players: currentGame.players
+    });
   }
 
   /**

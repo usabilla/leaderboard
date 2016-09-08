@@ -1,14 +1,9 @@
-var _findIndex = require('lodash/findIndex');
+var PouchDB = require('pouchdb');
+var _assign = require('lodash/assign');
 
 /*@ngInject*/
-function StorageService (localStorageService) {
-  var key = 'games';
-
-  var service = {
-    getAll: getAll,
-    save: save,
-    update: update
-  };
+function StorageService () {
+  var objects = new PouchDB('Games'); // this could be the key
 
   /**
    * Save the new object in storage.
@@ -16,12 +11,12 @@ function StorageService (localStorageService) {
    * @returns {object|undefined}
    */
   function save (object) {
-    var objects = service.getAll();
-
-    objects.push(object);
-    localStorageService.set(key, objects);
-
-    return object;
+    return objects.put(object)
+      .then(function (response) {
+        return response;
+      }).then(function (err) {
+        throw new Error(err);
+      });
   }
 
   /**
@@ -29,30 +24,32 @@ function StorageService (localStorageService) {
    * @returns {Object[]}
    */
   function getAll () {
-    return localStorageService.get(key) || [];
+    return objects
+      .allDocs({include_docs: true})
+      .then(function (docs) {
+        return docs.rows;
+      });
   }
 
   /**
-   * Update
-   * @param {object} object
+   * Update the document with id and data.
+   * @param {string} id
+   * @param {Object} data
    */
-  function update (object) {
-    var objects = service.getAll();
-
-    var index = _findIndex(objects, function updateFindIndex (_object) {
-      return _object.name === object.name;
-    });
-
-    if (index === -1) {
-      return;
-    }
-
-    objects[index] = object;
-
-    localStorageService.set(key, objects);
+  function update (id, data) {
+    return objects
+      .get(id)
+      .then(function (doc) {
+        _assign(doc, data);
+        return objects.put(doc);
+      });
   }
 
-  return service;
+  return {
+    getAll: getAll,
+    save: save,
+    update: update
+  };
 }
 
 module.exports = StorageService;

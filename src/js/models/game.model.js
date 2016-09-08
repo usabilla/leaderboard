@@ -6,6 +6,10 @@ function Game () {
   this.players = [];
 }
 
+Game.prototype.setId = function setId (id) {
+  this._id = id;
+};
+
 Game.prototype.setName = function setName (name) {
   this.name = name;
 };
