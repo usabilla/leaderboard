@@ -1,6 +1,6 @@
 # Leaderboard
 
-The game is basically suitable for any game that orders results according to time. A player performs an
+This offline game is basically suitable for any game that orders results according to time. A player performs an
 activity and when the activity is completed player hits space and time is registered. We actually had
 a buzzer that would simulate a space click :)
 
@@ -36,5 +36,11 @@ while users are playing. Additionally you need to add this line
 in [game service](src/js/services/game.service.js) so the sound can be played at runtime. As an extra
 you can download the result data in csv format.
 
-The game is built with [AngularJS](https://angularjs.org/), [Electron](http://electron.atom.io/),
-[Gulp](http://gulpjs.com/) and several other awesome modules.
+The game is built with
+
+- [AngularJS](https://angularjs.org/)
+- [Electron](http://electron.atom.io/)
+- [Uikit](http://getuikit.com/)
+- [PouchDB](https://pouchdb.com/)
+
+and several other awesome packages!
