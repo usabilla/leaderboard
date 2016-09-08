@@ -25,4 +25,15 @@ Player.prototype.setTime = function setTime (time) {
   this.time = time;
 };
 
+Player.prototype.toJSON = function toJSON () {
+  return {
+    firstName: this.firstName,
+    lastName: this.lastName,
+    workEmail: this.workEmail,
+    jobTitle: this.jobTitle,
+    company: this.company,
+    time: this.time
+  };
+};
+
 module.exports = Player;

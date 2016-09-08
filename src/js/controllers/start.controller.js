@@ -1,3 +1,5 @@
+var _forEach = require('lodash/forEach');
+
 /*@ngInject*/
 function StartController (GameService, ExportService) {
   var start = this;
@@ -7,8 +9,14 @@ function StartController (GameService, ExportService) {
   start.admin = true;
 
   start.generate = function generate () {
-    var data = GameService.getPlayers();
-    return ExportService.generate(data);
+    var players = GameService.getPlayers();
+
+    var jsonData = [];
+    _forEach(players, function playerToJson (player) {
+      jsonData.push(player.toJSON());
+    });
+
+    return ExportService.generate(jsonData);
   };
 }
 
