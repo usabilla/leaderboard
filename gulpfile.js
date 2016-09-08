@@ -6,6 +6,7 @@ var del = require('del');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var argv = require('yargs').argv;
+var runSequence = require('run-sequence');
 
 var paths = {
   dist: 'dist',
@@ -75,15 +76,18 @@ gulp.task('watch', function () {
   gulp.watch(paths.images, ['images']);
 });
 
-gulp.task('build', [
-  'clean',
-  'scripts',
-  'sass',
-  'images',
-  'fonts',
-  'sounds',
-  'index'
-]);
+gulp.task('build', function (callback) {
+  runSequence(
+    'clean', [
+      'scripts',
+      'sass',
+      'images',
+      'fonts',
+      'sounds',
+      'index'
+    ],
+    callback);
+});
 
 gulp.task('default', [
   'scripts',
