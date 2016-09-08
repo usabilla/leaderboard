@@ -3,7 +3,7 @@ var _assign = require('lodash/assign');
 
 /*@ngInject*/
 function StorageService () {
-  var objects = new PouchDB('Games'); // this could be the key
+  var objects = new PouchDB('Games');
 
   /**
    * Save the new object in storage.
