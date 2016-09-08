@@ -3,27 +3,28 @@ function ExistingController ($state, $scope, GameService) {
   var existing = this;
 
   function reset () {
-    existing.selectedUser = undefined;
-    existing.users = GameService.getUsers();
+    existing.selectedPlayer = undefined;
+    existing.players = GameService.getPlayers();
   }
 
-  existing.select = function select (user) {
-    if (angular.isUndefined(user)) {
+  existing.select = function select (player) {
+    if (angular.isUndefined(player)) {
       return;
     }
-    GameService.setCurrentUser(user);
+    GameService.setCurrentPlayer(player);
     $state.go('count');
-  }
+  };
 
-  existing.remove = function remove (user) {
-    if (angular.isUndefined(user)) {
+  existing.remove = function remove (player) {
+    if (angular.isUndefined(player)) {
       return;
     }
-    if (GameService.removeUser(user)) {
-      $scope.$broadcast('angucomplete-alt:clearInput', 'selectedUser');
-      reset();
-    }
-  }
+
+    GameService.removePlayer(player);
+
+    $scope.$broadcast('angucomplete-alt:clearInput', 'selectedPlayer');
+    reset();
+  };
 
   reset();
 }

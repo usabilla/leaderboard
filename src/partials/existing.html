@@ -5,14 +5,14 @@
     <form class="uk-form uk-form-stacked uk-margin-top">
         <fieldset>
             <div class="uk-form-row">
-                <label class="uk-form-label" for="company">WORK EMAIL</label>
+                <label class="uk-form-label" for="selectedPlayer">WORK EMAIL</label>
                 <div class="uk-form-controls">
                     <angucomplete-alt
-                        id="selectedUser"
-                        placeholder="Select an existing user"
+                        id="selectedPlayer"
+                        placeholder="Select an existing player"
                         pause="100"
-                        selected-object="existing.selectedUser"
-                        local-data="existing.users"
+                        selected-object="existing.selectedPlayer"
+                        local-data="existing.players"
                         search-fields="workEmail"
                         title-field="workEmail"
                         minlength="1"
@@ -24,14 +24,14 @@
                 <div class="uk-form-controls">
                     <button
                         class="uk-button uk-width-1-1 uk-button-large"
-                        ng-click="existing.select(existing.selectedUser.originalObject)">YES, LET'S GO!
+                        ng-click="existing.select(existing.selectedPlayer.originalObject)">YES, LET'S GO!
                     </button>
                 </div>
             </div>
         </fieldset>
     </form>
     <div class="uk-margin-large-top">
-        <a ng-click="existing.remove(existing.selectedUser.originalObject)" class="link uk-text-large">Remove Player</a>
+        <a ng-click="existing.remove(existing.selectedPlayer.originalObject)" class="link uk-text-large">Remove Player</a>
     </div>
     <div class="uk-margin-top">
         <a ui-sref="start" class="link uk-text-large">Cancel</a>

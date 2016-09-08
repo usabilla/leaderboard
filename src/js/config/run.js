@@ -1,14 +1,18 @@
 /*@ngInject*/
 function Run ($rootScope, $state, GameService) {
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-    var states = ['count', 'play', 'result'];
+    var states = ['select', 'create'];
+
     if (states.indexOf(toState.name) !== -1) {
-      var user = GameService.getCurrentUser();
-      // If there is no current user then redirect to start
-      if (angular.isUndefined(user)) {
-        event.preventDefault();
-        $state.go('start');
-      }
+      return;
+    }
+
+    var game = GameService.getCurrentGame();
+
+    // If there is no current game then redirect to select game.
+    if (angular.isUndefined(game)) {
+      event.preventDefault();
+      $state.go('select');
     }
   });
 }

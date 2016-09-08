@@ -2,17 +2,17 @@
 <div class="bubbles--right"></div>
 <div class="uk-margin-large-top uk-margin-bottom">
     <h2>Do you have what it takes to win?</h2>
-    <form name="userForm" class="uk-form uk-form-stacked uk-margin-top">
+    <form name="playerForm" class="uk-form uk-form-stacked uk-margin-top">
         <fieldset>
             <div class="uk-form-row">
                 <label class="uk-form-label" for="firstName">FIRST NAME</label>
                 <div class="uk-form-controls">
                     <input type="text" id="firstName" name="firstName"
-                        ng-model="register.user.firstName"
+                        ng-model="register.player.firstName"
                         ng-minlength="2"
                         required />
                 </div>
-                <div ng-messages="userForm.firstName.$error" ng-if="register.isInvalid(userForm.firstName)" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="playerForm.firstName.$error" ng-if="register.isInvalid(playerForm.firstName)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="minlength">First name is too short</p>
                     <p ng-message="required">First name is required</p>
                 </div>
@@ -21,11 +21,11 @@
                 <label class="uk-form-label" for="lastName">LAST NAME</label>
                 <div class="uk-form-controls">
                     <input type="text" id="lastName" name="lastName"
-                        ng-model="register.user.lastName"
+                        ng-model="register.player.lastName"
                         ng-minlength="2"
                         required />
                 </div>
-                <div ng-messages="userForm.lastName.$error" ng-if="register.isInvalid(userForm.lastName)" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="playerForm.lastName.$error" ng-if="register.isInvalid(playerForm.lastName)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="minlength">Your last name is too short.</p>
                     <p ng-message="required">Your last name is required.</p>
                 </div>
@@ -34,12 +34,12 @@
                 <label class="uk-form-label" for="workEmail">WORK EMAIL</label>
                 <div class="uk-form-controls">
                     <input type="email" id="workEmail" name="workEmail"
-                        ng-model="register.user.workEmail"
+                        ng-model="register.player.workEmail"
                         required
                         available
                         free-email>
                 </div>
-                <div ng-messages="userForm.workEmail.$error" ng-if="register.isInvalid(userForm.workEmail)" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="playerForm.workEmail.$error" ng-if="register.isInvalid(playerForm.workEmail)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="email">This needs to be a valid email.</p>
                     <p ng-message="required">Your work email is required.</p>
                     <p ng-message="available">This email is already registered.</p>
@@ -50,10 +50,10 @@
                 <label class="uk-form-label" for="jobTitle">JOB TITLE</label>
                 <div class="uk-form-controls">
                     <input type="text" name="jobTitle"
-                        ng-model="register.user.jobTitle"
+                        ng-model="register.player.jobTitle"
                         required>
                 </div>
-                <div ng-messages="userForm.jobTitle.$error" ng-if="register.isInvalid(userForm.jobTitle)" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="playerForm.jobTitle.$error" ng-if="register.isInvalid(playerForm.jobTitle)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="required">Your job title is required.</p>
                 </div>
             </div>
@@ -61,17 +61,17 @@
                 <label class="uk-form-label" for="company">COMPANY</label>
                 <div class="uk-form-controls">
                     <input type="text" id="company" name="company"
-                        ng-model="register.user.company"
+                        ng-model="register.player.company"
                         required>
                 </div>
-                <div ng-messages="userForm.company.$error" ng-if="register.isInvalid(userForm.company)" class="uk-text-danger text--error uk-margin-small-top">
+                <div ng-messages="playerForm.company.$error" ng-if="register.isInvalid(playerForm.company)" class="uk-text-danger text--error uk-margin-small-top">
                     <p ng-message="required">Your company is required.</p>
                 </div>
             </div>
             <div class="uk-form-row uk-margin-top">
                 <div class="uk-form-controls">
                     <button type="submit"
-                        ng-click="register.submit(register.user)"
+                        ng-click="register.submit(register.player)"
                         class="uk-button uk-width-1-1 uk-button-large">YES, LET'S GO!
                     </button>
                 </div>

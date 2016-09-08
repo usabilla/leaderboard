@@ -1,14 +1,14 @@
 /*@ngInject*/
 function FreeEmailDirective () {
   return {
-    require : 'ngModel',
-    link : function(scope, element, attrs, ngModel) {
-      function setAsFreeEmail(bool) {
+    require: 'ngModel',
+    link: function (scope, element, attrs, ngModel) {
+      function setAsFreeEmail (bool) {
         ngModel.$setValidity('freeEmail', bool);
       }
 
       ngModel.$parsers.push(function (value) {
-        if(!value || value.length == 0) return;
+        if (!value || value.length == 0) return;
 
         setAsFreeEmail(false);
 

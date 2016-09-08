@@ -8,13 +8,16 @@
         <h1>The Usabilla Balls of Fire</h1>
     </div>
     <div class="uk-margin-large-top">
-        <a ui-sref="register" class="uk-button uk-button-large">START GAME</a>
+        <a ui-sref="register" class="uk-button uk-button-large">NEW PLAYER</a>
     </div>
     <div class="uk-margin-top">
         <a ui-sref="leaderboard" class="link uk-text-large">Show Leaderboard</a>
     </div>
     <div class="uk-margin-top">
         <a ui-sref="existing" class="link uk-text-large">Select Existing</a>
+    </div>
+    <div class="uk-margin-top">
+        <a ui-sref="select" class="link uk-text-large">Change Game</a>
     </div>
     <div class="uk-margin-top" ng-if="start.admin">
         <a ng-click="start.generate()" class="link uk-text-large">Export</a>

@@ -1,0 +1,31 @@
+<div class="bubbles--left"></div>
+<div class="bubbles--right"></div>
+<div class="uk-margin-large-top uk-margin-bottom">
+    <div>
+        <a ui-sref="start" class="logo"></a>
+    </div>
+    <div class="uk-margin-top">
+        <h1>Create Game</h1>
+    </div>
+    <form name="createForm" class="uk-form uk-form-stacked uk-margin-top">
+        <fieldset>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="gameName">Name</label>
+                <div class="uk-form-controls">
+                    <input id="gameName" type="text" ng-model="gameName" required>
+                </div>
+            </div>
+            <div class="uk-form-row uk-margin-top">
+                <div class="uk-form-controls">
+                    <button type="submit"
+                            ng-click="create.submit(gameName)"
+                            class="uk-button uk-width-1-1 uk-button-large">CREATE GAME
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div class="uk-margin-top">
+        <a ui-sref="select" class="link uk-text-large">Cancel</a>
+    </div>
+</div>

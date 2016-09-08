@@ -2,7 +2,7 @@
 function PlayController ($scope, $state, hotkeys, GameService) {
   var play = this;
 
-  play.user = GameService.getCurrentUser();
+  play.player = GameService.getCurrentPlayer();
   play.bestTime = GameService.getBestTime();
 
   GameService.playSound('play');
@@ -38,7 +38,7 @@ function PlayController ($scope, $state, hotkeys, GameService) {
 
   $scope.$on('timer-stopped', function (event, data) {
     var time = getTime(data);
-    GameService.setUserTime(play.user, time);
+    GameService.setPlayerTime(play.player, time);
     $state.go('result');
   });
 

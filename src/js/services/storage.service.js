@@ -1,97 +1,55 @@
+var _findIndex = require('lodash/findIndex');
+
 /*@ngInject*/
 function StorageService (localStorageService) {
-  var key = 'users';
+  var key = 'games';
 
   var service = {
+    getAll: getAll,
     save: save,
-    get: get,
-    update: update,
-    list: list,
-    indexOf: indexOf,
-    saveUsers: saveUsers,
-    remove: remove
+    update: update
   };
 
-  function save (user) {
-    // if email is not provided return
-    if (angular.isUndefined(user.workEmail) || user.workEmail === '') {
-      return;
-    }
-    // if email is already registered return
-    if (service.indexOf(user) !== -1) {
-      // raise validation error
-      return;
-    }
-    var users = service.list();
-    users.push(user);
-    localStorageService.set(key, users);
-    return user;
+  /**
+   * Save the new object in storage.
+   * @param object
+   * @returns {object|undefined}
+   */
+  function save (object) {
+    var objects = service.getAll();
+
+    objects.push(object);
+    localStorageService.set(key, objects);
+
+    return object;
   }
 
-  function get (user) {
-    // user does not exist
-    var index = service.indexOf(user);
-    if (index === -1) {
-      return;
-    }
-    var users = service.list();
-    return users[index];
-  }
-
-  function update (user) {
-    var index = service.indexOf(user);
-    // user does not exist
-    if (index === -1) {
-      return;
-    }
-    var users = service.list();
-    users[index] = user;
-    localStorageService.set(key, users);
-  }
-
-  function indexOf (user) {
-    if (angular.isUndefined(user) || angular.isUndefined(user.workEmail)) {
-      return -1;
-    }
-    var users = service.list();
-    if (angular.isUndefined(users)) {
-      return -1;
-    }
-    var length = users.length;
-    if (length < 1) {
-      return -1;
-    }
-    var index = -1;
-    for (var i = length - 1; i >= 0; i--) {
-      if (users[i].workEmail === user.workEmail) {
-        index = i;
-      }
-    };
-    return index;
-  }
-
-  function list () {
+  /**
+   * Get all objects from storage.
+   * @returns {Object[]}
+   */
+  function getAll () {
     return localStorageService.get(key) || [];
   }
 
-  function saveUsers (users) {
-    localStorageService.set(key, users);
-  }
+  /**
+   * Update
+   * @param {object} object
+   */
+  function update (object) {
+    var objects = service.getAll();
 
-  function remove (user) {
-    // if email is not provided return false
-    if (angular.isUndefined(user.workEmail) || user.workEmail === '') {
-      return false;
-    }
-    // if user does not exist return false
-    var index = service.indexOf(user);
+    var index = _findIndex(objects, function updateFindIndex (_object) {
+      return _object.name === object.name;
+    });
+
     if (index === -1) {
-      return false;
+      return;
     }
-    var users = service.list();
-    users.splice(index, 1);
-    localStorageService.set(key, users);
-    return true;
+
+    objects[index] = object;
+
+    localStorageService.set(key, objects);
   }
 
   return service;

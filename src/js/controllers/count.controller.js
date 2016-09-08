@@ -2,7 +2,7 @@
 function CountController ($scope, $state, GameService) {
   var count = this;
 
-  count.user = GameService.getCurrentUser();
+  count.player = GameService.getCurrentPlayer();
 
   count.begin = function begin () {
     $scope.$apply(function () {

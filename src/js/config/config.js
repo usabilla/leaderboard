@@ -3,8 +3,20 @@ function Config ($stateProvider, $urlRouterProvider, localStorageServiceProvider
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('start', {
+    .state('select', {
       url: '/',
+      template: require('../../partials/select.html'),
+      controller: 'SelectController',
+      controllerAs: 'select'
+    })
+    .state('create', {
+      url: '/create',
+      template: require('../../partials/create.html'),
+      controller: 'CreateController',
+      controllerAs: 'create'
+    })
+    .state('start', {
+      url: '/start',
       template: require('../../partials/start.html'),
       controller: 'StartController',
       controllerAs: 'start'

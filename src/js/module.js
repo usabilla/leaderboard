@@ -30,6 +30,8 @@ angular.module('usabilla.leaderboard', [
   .controller('ExistingController', require('./controllers/existing.controller'))
   .controller('ResultController', require('./controllers/result.controller'))
   .controller('StartController', require('./controllers/start.controller'))
+  .controller('CreateController', require('./controllers/create.controller'))
+  .controller('SelectController', require('./controllers/select.controller'))
   .directive('available', require('./directives/available.directive'))
   .directive('freeEmail', require('./directives/freeEmail.directive'))
   .filter('ordinal', require('./filters/ordinal.filter'));

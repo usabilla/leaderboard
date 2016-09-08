@@ -40,4 +40,6 @@ jspm_packages
 # Custom
 dist
 .sass-cache
-Leaderboard-darwin-x64
+
+# Electron package directory
+out

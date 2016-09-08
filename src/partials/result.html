@@ -5,7 +5,7 @@
         <a ui-sref="start" class="logo logo--small"></a>
     </div>
     <h3 class="uk-margin-top">Your Final Time</h3>
-    <div class="text--huge">{{ ::result.user.time | date : 'mm:ss:sss' }}</div>
+    <div class="text--huge">{{ ::result.player.time | date : 'mm:ss:sss' }}</div>
     <h3 class="uk-margin-large-top">You ranked:</h3>
     <div class="position text--blue-light">
         <span>{{ ::result.position }}</span><span class="position__ordinal">{{ ::result.position | ordinal }}</span>

@@ -5,7 +5,7 @@
     <h2 class="uk-text-middle uk-display-inline uk-margin-left">Balls of Fame</h2>
 </div>
 <div class="leaderboard uk-margin-top uk-margin-bottom">
-    <div ng-if="leaderboard.areUsers()">
+    <div ng-if="leaderboard.arePlayers()">
         <table id="leaderboard" class="uk-table uk-table-middle uk-table-hover">
             <thead>
                 <tr>
@@ -16,13 +16,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr id="::{{ $index + 1 }}" ng-repeat="user in ::leaderboard.users | orderBy: 'time' track by user.workEmail" ng-class="::{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
+                <tr id="::{{ $index + 1 }}" ng-repeat="player in ::leaderboard.players | orderBy: 'time' track by player.workEmail" ng-class="::{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
                     <td ng-class="::{'smiley-crown': leaderboard.isFirst($index)}">
                         <span ng-if="!leaderboard.isFirst($index)">{{ ::$index + 1 }}</span>
                     </td>
-                    <td class="uk-text-left">{{ ::user.firstName }} {{ ::user.lastName }}</td>
-                    <td class="uk-text-left">{{ ::user.company }}</td>
-                    <td class="uk-text-left">{{ ::user.time | date: 'mm:ss:sss' }}</td>
+                    <td class="uk-text-left">{{ ::player.firstName }} {{ ::player.lastName }}</td>
+                    <td class="uk-text-left">{{ ::player.company }}</td>
+                    <td class="uk-text-left">{{ ::player.time | date: 'mm:ss:sss' }}</td>
                 </tr>
             </tbody>
         </table>
@@ -31,7 +31,7 @@
             <a href="" ng-click="leaderboard.less()" class="link uk-text-large" ng-if="!leaderboard.show">Show less</a>
         </div>
     </div>
-    <div class="uk-margin-large-top" ng-if="!leaderboard.areUsers()">
+    <div class="uk-margin-large-top" ng-if="!leaderboard.arePlayers()">
         <span class="uk-text-large">No players..</span>
     </div>
 </div>

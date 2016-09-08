@@ -2,23 +2,23 @@
 function RegisterController ($scope, $state, GameService) {
   var register = this;
 
-  register.user = {};
-  register.users = GameService.getUsers();
+  register.player = {};
+  register.players = GameService.getPlayers();
 
-  register.submit = function submit (user) {
-    if ($scope.userForm.$invalid) {
+  register.submit = function submit (player) {
+    if ($scope.playerForm.$invalid) {
       return;
     }
-    var registeredUser = GameService.registerUser(user);
-    if (angular.isUndefined(registeredUser)) {
+    var registeredPlayer = GameService.registerPlayer(player);
+    if (angular.isUndefined(registeredPlayer)) {
       return;
     }
     $state.go('count');
-  }
+  };
 
   register.isInvalid = function isInvalid (field) {
-    return (field.$touched && field.$invalid) || $scope.userForm.$submitted;
-  }
+    return (field.$touched && field.$invalid) || $scope.playerForm.$submitted;
+  };
 }
 
 module.exports = RegisterController;

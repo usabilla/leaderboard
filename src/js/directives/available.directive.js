@@ -1,21 +1,23 @@
+var Player = require('../models/player.model');
+
 /*@ngInject*/
-function AvailableDirective (StorageService) {
+function AvailableDirective (GameService) {
   return {
-    require : 'ngModel',
-    link : function(scope, element, attrs, ngModel) {
-      function setAsAvailable(bool) {
+    require: 'ngModel',
+    link: function (scope, element, attrs, ngModel) {
+      function setAsAvailable (bool) {
         ngModel.$setValidity('available', bool);
       }
 
       ngModel.$parsers.push(function (value) {
-        if(!value || value.length == 0) return;
+        if (!value || value.length == 0) return;
 
         setAsAvailable(false);
 
-        var user = {workEmail: value};
-        var index = StorageService.indexOf(user);
+        var player = new Player();
+        player.setWorkEmail(value);
 
-        if (index === -1) {
+        if (GameService.isPlayerRegistered(player)) {
           setAsAvailable(true);
         } else {
           setAsAvailable(false);
