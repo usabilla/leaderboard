@@ -36,7 +36,8 @@
     "lodash": "^4.15.0",
     "moment": "^2.14.1",
     "pouchdb": "^6.0.4",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "uikit": "^2.27.1"
   },
   "devDependencies": {
     "browserify": "^13.1.0",
