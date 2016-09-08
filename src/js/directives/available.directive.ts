@@ -1,4 +1,4 @@
-var Player = require('../models/player.model');
+var Player = require('../models/player.model.ts');
 
 /*@ngInject*/
 function AvailableDirective (GameService) {

@@ -1,3 +1,5 @@
+import escape = require('core-js/fn/regexp/escape');
+
 /*@ngInject*/
 function ExportService () {
   var title = 'Usabilla Balls of Fire';
@@ -6,7 +8,6 @@ function ExportService () {
 
   function generate (data) {
     var json = angular.isObject(data) ? data : angular.fromJson(data);
-    console.log(json);
     var csv = '';
 
     csv += title + '\r\n\n';

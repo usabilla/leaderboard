@@ -1,17 +1,20 @@
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var browserify = require('browserify');
-var stringify = require('stringify');
-var del = require('del');
-var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
-var argv = require('yargs').argv;
-var runSequence = require('run-sequence');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const browserify = require('browserify');
+const stringify = require('stringify');
+const tsify = require('tsify');
+const watchify = require('watchify');
+const del = require('del');
+const buffer = require('vinyl-buffer');
+const source = require('vinyl-source-stream');
+const argv = require('yargs').argv;
+const runSequence = require('run-sequence');
+const _assign = require('lodash/assign');
 
-var paths = {
+const paths = {
   dist: 'dist',
-  module: 'src/js/module.js',
-  scripts: 'src/js/**/*.js',
+  module: 'src/js/module.ts',
+  scripts: 'src/js/**/*.ts',
   partials: 'src/partials/**/*.html',
   styles: 'src/scss/**/*.scss',
   images: 'src/images/**/*',
@@ -20,16 +23,24 @@ var paths = {
   sounds: 'src/sounds/**/*'
 };
 
-gulp.task('clean', function () {
-  return del(['dist/*']);
-});
+const customOptions = {
+  entries: paths.module,
+  debug: true
+};
+const options = _assign({}, watchify.args, customOptions);
+const sources = watchify(browserify(options).transform(stringify, {
+  appliesTo: {includeExtensions: ['.html']},
+  minify: true
+}));
+sources.plugin(tsify);
 
-gulp.task('scripts', function () {
-  return browserify(paths.module)
-    .transform(stringify, {
-      appliesTo: {includeExtensions: ['.html']},
-      minify: true
-    })
+sources.on('update', bundle);
+sources.on('log', $.util.log);
+
+gulp.task('scripts', bundle);
+
+function bundle () {
+  return sources
     .bundle()
     .pipe(source('app.min.js'))
     .pipe(buffer())
@@ -37,6 +48,10 @@ gulp.task('scripts', function () {
     .pipe($.if(argv.prod, $.uglify()))
     .pipe($.concat('app.min.js'))
     .pipe(gulp.dest(paths.dist + '/js'));
+}
+
+gulp.task('clean', function () {
+  return del(['dist/*']);
 });
 
 gulp.task('images', function () {

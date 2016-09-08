@@ -1,5 +1,5 @@
-var Game = require('../models/game.model');
-var Player = require('../models/player.model');
+var Game = require('../models/game.model.ts');
+var Player = require('../models/player.model.ts');
 var randomstring = require('randomstring');
 var _forEach = require('lodash/forEach');
 

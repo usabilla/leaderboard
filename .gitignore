@@ -43,3 +43,6 @@ dist
 
 # Electron package directory
 out
+
+# Typings
+typings
