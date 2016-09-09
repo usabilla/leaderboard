@@ -1,12 +1,14 @@
+import {AudioService} from '../services/audio.service';
+
 /*@ngInject*/
-function ResultController ($scope, $state, $timeout, GameService) {
+function ResultController ($scope, $state, $timeout, GameService, AudioService: AudioService) {
   var result = this;
 
   result.player = GameService.getCurrentPlayer();
   result.position = GameService.getPlayerPosition(result.player);
 
   if (GameService.isFirst(result.player)) {
-    GameService.playSound('first');
+    AudioService.playSound('first');
   }
 
   var toLeaderboard = $timeout(function leaderboardTimeout () {

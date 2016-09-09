@@ -1,16 +1,20 @@
+import {Game} from '../models/game.model';
+
 /*@ngInject*/
-function SelectController ($state, GameService) {
-  var select = this;
+export class SelectController  {
+  games: Game[];
 
-  select.games = GameService.getGames()
-    .then(function (games) {
-      select.games = games;
-    });
+  constructor (private $state, private $scope: angular.IScope, private GameService) {
+    GameService.getGames()
+      .then((games) => {
+        this.$scope.$apply(() => {
+          this.games = games;
+        });
+      });
+  }
 
-  select.startGame = function startGame (selectedGame) {
-    GameService.selectGame(selectedGame);
-    $state.go('start');
+  startGame (selectedGame) {
+    this.GameService.selectGame(selectedGame);
+    this.$state.go('start');
   }
 }
-
-module.exports = SelectController;

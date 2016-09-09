@@ -1,5 +1,7 @@
+import {AudioService} from '../services/audio.service';
+
 /*@ngInject*/
-function CountController ($scope, $state, GameService) {
+function CountController ($scope, $state, GameService, AudioService: AudioService) {
   var count = this;
 
   count.player = GameService.getCurrentPlayer();
@@ -17,7 +19,7 @@ function CountController ($scope, $state, GameService) {
       return;
     }
     var countSound = millis / 1000;
-    GameService.playSound(countSound);
+    AudioService.playSound(countSound.toString());
   })
 }
 

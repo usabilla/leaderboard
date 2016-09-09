@@ -1,11 +1,13 @@
+import {AudioService} from '../services/audio.service';
+
 /*@ngInject*/
-function PlayController ($scope, $state, hotkeys, GameService) {
+function PlayController ($scope, $state, hotkeys, GameService, AudioService: AudioService) {
   var play = this;
 
   play.player = GameService.getCurrentPlayer();
   play.bestTime = GameService.getBestTime();
 
-  GameService.playSound('play');
+  AudioService.playSound('play');
 
   play.begin = function begin () {
     $scope.$apply(function () {
@@ -19,19 +21,19 @@ function PlayController ($scope, $state, hotkeys, GameService) {
   };
 
   play.toggleSound = function toggleSound () {
-    GameService.toggleSound('play');
+    AudioService.toggleSound('play');
   };
 
   play.isMuted = function isMuted () {
-    return GameService.isSoundMuted('play');
+    return AudioService.isSoundMuted('play');
   };
 
   hotkeys.bindTo($scope).add({
     combo: 'space',
     description: 'Game Over!',
     callback: function () {
-      GameService.stopSound('play');
-      GameService.playSound('buzzer');
+      AudioService.stopSound('play');
+      AudioService.playSound('buzzer');
       $scope.$broadcast('timer-stop');
     }
   });

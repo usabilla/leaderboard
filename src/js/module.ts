@@ -1,3 +1,5 @@
+import {AudioService} from './services/audio.service';
+import {SelectController} from './controllers/select.controller';
 require('angular');
 var uiRouter = require('angular-ui-router');
 require('angular-local-storage');
@@ -10,19 +12,20 @@ require('angucomplete-alt');
 var ngAudio = require('angular-audio');
 
 angular.module('usabilla.leaderboard', [
-  uiRouter,
-  'LocalStorageModule',
-  ngMessages,
-  timer.name,
-  'cfp.hotkeys',
-  'angucomplete-alt',
-  ngAudio
-])
+    uiRouter,
+    'LocalStorageModule',
+    ngMessages,
+    timer.name,
+    'cfp.hotkeys',
+    'angucomplete-alt',
+    ngAudio
+  ])
   .config(require('./config/config'))
   .run(require('./config/run'))
   .factory('StorageService', require('./services/storage.service.ts'))
   .factory('GameService', require('./services/game.service.ts'))
   .factory('ExportService', require('./services/export.service.ts'))
+  .service('AudioService', AudioService)
   .controller('CountController', require('./controllers/count.controller.ts'))
   .controller('LeaderboardController', require('./controllers/leaderboard.controller.ts'))
   .controller('PlayController', require('./controllers/play.controller.ts'))
@@ -31,7 +34,7 @@ angular.module('usabilla.leaderboard', [
   .controller('ResultController', require('./controllers/result.controller.ts'))
   .controller('StartController', require('./controllers/start.controller.ts'))
   .controller('CreateController', require('./controllers/create.controller.ts'))
-  .controller('SelectController', require('./controllers/select.controller.ts'))
+  .controller('SelectController', SelectController)
   .directive('available', require('./directives/available.directive.ts'))
   .directive('freeEmail', require('./directives/freeEmail.directive.ts'))
   .filter('ordinal', require('./filters/ordinal.filter.ts'));

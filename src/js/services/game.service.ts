@@ -4,19 +4,10 @@ var randomstring = require('randomstring');
 var _forEach = require('lodash/forEach');
 
 /*@ngInject*/
-function GameService (StorageService, ngAudio) {
+function GameService (StorageService) {
   var currentPlayer;
   var previousPosition;
   var currentGame;
-  var sounds = {
-    'buzzer': ngAudio.load('dist/sounds/buzzer.mp3'),
-    'first': ngAudio.load('dist/sounds/first.mp3'),
-    '1': ngAudio.load('dist/sounds/1.mp3'),
-    '2': ngAudio.load('dist/sounds/2.mp3'),
-    '3': ngAudio.load('dist/sounds/3.mp3'),
-    '4': ngAudio.load('dist/sounds/4.mp3'),
-    '5': ngAudio.load('dist/sounds/5.mp3')
-  };
 
   var service = {
     registerPlayer: registerPlayer,
@@ -29,10 +20,6 @@ function GameService (StorageService, ngAudio) {
     getPlayerPosition: getPlayerPosition,
     resetCurrentPlayer: resetCurrentPlayer,
     removePlayer: removePlayer,
-    playSound: playSound,
-    stopSound: stopSound,
-    toggleSound: toggleSound,
-    isSoundMuted: isSoundMuted,
     isFirst: isFirst,
     selectGame: selectGame,
     getGames: getGames,
@@ -43,8 +30,9 @@ function GameService (StorageService, ngAudio) {
   /**
    * Create a new game with the given name.
    * @param {string} name
+   * @returns {Game}
    */
-  function createGame (name) {
+  function createGame (name: string): Game {
     if (!name) {
       return;
     }
@@ -61,18 +49,18 @@ function GameService (StorageService, ngAudio) {
    * Get the list of games.
    * @returns {Game[]}
    */
-  function getGames () {
+  function getGames (): Game[] {
     return StorageService.getAll()
-      .then(function (docs) {
+      .then((docs) => {
         var games = [];
 
-        _forEach(docs, function (doc) {
+        _forEach(docs, (doc) => {
           var game = new Game();
 
           game._id = doc.doc._id;
           game.name = doc.doc.name;
 
-          _forEach(doc.doc.players, function instantiatePlayer (playerObject) {
+          _forEach(doc.doc.players, (playerObject) => {
             var player = new Player();
 
             player.firstName = playerObject.firstName;
@@ -96,7 +84,7 @@ function GameService (StorageService, ngAudio) {
    * Set the current game.
    * @param {Game} game
    */
-  function selectGame (game) {
+  function selectGame (game: Game): void {
     currentGame = game;
   }
 
@@ -105,7 +93,7 @@ function GameService (StorageService, ngAudio) {
    * @param {Object} object
    * @returns {Player|undefined}
    */
-  function registerPlayer (object) {
+  function registerPlayer (object): Player {
     if (!object) {
       return;
     }
@@ -130,7 +118,7 @@ function GameService (StorageService, ngAudio) {
    * Set the current player and update the current position.
    * @param {Player} player
    */
-  function setCurrentPlayer (player) {
+  function setCurrentPlayer (player: Player): void {
     currentPlayer = player;
     previousPosition = service.getPlayerPosition(player);
   }
@@ -139,7 +127,7 @@ function GameService (StorageService, ngAudio) {
    * Get the current player.
    * @returns {Player}
    */
-  function getCurrentPlayer () {
+  function getCurrentPlayer (): Player {
     return currentPlayer;
   }
 
@@ -147,7 +135,7 @@ function GameService (StorageService, ngAudio) {
    * Get the current game.
    * @returns {Game}
    */
-  function getCurrentGame () {
+  function getCurrentGame (): Game {
     return currentGame;
   }
 
@@ -155,7 +143,7 @@ function GameService (StorageService, ngAudio) {
    * Get all players for the selected game.
    * @returns {Player[]}
    */
-  function getPlayers () {
+  function getPlayers (): Player[] {
     return currentGame.getPlayers();
   }
 
@@ -165,8 +153,8 @@ function GameService (StorageService, ngAudio) {
    * @param {Player} player
    * @param {number} time
    */
-  function setPlayerTime (player, time) {
-    player.setTime(time);
+  function setPlayerTime (player: Player, time: number): void {
+    player.time = time;
 
     currentGame.sortPlayers();
 
@@ -179,7 +167,7 @@ function GameService (StorageService, ngAudio) {
    * Get the current best time.
    * @returns {number|undefined}
    */
-  function getBestTime () {
+  function getBestTime (): number {
     var players = currentGame.getPlayers();
 
     if (players.length <= 1) {
@@ -196,7 +184,7 @@ function GameService (StorageService, ngAudio) {
    * @param {Player} player
    * @returns {number|undefined}
    */
-  function getPlayerPosition (player) {
+  function getPlayerPosition (player: Player): number {
     var index = currentGame.getPlayerPosition(player);
     return index === -1 ? undefined : index + 1;
   }
@@ -204,7 +192,7 @@ function GameService (StorageService, ngAudio) {
   /**
    * Reset the current player.
    */
-  function resetCurrentPlayer () {
+  function resetCurrentPlayer (): void {
     currentPlayer = undefined;
   }
 
@@ -212,7 +200,7 @@ function GameService (StorageService, ngAudio) {
    * Remove the selected player.
    * @param {Player} player
    */
-  function removePlayer (player) {
+  function removePlayer (player: Player): void {
     currentGame.removePlayer(player);
 
     save();
@@ -222,7 +210,7 @@ function GameService (StorageService, ngAudio) {
    * Save the current game state to storage, using the id
    * of the game and the updated players array.
    */
-  function save () {
+  function save (): void {
     return StorageService.update(currentGame._id, {
       players: currentGame.players
     });
@@ -233,55 +221,12 @@ function GameService (StorageService, ngAudio) {
    * @param {Player} player
    * @returns {boolean}
    */
-  function isFirst (player) {
+  function isFirst (player: Player): boolean {
     return service.getPlayerPosition(player) === 1;
   }
 
-  function isPlayerRegistered (player) {
+  function isPlayerRegistered (player: Player): number {
     return currentGame.getPlayerPosition(player);
-  }
-
-  // TODO: the audio stuff should be moved to AudioService
-  /**
-   * Play a sound.
-   *
-   * @param  {String} sound The sound string id.
-   */
-  function playSound (sound) {
-    var audio = sounds[sound];
-    if (angular.isUndefined(audio)) {
-      return;
-    }
-    audio.play();
-  }
-
-  /**
-   * Stop a sound.
-   *
-   * @param  {String} sound The sound string id.
-   */
-  function stopSound (sound) {
-    var audio = sounds[sound];
-    if (angular.isUndefined(audio)) {
-      return;
-    }
-    audio.stop();
-  }
-
-  function toggleSound (sound) {
-    var audio = sounds[sound];
-    if (angular.isUndefined(audio)) {
-      return;
-    }
-    audio.muting = !audio.muting;
-  }
-
-  function isSoundMuted (sound) {
-    var audio = sounds[sound];
-    if (angular.isUndefined(audio)) {
-      return;
-    }
-    return audio.muting;
   }
 
   return service;
