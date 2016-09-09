@@ -1,38 +1,24 @@
 import {Game} from '../models/game.model';
 import {Player} from '../models/player.model';
+import {StorageService} from './storage.service';
 var randomstring = require('randomstring');
 var _forEach = require('lodash/forEach');
 
-/*@ngInject*/
-function GameService (StorageService) {
-  var currentPlayer;
-  var previousPosition;
-  var currentGame;
+export class GameService {
+  private currentPlayer: Player;
+  private previousPosition: number;
+  private currentGame: Game;
 
-  var service = {
-    registerPlayer: registerPlayer,
-    setCurrentPlayer: setCurrentPlayer,
-    getCurrentPlayer: getCurrentPlayer,
-    getCurrentGame: getCurrentGame,
-    getPlayers: getPlayers,
-    setPlayerTime: setPlayerTime,
-    getBestTime: getBestTime,
-    getPlayerPosition: getPlayerPosition,
-    resetCurrentPlayer: resetCurrentPlayer,
-    removePlayer: removePlayer,
-    isFirst: isFirst,
-    selectGame: selectGame,
-    getGames: getGames,
-    createGame: createGame,
-    isPlayerRegistered: isPlayerRegistered
-  };
+  /*@ngInject*/
+  constructor (private StorageService: StorageService) {
+  }
 
   /**
    * Create a new game with the given name.
    * @param {string} name
    * @returns {Game}
    */
-  function createGame (name: string): Game {
+  createGame (name: string): Game {
     if (!name) {
       return;
     }
@@ -42,15 +28,15 @@ function GameService (StorageService) {
     game._id = randomstring.generate();
     game.name = name;
 
-    return StorageService.save(game);
+    return this.StorageService.save(game);
   }
 
   /**
    * Get the list of games.
    * @returns {Game[]}
    */
-  function getGames (): Game[] {
-    return StorageService.getAll()
+  getGames (): angular.IPromise<Game[]> {
+    return this.StorageService.getAll()
       .then((docs) => {
         var games = [];
 
@@ -84,8 +70,8 @@ function GameService (StorageService) {
    * Set the current game.
    * @param {Game} game
    */
-  function selectGame (game: Game): void {
-    currentGame = game;
+  selectGame (game: Game): void {
+    this.currentGame = game;
   }
 
   /**
@@ -93,7 +79,7 @@ function GameService (StorageService) {
    * @param {Object} object
    * @returns {Player|undefined}
    */
-  function registerPlayer (object): Player {
+  registerPlayer (object): Player {
     if (!object) {
       return;
     }
@@ -105,11 +91,11 @@ function GameService (StorageService) {
     newPlayer.jobTitle = object.jobTitle;
     newPlayer.company = object.company;
 
-    currentGame.addPlayer(newPlayer);
+    this.currentGame.addPlayer(newPlayer);
 
-    save();
+    this.save();
 
-    service.setCurrentPlayer(newPlayer);
+    this.setCurrentPlayer(newPlayer);
 
     return newPlayer;
   }
@@ -118,33 +104,33 @@ function GameService (StorageService) {
    * Set the current player and update the current position.
    * @param {Player} player
    */
-  function setCurrentPlayer (player: Player): void {
-    currentPlayer = player;
-    previousPosition = service.getPlayerPosition(player);
+  setCurrentPlayer (player: Player): void {
+    this.currentPlayer = player;
+    this.previousPosition = this.getPlayerPosition(player);
   }
 
   /**
    * Get the current player.
    * @returns {Player}
    */
-  function getCurrentPlayer (): Player {
-    return currentPlayer;
+  getCurrentPlayer (): Player {
+    return this.currentPlayer;
   }
 
   /**
    * Get the current game.
    * @returns {Game}
    */
-  function getCurrentGame (): Game {
-    return currentGame;
+  getCurrentGame (): Game {
+    return this.currentGame;
   }
 
   /**
    * Get all players for the selected game.
    * @returns {Player[]}
    */
-  function getPlayers (): Player[] {
-    return currentGame.getPlayers();
+  getPlayers (): Player[] {
+    return this.currentGame.getPlayers();
   }
 
   /**
@@ -153,28 +139,28 @@ function GameService (StorageService) {
    * @param {Player} player
    * @param {number} time
    */
-  function setPlayerTime (player: Player, time: number): void {
+  setPlayerTime (player: Player, time: number): void {
     player.time = time;
 
-    currentGame.sortPlayers();
+    this.currentGame.sortPlayers();
 
-    save();
+    this.save();
 
-    service.setCurrentPlayer(player);
+    this.setCurrentPlayer(player);
   }
 
   /**
    * Get the current best time.
    * @returns {number|undefined}
    */
-  function getBestTime (): number {
-    var players = currentGame.getPlayers();
+  getBestTime (): number {
+    var players = this.currentGame.getPlayers();
 
     if (players.length <= 1) {
       return;
     }
 
-    var index = (previousPosition === 1) ? 1 : 0;
+    var index = (this.previousPosition === 1) ? 1 : 0;
 
     return players[index].time;
   }
@@ -184,35 +170,35 @@ function GameService (StorageService) {
    * @param {Player} player
    * @returns {number|undefined}
    */
-  function getPlayerPosition (player: Player): number {
-    var index = currentGame.getPlayerPosition(player);
+  getPlayerPosition (player: Player): number {
+    var index = this.currentGame.getPlayerPosition(player);
     return index === -1 ? undefined : index + 1;
   }
 
   /**
    * Reset the current player.
    */
-  function resetCurrentPlayer (): void {
-    currentPlayer = undefined;
+  resetCurrentPlayer (): void {
+    this.currentPlayer = undefined;
   }
 
   /**
    * Remove the selected player.
    * @param {Player} player
    */
-  function removePlayer (player: Player): void {
-    currentGame.removePlayer(player);
+  removePlayer (player: Player): void {
+    this.currentGame.removePlayer(player);
 
-    save();
+    this.save();
   }
 
   /**
    * Save the current game state to storage, using the id
    * of the game and the updated players array.
    */
-  function save (): void {
-    return StorageService.update(currentGame._id, {
-      players: currentGame.players
+  save (): void {
+    return this.StorageService.update(this.currentGame._id, {
+      players: this.currentGame.players
     });
   }
 
@@ -221,15 +207,11 @@ function GameService (StorageService) {
    * @param {Player} player
    * @returns {boolean}
    */
-  function isFirst (player: Player): boolean {
-    return service.getPlayerPosition(player) === 1;
+  isFirst (player: Player): boolean {
+    return this.getPlayerPosition(player) === 1;
   }
 
-  function isPlayerRegistered (player: Player): number {
-    return currentGame.getPlayerPosition(player);
+  isPlayerRegistered (player: Player): number {
+    return this.currentGame.getPlayerPosition(player);
   }
-
-  return service;
 }
-
-module.exports = GameService;

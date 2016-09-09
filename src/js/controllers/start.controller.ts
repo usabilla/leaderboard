@@ -1,23 +1,28 @@
+import {GameService} from '../services/game.service';
+import {ExportService} from '../services/export.service';
 var _forEach = require('lodash/forEach');
 
-/*@ngInject*/
-function StartController (GameService, ExportService) {
-  var start = this;
+export class StartController {
+  private admin: boolean;
 
-  GameService.resetCurrentPlayer();
+  /*@ngInject*/
+  constructor (
+    private GameService: GameService,
+    private ExportService: ExportService
+  ) {
 
-  start.admin = true;
+    this.GameService.resetCurrentPlayer();
+    this.admin = true;
+  }
 
-  start.generate = function generate () {
-    var players = GameService.getPlayers();
+  generate (): void {
+    var players = this.GameService.getPlayers();
 
     var jsonData = [];
     _forEach(players, function playerToJson (player) {
       jsonData.push(player.toJSON());
     });
 
-    return ExportService.generate(jsonData);
-  };
+    return this.ExportService.generate(jsonData);
+  }
 }
-
-module.exports = StartController;

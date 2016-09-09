@@ -1,3 +1,13 @@
+import {CountController} from '../controllers/count.controller';
+import {LeaderboardController} from '../controllers/leaderboard.controller';
+import {PlayController} from '../controllers/play.controller';
+import {RegisterController} from '../controllers/register.controller';
+import {ExistingController} from '../controllers/existing.controller';
+import {ResultController} from '../controllers/result.controller';
+import {StartController} from '../controllers/start.controller';
+import {CreateController} from '../controllers/create.controller';
+import {SelectController} from '../controllers/select.controller';
+
 /*@ngInject*/
 function Config ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
   $urlRouterProvider.otherwise('/');
@@ -6,55 +16,55 @@ function Config ($stateProvider, $urlRouterProvider, localStorageServiceProvider
     .state('select', {
       url: '/',
       template: require('../../partials/select.html'),
-      controller: 'SelectController',
+      controller: SelectController,
       controllerAs: 'select'
     })
     .state('create', {
       url: '/create',
       template: require('../../partials/create.html'),
-      controller: 'CreateController',
+      controller: CreateController,
       controllerAs: 'create'
     })
     .state('start', {
       url: '/start',
       template: require('../../partials/start.html'),
-      controller: 'StartController',
+      controller: StartController,
       controllerAs: 'start'
     })
     .state('register', {
       url: '/register',
       template: require('../../partials/register.html'),
-      controller: 'RegisterController',
+      controller: RegisterController,
       controllerAs: 'register'
     })
     .state('existing', {
       url: '/existing',
       template: require('../../partials/existing.html'),
-      controller: 'ExistingController',
+      controller: ExistingController,
       controllerAs: 'existing'
     })
     .state('count', {
       url: '/count',
       template: require('../../partials/count.html'),
-      controller: 'CountController',
+      controller: CountController,
       controllerAs: 'count'
     })
     .state('play', {
       url: '/play',
       template: require('../../partials/play.html'),
-      controller: 'PlayController',
+      controller: PlayController,
       controllerAs: 'play'
     })
     .state('result', {
       url: '/result',
       template: require('../../partials/result.html'),
-      controller: 'ResultController',
+      controller: ResultController,
       controllerAs: 'result'
     })
     .state('leaderboard', {
       url: '/leaderboard',
       template: require('../../partials/leaderboard.html'),
-      controller: 'LeaderboardController',
+      controller: LeaderboardController,
       controllerAs: 'leaderboard'
     });
 

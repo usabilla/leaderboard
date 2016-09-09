@@ -1,40 +1,24 @@
 import {AudioService} from './services/audio.service';
-import {SelectController} from './controllers/select.controller';
-require('angular');
-var uiRouter = require('angular-ui-router');
-require('angular-local-storage');
-var ngMessages = require('angular-messages');
-window['moment'] = require('moment');
-window['humanizeDuration'] = require('humanize-duration');
-var timer = require('angular-timer');
-require('angular-hotkeys');
-require('angucomplete-alt');
-var ngAudio = require('angular-audio');
+import {StorageService} from './services/storage.service';
+import {GameService} from './services/game.service';
+import {ExportService} from './services/export.service';
+import './vendor';
 
 angular.module('usabilla.leaderboard', [
-    uiRouter,
+    'ui.router',
     'LocalStorageModule',
-    ngMessages,
-    timer.name,
+    'ngMessages',
+    'timer',
     'cfp.hotkeys',
     'angucomplete-alt',
-    ngAudio
+    'ngAudio'
   ])
   .config(require('./config/config'))
   .run(require('./config/run'))
-  .factory('StorageService', require('./services/storage.service.ts'))
-  .factory('GameService', require('./services/game.service.ts'))
-  .factory('ExportService', require('./services/export.service.ts'))
+  .service('StorageService', StorageService)
+  .service('GameService', GameService)
+  .service('ExportService', ExportService)
   .service('AudioService', AudioService)
-  .controller('CountController', require('./controllers/count.controller.ts'))
-  .controller('LeaderboardController', require('./controllers/leaderboard.controller.ts'))
-  .controller('PlayController', require('./controllers/play.controller.ts'))
-  .controller('RegisterController', require('./controllers/register.controller.ts'))
-  .controller('ExistingController', require('./controllers/existing.controller.ts'))
-  .controller('ResultController', require('./controllers/result.controller.ts'))
-  .controller('StartController', require('./controllers/start.controller.ts'))
-  .controller('CreateController', require('./controllers/create.controller.ts'))
-  .controller('SelectController', SelectController)
   .directive('available', require('./directives/available.directive.ts'))
   .directive('freeEmail', require('./directives/freeEmail.directive.ts'))
   .filter('ordinal', require('./filters/ordinal.filter.ts'));

@@ -1,32 +1,42 @@
-/*@ngInject*/
-function ExistingController ($state, $scope, GameService) {
-  var existing = this;
+import {GameService} from '../services/game.service';
+import {Player} from '../models/player.model';
 
-  function reset () {
-    existing.selectedPlayer = undefined;
-    existing.players = GameService.getPlayers();
+export class ExistingController {
+  private selectedPlayer: Player;
+  private players: Player[];
+
+  /*@ngInject*/
+  constructor (
+    private $state: angular.ui.IStateService,
+    private $scope: angular.IScope,
+    private GameService: GameService
+  ) {
+
+    this.reset();
   }
 
-  existing.select = function select (player) {
+  reset (): void {
+    this.selectedPlayer = undefined;
+    this.players = this.GameService.getPlayers();
+  }
+
+  select (player: Player): void {
     if (angular.isUndefined(player)) {
       return;
     }
-    GameService.setCurrentPlayer(player);
-    $state.go('count');
-  };
+    this.GameService.setCurrentPlayer(player);
+    this.$state.go('count');
+  }
 
-  existing.remove = function remove (player) {
+  remove (player: Player): void {
     if (angular.isUndefined(player)) {
       return;
     }
 
-    GameService.removePlayer(player);
+    this.GameService.removePlayer(player);
 
-    $scope.$broadcast('angucomplete-alt:clearInput', 'selectedPlayer');
-    reset();
-  };
+    this.$scope.$broadcast('angucomplete-alt:clearInput', 'selectedPlayer');
 
-  reset();
+    this.reset();
+  }
 }
-
-module.exports = ExistingController;

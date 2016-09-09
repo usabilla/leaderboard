@@ -1,29 +1,43 @@
 import {AudioService} from '../services/audio.service';
+import {GameService} from '../services/game.service';
+import {Player} from '../models/player.model';
 
-/*@ngInject*/
-function ResultController ($scope, $state, $timeout, GameService, AudioService: AudioService) {
-  var result = this;
+export class ResultController {
+  private player: Player;
+  private position: number;
+  private toLeaderboard: angular.IPromise<any>;
 
-  result.player = GameService.getCurrentPlayer();
-  result.position = GameService.getPlayerPosition(result.player);
+  /*@ngInject*/
+  constructor (
+    private $scope: angular.IScope,
+    private $state: angular.ui.IStateService,
+    private $timeout: angular.ITimeoutService,
+    private GameService: GameService,
+    private AudioService: AudioService
+  ) {
 
-  if (GameService.isFirst(result.player)) {
-    AudioService.playSound('first');
+    this.player = GameService.getCurrentPlayer();
+    this.position = GameService.getPlayerPosition(this.player);
+
+    if (this.GameService.isFirst(this.player)) {
+      this.AudioService.playSound('first');
+    }
+
+    this.toLeaderboard = this.$timeout(() => {
+      this.$state.go('leaderboard');
+    }, 5000);
+
+    this.$scope.$on('$destroy', this.onScopeDestroy.bind(this));
   }
 
-  var toLeaderboard = $timeout(function leaderboardTimeout () {
-    $state.go('leaderboard');
-  }, 5000);
+  replay (): void {
+    this.$state.go('count');
+    this.$timeout.cancel(this.toLeaderboard);
+    this.toLeaderboard = undefined;
+  }
 
-  result.replay = function replay () {
-    $state.go('count');
-    $timeout.cancel(toLeaderboard);
-  };
-
-  $scope.$on('$destroy', function onDestroy () {
-    $timeout.cancel(toLeaderboard);
-    toLeaderboard = undefined;
-  });
+  onScopeDestroy (): void {
+    this.$timeout.cancel(this.toLeaderboard);
+    this.toLeaderboard = undefined;
+  }
 }
-
-module.exports = ResultController;

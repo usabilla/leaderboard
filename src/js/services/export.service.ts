@@ -1,16 +1,15 @@
-/*@ngInject*/
-function ExportService () {
-  var title = 'Usabilla Balls of Fire';
-  var showLabel = true;
-  var format = 'data:text/xls;charset=utf-8';
+export class ExportService {
+  title = 'Usabilla Balls of Fire';
+  showLabel = true;
+  format = 'data:text/xls;charset=utf-8';
 
-  function generate (data) {
+  generate (data): void {
     var json = angular.isObject(data) ? data : angular.fromJson(data);
     var csv = '';
 
-    csv += title + '\r\n\n';
+    csv += this.title + '\r\n\n';
 
-    if (showLabel) {
+    if (this.showLabel) {
       var row = '';
 
       // This loop will extract the label from 1st index of on array
@@ -47,10 +46,10 @@ function ExportService () {
 
     // Generate a file name
     // this will remove the blank-spaces from the title and replace it with an underscore
-    var fileName = title.replace(/ /g, '_');
+    var fileName = this.title.replace(/ /g, '_');
 
     // Initialize file format you want csv or xls
-    var uri = format + ',' + encodeURI(csv);
+    var uri = this.format + ',' + encodeURI(csv);
 
     // this trick will generate a temp <a /> tag
     var link = document.createElement('a');
@@ -65,10 +64,4 @@ function ExportService () {
     link.click();
     document.body.removeChild(link);
   }
-
-  return {
-    generate: generate
-  };
 }
-
-module.exports = ExportService;

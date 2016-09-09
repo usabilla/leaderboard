@@ -1,26 +1,33 @@
 import {AudioService} from '../services/audio.service';
+import {GameService} from '../services/game.service';
+import {Player} from '../models/player.model';
 
-/*@ngInject*/
-function CountController ($scope, $state, GameService, AudioService: AudioService) {
-  var count = this;
+export class CountController {
+  private player: Player;
 
-  count.player = GameService.getCurrentPlayer();
+  /*@ngInject*/
+  constructor (
+    private $scope: angular.IScope,
+    private $state: angular.ui.IStateService,
+    private GameService: GameService,
+    private AudioService: AudioService
+  ) {
 
-  count.begin = function begin () {
-    $scope.$apply(function () {
-      count.shouldCountdown = false
-    });
-    $state.go('play');
-  };
+    this.player = this.GameService.getCurrentPlayer();
 
-  $scope.$on('timer-tick', function (event, args) {
+    this.$scope.$on('timer-tick', this.onTimerTick.bind(this))
+  }
+
+  begin () {
+    this.$state.go('play');
+  }
+
+  onTimerTick (event, args: {millis: number}): void {
     var millis = args.millis;
     if (millis < 1000) {
       return;
     }
     var countSound = millis / 1000;
-    AudioService.playSound(countSound.toString());
-  })
+    this.AudioService.playSound(countSound.toString());
+  }
 }
-
-module.exports = CountController;

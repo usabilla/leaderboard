@@ -1,11 +1,17 @@
-/*@ngInject*/
-function CreateController ($state, GameService) {
-  var create = this;
+import {GameService} from '../services/game.service';
 
-  create.submit = function submit (name) {
-    GameService.createGame(name);
-    $state.go('select');
+export class CreateController {
+
+  /*@ngInject*/
+  constructor (
+    private $state: angular.ui.IStateService,
+    private GameService: GameService
+  ) {
+
+  }
+
+  submit (name: string): void {
+    this.GameService.createGame(name);
+    this.$state.go('select');
   }
 }
-
-module.exports = CreateController;

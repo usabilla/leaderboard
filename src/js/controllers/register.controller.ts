@@ -1,24 +1,37 @@
-/*@ngInject*/
-function RegisterController ($scope, $state, GameService) {
-  var register = this;
+import {GameService} from '../services/game.service';
+import {Player} from '../models/player.model';
 
-  register.player = {};
-  register.players = GameService.getPlayers();
+interface IRegisterControllerScope extends angular.IScope {
+  playerForm;
+}
 
-  register.submit = function submit (player) {
-    if ($scope.playerForm.$invalid) {
+export class RegisterController {
+  private player;
+  private players: Player[];
+
+  /*@ngInject*/
+  constructor (
+    private $scope: IRegisterControllerScope,
+    private $state: angular.ui.IStateService,
+    private GameService: GameService
+  ) {
+
+    this.player = {};
+    this.players = this.GameService.getPlayers();
+  }
+
+  submit (player: Player): void {
+    if (this.$scope.playerForm.$invalid) {
       return;
     }
-    var registeredPlayer = GameService.registerPlayer(player);
+    var registeredPlayer = this.GameService.registerPlayer(player);
     if (angular.isUndefined(registeredPlayer)) {
       return;
     }
-    $state.go('count');
-  };
+    this.$state.go('count');
+  }
 
-  register.isInvalid = function isInvalid (field) {
-    return (field.$touched && field.$invalid) || $scope.playerForm.$submitted;
-  };
+  isInvalid (field: angular.INgModelController): boolean {
+    return (field.$touched && field.$invalid) || this.$scope.playerForm.$submitted;
+  }
 }
-
-module.exports = RegisterController;

@@ -1,20 +1,19 @@
 var PouchDB = require('pouchdb');
 var _assign = require('lodash/assign');
 
-/*@ngInject*/
-function StorageService () {
-  var objects = new PouchDB('Games');
+export class StorageService {
+  private objects = new PouchDB('Games');
 
   /**
    * Save the new object in storage.
    * @param object
    * @returns {object|undefined}
    */
-  function save (object) {
-    return objects.put(object)
-      .then(function (response) {
+  save (object) {
+    return this.objects.put(object)
+      .then((response) => {
         return response;
-      }).then(function (err) {
+      }).then((err) => {
         throw new Error(err);
       });
   }
@@ -23,10 +22,10 @@ function StorageService () {
    * Get all objects from storage.
    * @returns {Object[]}
    */
-  function getAll () {
-    return objects
+  getAll () {
+    return this.objects
       .allDocs({include_docs: true})
-      .then(function (docs) {
+      .then((docs) => {
         return docs.rows;
       });
   }
@@ -36,20 +35,12 @@ function StorageService () {
    * @param {string} id
    * @param {Object} data
    */
-  function update (id, data) {
-    return objects
+  update (id, data) {
+    return this.objects
       .get(id)
-      .then(function (doc) {
+      .then((doc) => {
         _assign(doc, data);
-        return objects.put(doc);
+        return this.objects.put(doc);
       });
   }
-
-  return {
-    getAll: getAll,
-    save: save,
-    update: update
-  };
 }
-
-module.exports = StorageService;
