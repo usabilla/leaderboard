@@ -1,5 +1,11 @@
+import {GameService} from '../services/game.service';
+
 /*@ngInject*/
-function Run ($rootScope, $state, GameService) {
+export function Run (
+  $rootScope: angular.IRootScopeService,
+  $state: angular.ui.IStateService,
+  GameService: GameService
+) {
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
     var states = ['select', 'create'];
 
@@ -16,5 +22,3 @@ function Run ($rootScope, $state, GameService) {
     }
   });
 }
-
-module.exports = Run;

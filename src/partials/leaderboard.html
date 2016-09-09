@@ -8,22 +8,24 @@
     <div ng-if="leaderboard.arePlayers()">
         <table id="leaderboard" class="uk-table uk-table-middle uk-table-hover">
             <thead>
-                <tr>
-                    <th class="uk-text-center table__header">RANK</th>
-                    <th class="uk-text-left table__header">NAME</th>
-                    <th class="uk-text-left table__header">COMPANY</th>
-                    <th class="uk-text-left table__header">TIME</th>
-                </tr>
+            <tr>
+                <th class="uk-text-center table__header">RANK</th>
+                <th class="uk-text-left table__header">NAME</th>
+                <th class="uk-text-left table__header">COMPANY</th>
+                <th class="uk-text-left table__header">TIME</th>
+            </tr>
             </thead>
             <tbody>
-                <tr id="::{{ $index + 1 }}" ng-repeat="player in ::leaderboard.players | orderBy: 'time' track by player.workEmail" ng-class="::{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
-                    <td ng-class="::{'smiley-crown': leaderboard.isFirst($index)}">
-                        <span ng-if="!leaderboard.isFirst($index)">{{ ::$index + 1 }}</span>
-                    </td>
-                    <td class="uk-text-left">{{ ::player.firstName }} {{ ::player.lastName }}</td>
-                    <td class="uk-text-left">{{ ::player.company }}</td>
-                    <td class="uk-text-left">{{ ::player.time | date: 'mm:ss:sss' }}</td>
-                </tr>
+            <tr id="::{{ $index + 1 }}"
+                ng-repeat="player in ::leaderboard.players | orderBy: 'time' track by player.workEmail"
+                ng-class="::{'uk-active': leaderboard.isActive({{ $index + 1 }})}" class="table__data">
+                <td ng-class="::{'smiley-crown': leaderboard.isFirst($index)}">
+                    <span ng-if="!leaderboard.isFirst($index)">{{ ::$index + 1 }}</span>
+                </td>
+                <td class="uk-text-left">{{ ::player.firstName }} {{ ::player.lastName }}</td>
+                <td class="uk-text-left">{{ ::player.company }}</td>
+                <td class="uk-text-left">{{ ::player.time | date: 'mm:ss:sss' }}</td>
+            </tr>
             </tbody>
         </table>
         <div class="uk-margin-top" ng-if="leaderboard.shouldShowMore()">

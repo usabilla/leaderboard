@@ -9,7 +9,11 @@ import {CreateController} from '../controllers/create.controller';
 import {SelectController} from '../controllers/select.controller';
 
 /*@ngInject*/
-function Config ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+export function Config (
+  $stateProvider: angular.ui.IStateProvider,
+  $urlRouterProvider: angular.ui.IUrlRouterProvider,
+  localStorageServiceProvider
+) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
@@ -73,5 +77,3 @@ function Config ($stateProvider, $urlRouterProvider, localStorageServiceProvider
     .setPrefix('ub.lead')
     .setNotify(true, true);
 }
-
-module.exports = Config;
