@@ -49,6 +49,8 @@ function initialize () {
 
   app.on('ready', function () {
     createWindow();
+
+    require('./menu');
   });
 
   app.on('window-all-closed', function () {

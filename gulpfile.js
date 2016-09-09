@@ -28,10 +28,13 @@ const customOptions = {
   debug: true
 };
 const options = _assign({}, watchify.args, customOptions);
-const sources = watchify(browserify(options).transform(stringify, {
+var sources = browserify(options).transform(stringify, {
   appliesTo: {includeExtensions: ['.html']},
   minify: true
-}));
+});
+if (!argv.prod) {
+  sources = watchify(sources);
+}
 sources.plugin(tsify);
 
 sources.on('update', bundle);
@@ -91,7 +94,7 @@ gulp.task('watch', function () {
   gulp.watch(paths.images, ['images']);
 });
 
-gulp.task('build', function (callback) {
+gulp.task('build', function () {
   runSequence(
     'clean', [
       'scripts',
@@ -100,8 +103,7 @@ gulp.task('build', function (callback) {
       'fonts',
       'sounds',
       'index'
-    ],
-    callback);
+    ]);
 });
 
 gulp.task('default', [
