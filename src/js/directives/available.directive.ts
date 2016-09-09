@@ -1,15 +1,22 @@
 import {Player} from '../models/player.model';
+import {GameService} from '../services/game.service';
 
 /*@ngInject*/
-function AvailableDirective (GameService) {
+export function AvailableDirective (GameService: GameService) {
   return {
     require: 'ngModel',
-    link: function (scope, element, attrs, ngModel) {
-      function setAsAvailable (bool) {
+    link: function (
+      scope: angular.IScope,
+      element: angular.IAugmentedJQuery,
+      attrs: angular.IAttributes,
+      ngModel: angular.INgModelController
+    ) {
+
+      function setAsAvailable (bool: boolean): void {
         ngModel.$setValidity('available', bool);
       }
 
-      ngModel.$parsers.push(function (value) {
+      ngModel.$parsers.push(function (value: string): string {
         if (!value || value.length == 0) return;
 
         setAsAvailable(false);
@@ -28,5 +35,3 @@ function AvailableDirective (GameService) {
     }
   }
 }
-
-module.exports = AvailableDirective;
