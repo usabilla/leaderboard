@@ -1,6 +1,6 @@
 {
   "name": "leaderboard",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Leaderboard, a timing game",
   "scripts": {
     "start": "./script/start.sh",
