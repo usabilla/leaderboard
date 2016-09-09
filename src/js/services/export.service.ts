@@ -1,5 +1,3 @@
-import escape = require('core-js/fn/regexp/escape');
-
 /*@ngInject*/
 function ExportService () {
   var title = 'Usabilla Balls of Fire';
@@ -17,7 +15,7 @@ function ExportService () {
 
       // This loop will extract the label from 1st index of on array
       for (var index in json[0]) {
-        // Now convert each value to string and comma-seprated
+        // Now convert each value to string and comma-separated
         row += index + ',';
       }
 
@@ -31,7 +29,7 @@ function ExportService () {
     for (var i = 0; i < json.length; i++) {
       var row = '';
 
-      // 2nd loop will extract each column and convert it in string comma-seprated
+      // 2nd loop will extract each column and convert it in string comma-separated
       for (var index in json[i]) {
         row += '' + json[i][index] + ',';
       }
@@ -52,15 +50,15 @@ function ExportService () {
     var fileName = title.replace(/ /g, '_');
 
     // Initialize file format you want csv or xls
-    var uri = format + ',' + escape(csv);
+    var uri = format + ',' + encodeURI(csv);
 
     // this trick will generate a temp <a /> tag
     var link = document.createElement('a');
     link.href = uri;
 
     // set the visibility hidden so it will not effect on your web-layout
-    link.style = 'visibility:hidden';
-    link.download = fileName + '.csv';
+    link.style.visibility = 'hidden';
+    link['download'] = fileName + '.csv';
 
     // this part will append the anchor tag and remove it after automatic click
     document.body.appendChild(link);

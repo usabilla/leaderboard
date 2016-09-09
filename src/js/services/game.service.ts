@@ -1,5 +1,5 @@
-var Game = require('../models/game.model.ts');
-var Player = require('../models/player.model.ts');
+import {Game} from '../models/game.model';
+import {Player} from '../models/player.model';
 var randomstring = require('randomstring');
 var _forEach = require('lodash/forEach');
 
@@ -51,8 +51,8 @@ function GameService (StorageService, ngAudio) {
 
     var game = new Game();
 
-    game.setId(randomstring.generate());
-    game.setName(name);
+    game._id = randomstring.generate();
+    game.name = name;
 
     return StorageService.save(game);
   }
@@ -69,18 +69,18 @@ function GameService (StorageService, ngAudio) {
         _forEach(docs, function (doc) {
           var game = new Game();
 
-          game.setId(doc.doc._id);
-          game.setName(doc.doc.name);
+          game._id = doc.doc._id;
+          game.name = doc.doc.name;
 
           _forEach(doc.doc.players, function instantiatePlayer (playerObject) {
             var player = new Player();
 
-            player.setFirstName(playerObject.firstName);
-            player.setLastName(playerObject.lastName);
-            player.setWorkEmail(playerObject.workEmail);
-            player.setJobTitle(playerObject.jobTitle);
-            player.setCompany(playerObject.company);
-            player.setTime(playerObject.time);
+            player.firstName = playerObject.firstName;
+            player.lastName = playerObject.lastName;
+            player.workEmail = playerObject.workEmail;
+            player.jobTitle = playerObject.jobTitle;
+            player.company = playerObject.company;
+            player.time = playerObject.time;
 
             game.addPlayer(player);
           });
@@ -111,11 +111,11 @@ function GameService (StorageService, ngAudio) {
     }
 
     var newPlayer = new Player();
-    newPlayer.setFirstName(object.firstName);
-    newPlayer.setLastName(object.lastName);
-    newPlayer.setWorkEmail(object.workEmail);
-    newPlayer.setJobTitle(object.jobTitle);
-    newPlayer.setCompany(object.company);
+    newPlayer.firstName = object.firstName;
+    newPlayer.lastName = object.lastName;
+    newPlayer.workEmail = object.workEmail;
+    newPlayer.jobTitle = object.jobTitle;
+    newPlayer.company = object.company;
 
     currentGame.addPlayer(newPlayer);
 

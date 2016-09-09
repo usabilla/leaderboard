@@ -42,11 +42,11 @@ gulp.task('scripts', bundle);
 function bundle () {
   return sources
     .bundle()
+    .on('error', $.util.log.bind($.util, 'Browserify Error'))
     .pipe(source('app.min.js'))
     .pipe(buffer())
     .pipe($.ngAnnotate())
     .pipe($.if(argv.prod, $.uglify()))
-    .pipe($.concat('app.min.js'))
     .pipe(gulp.dest(paths.dist + '/js'));
 }
 

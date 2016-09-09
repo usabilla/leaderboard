@@ -1,4 +1,4 @@
-var angular = require('angular');
+require('angular');
 var uiRouter = require('angular-ui-router');
 require('angular-local-storage');
 var ngMessages = require('angular-messages');

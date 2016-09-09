@@ -38,6 +38,7 @@ you can download the result data in csv format.
 
 The game is built with
 
+- [TypeScript](https://www.typescriptlang.org/)
 - [AngularJS](https://angularjs.org/)
 - [Electron](http://electron.atom.io/)
 - [Uikit](http://getuikit.com/)

@@ -1,43 +1,36 @@
+import {Player} from './player.model';
 var _pull = require('lodash/pull');
 var _orderBy = require('lodash/orderBy');
 var _findIndex = require('lodash/findIndex');
 
-function Game () {
-  this.players = [];
-}
+export class Game {
+  players: Player[] = [];
+  _id: string;
+  name: string;
 
-Game.prototype.setId = function setId (id) {
-  this._id = id;
-};
-
-Game.prototype.setName = function setName (name) {
-  this.name = name;
-};
-
-Game.prototype.addPlayer = function addPlayer (player) {
-  this.players.push(player);
-};
-
-Game.prototype.removePlayer = function removePlayer (player) {
-  _pull(this.players, player);
-};
-
-Game.prototype.getPlayers = function getPlayers () {
-  return this.players;
-};
-
-Game.prototype.sortPlayers = function sortPlayers () {
-  this.players = _orderBy(this.players, ['time'], ['asc']);
-};
-
-Game.prototype.getPlayerPosition = function getPlayerPosition (player) {
-  if (!player) {
-    return -1;
+  addPlayer (player: Player): void {
+    this.players.push(player);
   }
 
-  return _findIndex(this.players, function findIndex (_player) {
-    return _player.workEmail === player.workEmail;
-  });
-};
+  removePlayer (player: Player): void {
+    _pull(this.players, player);
+  }
 
-module.exports = Game;
+  getPlayers (): Player[] {
+    return this.players;
+  }
+
+  sortPlayers (): void {
+    this.players = _orderBy(this.players, ['time'], ['asc']);
+  }
+
+  getPlayerPosition (player: Player): number {
+    if (!player) {
+      return -1;
+    }
+
+    return _findIndex(this.players, function findIndex (_player) {
+      return _player.workEmail === player.workEmail;
+    });
+  }
+}

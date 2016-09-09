@@ -1,4 +1,4 @@
-var Player = require('../models/player.model.ts');
+import {Player} from '../models/player.model';
 
 /*@ngInject*/
 function AvailableDirective (GameService) {
@@ -15,7 +15,7 @@ function AvailableDirective (GameService) {
         setAsAvailable(false);
 
         var player = new Player();
-        player.setWorkEmail(value);
+        player.workEmail = value;
 
         if (GameService.isPlayerRegistered(player)) {
           setAsAvailable(true);
