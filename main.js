@@ -6,10 +6,6 @@ const app = electron.app;
 
 const development = process.env.ENV === 'development';
 
-if (development) {
-  require('electron-reload')('dist/**/*.{js,css}');
-}
-
 var mainWindow = null;
 
 function initialize () {

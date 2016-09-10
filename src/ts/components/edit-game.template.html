@@ -1,0 +1,41 @@
+<div class="bubbles--left"></div>
+<div class="bubbles--right"></div>
+<div class="uk-margin-top uk-margin-bottom">
+    <form name="editGameForm" class="uk-form uk-form-stacked uk-margin-top">
+        <fieldset>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="gameName">Game Name</label>
+                <div class="uk-form-controls">
+                    <input type="text" id="gameName" name="gameName"
+                           ng-model="$ctrl.game.name"
+                           required/>
+                </div>
+                <div ng-messages="editGameForm.gameName.$error" ng-if="$ctrl.isInvalid(editGameForm.gameName)"
+                     class="uk-text-danger text--error uk-margin-small-top">
+                    <p ng-message="required">Game name is required</p>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="playAudioFile">Play Audio File</label>
+                <div class="uk-form-controls">
+                    <input type="file" id="playAudioFile" name="playAudioFile"
+                           ng-model="$ctrl.playAudioFile" file />
+                </div>
+            </div>
+            <div class="uk-form-row uk-margin-top">
+                <div class="uk-form-controls">
+                    <button type="submit"
+                            ng-click="$ctrl.save()"
+                            class="uk-button uk-width-1-1 uk-button-large">SAVE
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div class="uk-margin-top uk-text-success text--success uk-text-large" ng-if="$ctrl.savedSuccess()">
+        Changed saved success
+    </div>
+    <div class="uk-margin-top">
+        <a ui-sref="start" class="link uk-text-large">Cancel</a>
+    </div>
+</div>

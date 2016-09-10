@@ -35,7 +35,7 @@ export class StorageService {
    * @param {string} id
    * @param {Object} data
    */
-  update (id, data) {
+  update (id, data): angular.IPromise<void> {
     return this.objects
       .get(id)
       .then((doc) => {

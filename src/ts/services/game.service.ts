@@ -1,6 +1,7 @@
 import {Game} from '../models/game.model';
 import {Player} from '../models/player.model';
 import {StorageService} from './storage.service';
+
 var randomstring = require('randomstring');
 var _forEach = require('lodash/forEach');
 
@@ -196,8 +197,9 @@ export class GameService {
    * Save the current game state to storage, using the id
    * of the game and the updated players array.
    */
-  save (): void {
+  save (): angular.IPromise<void> {
     return this.StorageService.update(this.currentGame._id, {
+      name: this.currentGame.name,
       players: this.currentGame.players
     });
   }

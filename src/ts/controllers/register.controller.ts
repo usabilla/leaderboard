@@ -1,8 +1,8 @@
 import {GameService} from '../services/game.service';
 import {Player} from '../models/player.model';
 
-interface IRegisterControllerScope extends angular.IScope {
-  playerForm;
+interface RegisterControllerScope extends angular.IScope {
+  playerForm: angular.IFormController;
 }
 
 export class RegisterController {
@@ -11,7 +11,7 @@ export class RegisterController {
 
   /*@ngInject*/
   constructor (
-    private $scope: IRegisterControllerScope,
+    private $scope: RegisterControllerScope,
     private $state: angular.ui.IStateService,
     private GameService: GameService
   ) {

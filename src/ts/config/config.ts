@@ -71,6 +71,10 @@ export function Config (
       template: require('../../partials/leaderboard.html'),
       controller: LeaderboardController,
       controllerAs: 'leaderboard'
+    })
+    .state('edit-game', {
+      url: '/edit-game',
+      template: '<edit-game></edit-game>',
     });
 
   // Local storage configuration

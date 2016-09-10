@@ -4,8 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    'vendor': './src/js/vendor.ts',
-    'app': './src/js/module.ts'
+    'vendor': './src/ts/vendor.ts',
+    'app': './src/ts/module.ts'
   },
 
   resolve: {

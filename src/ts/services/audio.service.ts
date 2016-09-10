@@ -67,4 +67,8 @@ export class AudioService {
 
     return audio.muting;
   }
+
+  registerSound (type: string, path: string) {
+    this.sounds[type] = this.loadSound(path);
+  }
 }

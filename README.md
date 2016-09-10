@@ -1,6 +1,6 @@
 # Leaderboard
 
-This offline game is basically suitable for any game that orders results according to time. A player performs an
+An offline game basically suitable for any game that orders results according to time. A player performs an
 activity and when the activity is completed player hits space and time is registered. We actually had
 a buzzer that would simulate a space click :)
 
@@ -25,16 +25,6 @@ For development
 ```sh
 $ npm start
 ```
-
-Adding any sound in `src/sounds` with the filename `play.mp3`, you can have a song on the background
-while users are playing. Additionally you need to add this line
-
-```javascript
-'play': ngAudio.load('sounds/play.mp3')
-```
-
-in [game service](src/js/services/game.service.js) so the sound can be played at runtime. As an extra
-you can download the result data in csv format.
 
 The game is built with
 
