@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <base href="/">
     <title>Leaderboard</title>
-    <link rel="icon" type="image/png" href="dist/images/icon.png">
-    <link rel="stylesheet" type="text/css" href="dist/styles/style.min.css">
+    <link rel="icon" type="image/png" href="src/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/app.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="usabilla.leaderboard" ng-cloak ng-strict-di>
 
@@ -11,6 +14,10 @@
     <div ui-view></div>
 </div>
 
-<script src="dist/js/app.min.js"></script>
+<script src="http://localhost:8080/vendor.js"></script>
+<script src="http://localhost:8080/app.js"></script>
+
+<!--<script src="dist/vendor.js"></script>-->
+<!--<script src="dist/app.js"></script>-->
 </body>
 </html>

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-concurrently --kill-others "gulp" "electron . --debug"
+concurrently --kill-others "webpack-dev-server --inline --progress --port 8080" "electron . --debug"

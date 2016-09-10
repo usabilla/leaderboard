@@ -7,7 +7,7 @@ import {AvailableDirective} from './directives/available.directive';
 import {FreeEmailDirective} from './directives/freeEmail.directive';
 import {Run} from './config/run';
 import {Config} from './config/config';
-import './vendor';
+import '../scss/style.scss';
 
 angular.module('usabilla.leaderboard', [
     'ui.router',
@@ -27,3 +27,4 @@ angular.module('usabilla.leaderboard', [
   .directive('available', AvailableDirective)
   .directive('freeEmail', FreeEmailDirective)
   .filter('ordinal', OrdinalFilter);
+

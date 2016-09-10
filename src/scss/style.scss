@@ -1,4 +1,4 @@
-@import '../../node_modules/uikit/dist/scss/uikit-mixins';
+@import '~uikit/dist/scss/uikit-mixins';
 @import 'colors';
 @import 'variables';
 @import 'buttons';
@@ -95,4 +95,4 @@
   cursor: pointer;
 }
 
-@import '../../node_modules/uikit/dist/scss/uikit';
+@import '~uikit/dist/scss/uikit';

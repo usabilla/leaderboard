@@ -4,13 +4,13 @@ export class AudioService {
   /*@ngInject*/
   constructor (private ngAudio) {
     this.sounds = {
-      'buzzer': this.loadSound('dist/sounds/buzzer.mp3'),
-      'first': this.loadSound('dist/sounds/first.mp3'),
-      '1': this.loadSound('dist/sounds/1.mp3'),
-      '2': this.loadSound('dist/sounds/2.mp3'),
-      '3': this.loadSound('dist/sounds/3.mp3'),
-      '4': this.loadSound('dist/sounds/4.mp3'),
-      '5': this.loadSound('dist/sounds/5.mp3')
+      'buzzer': this.loadSound(require('../../sounds/buzzer.mp3')),
+      'first': this.loadSound(require('../../sounds/first.mp3')),
+      '1': this.loadSound(require('../../sounds/1.mp3')),
+      '2': this.loadSound(require('../../sounds/2.mp3')),
+      '3': this.loadSound(require('../../sounds/3.mp3')),
+      '4': this.loadSound(require('../../sounds/4.mp3')),
+      '5': this.loadSound(require('../../sounds/5.mp3'))
     };
   }
 
