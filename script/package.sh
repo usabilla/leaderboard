@@ -17,4 +17,4 @@ electron-packager dist \
     --icon=assets/app-icons/mac/app.icns \
     --prune=true \
     --out=out \
-    --ignore="node_modules|.idea|.sass-cache|src|.gitignore|gulpfile.js|README.md"
+    --ignore="node_modules|.idea|.sass-cache|src|.gitignore|README.md"
