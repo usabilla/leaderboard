@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-gulp build --prod && electron-packager . \
+rimraf dist && \
+
+webpack --config config/webpack.prod.js --progress --profile --bail && \
+
+cp package.json main.js menu.js dist && \
+
+electron-packager dist \
     Leaderboard \
     --asar \
     --asar-unpack=protocol-link.html \

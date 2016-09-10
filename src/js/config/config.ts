@@ -12,7 +12,8 @@ import {SelectController} from '../controllers/select.controller';
 export function Config (
   $stateProvider: angular.ui.IStateProvider,
   $urlRouterProvider: angular.ui.IUrlRouterProvider,
-  localStorageServiceProvider
+  localStorageServiceProvider,
+  $compileProvider: angular.ICompileProvider
 ) {
   $urlRouterProvider.otherwise('/');
 
@@ -76,4 +77,8 @@ export function Config (
   localStorageServiceProvider
     .setPrefix('ub.lead')
     .setNotify(true, true);
+
+  if (process.env.ENV === 'production') {
+    $compileProvider.debugInfoEnabled(false);
+  }
 }

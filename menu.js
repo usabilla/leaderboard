@@ -1,6 +1,6 @@
 const {Menu} = require('electron');
 
-const debug = /--debug/.test(process.argv[2]);
+const development = process.env.ENV === 'development';
 
 const template = [
   {
@@ -89,7 +89,7 @@ const template = [
   }
 ];
 
-if (debug) {
+if (development) {
   template[1].submenu.splice(1, 0, {
     label: 'Toggle Developer Tools',
     accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',

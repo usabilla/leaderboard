@@ -4,9 +4,9 @@ const electron = require('electron');
 const BrowserWindow = electron.BrowserWindow;
 const app = electron.app;
 
-const debug = /--debug/.test(process.argv[2]);
+const development = process.env.ENV === 'development';
 
-if (debug) {
+if (development) {
   require('electron-reload')('dist/**/*.{js,css}');
 }
 
@@ -25,7 +25,7 @@ function initialize () {
     mainWindow.loadURL(path.join('file://', __dirname, '/index.html'));
 
     // Launch full screen with DevTools open, usage: npm start
-    if (debug) {
+    if (development) {
       mainWindow.webContents.openDevTools();
     }
 

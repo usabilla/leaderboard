@@ -27,4 +27,3 @@ angular.module('usabilla.leaderboard', [
   .directive('available', AvailableDirective)
   .directive('freeEmail', FreeEmailDirective)
   .filter('ordinal', OrdinalFilter);
-
