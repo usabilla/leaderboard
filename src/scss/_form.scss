@@ -8,13 +8,13 @@ $form-padding: 4px 20px;
 $form-medium-width: 500px;
 $form-height: 72px;
 
-@mixin hook-form-stacked-label () {
+@mixin hook-form-stacked-label() {
   font-size: 23px;
   line-height: 32px;
   color: $grey-03;
 }
 
-@mixin hook-form-misc () {
+@mixin hook-form-misc() {
   .uk-form-row {
     width: $form-medium-width;
     max-width: 100%;
@@ -24,7 +24,7 @@ $form-height: 72px;
   }
 }
 
-@mixin hook-form () {
+@mixin hook-form() {
   width: 100%;
   line-height: $form-line-height;
   font-size: $form-font-size;

@@ -1,4 +1,4 @@
-@mixin smiley ($image, $width, $height) {
+@mixin smiley($image, $width, $height) {
   background: url($image) no-repeat center center;
   background-size: $width $height;
   width: $width;

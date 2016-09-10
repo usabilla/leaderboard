@@ -3,15 +3,15 @@
   margin-right: 320px;
 }
 
-@mixin hook-table-hover () {
+@mixin hook-table-hover() {
   color: $white;
 }
 
-@mixin hook-table-active () {
+@mixin hook-table-active() {
   color: $white;
 }
 
-@mixin hook-table-misc () {
+@mixin hook-table-misc() {
   .uk-table .table__header {
     border-bottom: 2px solid $grey;
     color: $grey-04;
