@@ -18,7 +18,7 @@ To build game for production (currently only for darwin)
 $ npm run package
 ```
 
-`Leaderboard-darwin-x64` contains the electron application, which you can then distribute.
+`out/Leaderboard-darwin-x64` contains the electron application, which you can then distribute.
 
 For development
 
@@ -26,7 +26,7 @@ For development
 $ npm start
 ```
 
-Adding any sound/song in `src/sounds` with the filename `play.mp3`, you can have a song on the background
+Adding any sound in `src/sounds` with the filename `play.mp3`, you can have a song on the background
 while users are playing. Additionally you need to add this line
 
 ```javascript
@@ -43,5 +43,6 @@ The game is built with
 - [Electron](http://electron.atom.io/)
 - [Uikit](http://getuikit.com/)
 - [PouchDB](https://pouchdb.com/)
+- [Webpack](https://webpack.github.io/)
 
 and several other awesome packages!
