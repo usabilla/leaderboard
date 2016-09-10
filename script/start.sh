@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-concurrently "gulp" "electron . --debug"
+concurrently --kill-others "gulp" "electron . --debug"
