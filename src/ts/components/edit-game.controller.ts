@@ -26,6 +26,12 @@ export class EditGameController {
   }
 
   save (): void {
+    if (this.playAudioFile) {
+      let path = this.playAudioFile.path;
+      this.AudioService.registerSound('play', path);
+      this.game.playAudioFilePath = path;
+    }
+
     this.saving = true;
     this.GameService.save()
       .then(() => {
@@ -34,10 +40,6 @@ export class EditGameController {
           this.saving = false
         });
       });
-
-    if (this.playAudioFile) {
-      this.AudioService.registerSound('play', this.playAudioFile.path);
-    }
   }
 
   savedSuccess (): boolean {

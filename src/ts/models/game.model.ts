@@ -7,6 +7,7 @@ export class Game {
   players: Player[] = [];
   _id: string;
   name: string;
+  playAudioFilePath: string;
 
   addPlayer (player: Player): void {
     this.players.push(player);
@@ -32,5 +33,13 @@ export class Game {
     return _findIndex(this.players, function findIndex (_player) {
       return _player.workEmail === player.workEmail;
     });
+  }
+
+  toJSON () {
+    return {
+      name: this.name,
+      players: this.players,
+      playAudioFilePath: this.playAudioFilePath
+    }
   }
 }

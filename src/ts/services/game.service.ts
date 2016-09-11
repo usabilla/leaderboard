@@ -1,6 +1,7 @@
 import {Game} from '../models/game.model';
 import {Player} from '../models/player.model';
 import {StorageService} from './storage.service';
+import {AudioService} from './audio.service';
 
 var randomstring = require('randomstring');
 var _forEach = require('lodash/forEach');
@@ -11,7 +12,10 @@ export class GameService {
   private currentGame: Game;
 
   /*@ngInject*/
-  constructor (private StorageService: StorageService) {
+  constructor (
+    private StorageService: StorageService,
+    private AudioService: AudioService
+  ) {
   }
 
   /**
@@ -37,6 +41,7 @@ export class GameService {
    * @returns {Game[]}
    */
   getGames (): angular.IPromise<Game[]> {
+    // TODO: games and players should be created only once not every time we want to get them
     return this.StorageService.getAll()
       .then((docs) => {
         var games = [];
@@ -46,6 +51,11 @@ export class GameService {
 
           game._id = doc.doc._id;
           game.name = doc.doc.name;
+          game.playAudioFilePath = doc.doc.playAudioFilePath;
+
+          if (game.playAudioFilePath) {
+            this.AudioService.registerSound('play', game.playAudioFilePath);
+          }
 
           _forEach(doc.doc.players, (playerObject) => {
             var player = new Player();
@@ -198,10 +208,7 @@ export class GameService {
    * of the game and the updated players array.
    */
   save (): angular.IPromise<void> {
-    return this.StorageService.update(this.currentGame._id, {
-      name: this.currentGame.name,
-      players: this.currentGame.players
-    });
+    return this.StorageService.update(this.currentGame._id, this.currentGame.toJSON());
   }
 
   /**
