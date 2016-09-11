@@ -1,13 +1,17 @@
 export class ExportService {
-  title = 'Usabilla Balls of Fire';
+  title = 'Usabilla Leaderboard';
   showLabel = true;
   format = 'data:text/xls;charset=utf-8';
 
-  generate (data): void {
+  private getTitle (gameName: string): string {
+    return `${this.title} - ${gameName}`;
+  }
+
+  generate (data, gameName: string): void {
     var json = angular.isObject(data) ? data : angular.fromJson(data);
     var csv = '';
 
-    csv += this.title + '\r\n\n';
+    csv += this.getTitle(gameName) + '\r\n\n';
 
     if (this.showLabel) {
       var row = '';
@@ -46,7 +50,7 @@ export class ExportService {
 
     // Generate a file name
     // this will remove the blank-spaces from the title and replace it with an underscore
-    var fileName = this.title.replace(/ /g, '_');
+    var fileName = this.getTitle(gameName).replace(/ /g, '_');
 
     // Initialize file format you want csv or xls
     var uri = this.format + ',' + encodeURI(csv);

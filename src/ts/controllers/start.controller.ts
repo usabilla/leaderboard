@@ -27,6 +27,6 @@ export class StartController {
       jsonData.push(player.toJSON());
     });
 
-    return this.ExportService.generate(jsonData);
+    return this.ExportService.generate(jsonData, this.currentGame.name);
   }
 }
