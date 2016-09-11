@@ -33,7 +33,11 @@ export class GameService {
     game._id = randomstring.generate();
     game.name = name;
 
-    return this.StorageService.save(game);
+    return this.StorageService
+      .save(game)
+      .catch(err => {
+        throw new Error(err);
+      });
   }
 
   /**
@@ -208,7 +212,19 @@ export class GameService {
    * of the game and the updated players array.
    */
   save (): angular.IPromise<void> {
-    return this.StorageService.update(this.currentGame._id, this.currentGame.toJSON());
+    return this.StorageService
+      .update(this.currentGame._id, this.currentGame.toJSON())
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
+
+  remove (): angular.IPromise<void> {
+    return this.StorageService
+      .remove(this.currentGame._id)
+      .catch(err => {
+        throw new Error(err);
+      });
   }
 
   /**

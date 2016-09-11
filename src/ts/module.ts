@@ -1,4 +1,4 @@
-import {EditGameComponent} from './components/edit-game.component';
+import {EditGameComponent} from './components/edit-game/edit-game.component';
 import {AudioService} from './services/audio.service';
 import {StorageService} from './services/storage.service';
 import {GameService} from './services/game.service';

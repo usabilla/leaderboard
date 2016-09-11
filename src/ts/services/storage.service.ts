@@ -1,6 +1,7 @@
 var PouchDB = require('pouchdb');
 var _assign = require('lodash/assign');
 
+// TODO: encapsulate all pouchdb implementation details in storage service
 export class StorageService {
   private objects = new PouchDB('Games');
 
@@ -11,9 +12,9 @@ export class StorageService {
    */
   save (object) {
     return this.objects.put(object)
-      .then((response) => {
+      .then(response => {
         return response;
-      }).then((err) => {
+      }).catch(err => {
         throw new Error(err);
       });
   }
@@ -25,8 +26,10 @@ export class StorageService {
   getAll () {
     return this.objects
       .allDocs({include_docs: true})
-      .then((docs) => {
+      .then(docs => {
         return docs.rows;
+      }).catch(err => {
+        throw new Error(err);
       });
   }
 
@@ -38,9 +41,26 @@ export class StorageService {
   update (id, data): angular.IPromise<void> {
     return this.objects
       .get(id)
-      .then((doc) => {
+      .then(doc => {
         _assign(doc, data);
         return this.objects.put(doc);
+      }).catch(err => {
+        throw new Error(err);
       });
+  }
+
+  /**
+   * Remove the document with id from the storage.
+   * @param id
+   * @return {angular.IPromise<void>}
+   */
+  remove (id): angular.IPromise<void> {
+    return this.objects
+      .get(id)
+      .then(doc => {
+        return this.objects.remove(doc);
+      }).catch(err => {
+        throw new Error(err);
+      })
   }
 }

@@ -17,12 +17,12 @@
             </div>
             <div class="uk-form-row">
                 <label class="uk-form-label" for="playAudioFile">Play Audio File</label>
-                <div class="uk-margin-small-bottom">
+                <div class="uk-margin-small-bottom" ng-if="$ctrl.game.playAudioFilePath">
                     Current play audio file: {{ $ctrl.game.playAudioFilePath }}
                 </div>
                 <div class="uk-form-controls">
                     <input type="file" id="playAudioFile" name="playAudioFile"
-                           ng-model="$ctrl.playAudioFile" file />
+                           ng-model="$ctrl.playAudioFile" file/>
                 </div>
             </div>
             <div class="uk-form-row uk-margin-top">
@@ -35,6 +35,15 @@
             </div>
         </fieldset>
     </form>
+    <div class="uk-margin-top">
+        <button ng-click="$ctrl.deleteGame()" ng-if="!$ctrl.deleting"
+                class="uk-button uk-width-1-1 uk-button uk-button-danger">DELETE
+        </button>
+        <div ng-if="$ctrl.deleting">
+            <a class="link uk-text-large" ng-click="$ctrl.confirmDelete()">Confirm</a>
+            <a class="link uk-text-large uk-margin-small-left" ng-click="$ctrl.cancelDelete()">Cancel Delete</a>
+        </div>
+    </div>
     <div class="uk-margin-top uk-text-success text--success uk-text-large" ng-if="$ctrl.savedSuccess()">
         Changed saved success
     </div>

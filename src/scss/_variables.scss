@@ -19,10 +19,10 @@ $base-h3-line-height: 58px;
 $text-huge-font-size: 250px;
 $text-huge-line-height: 270px;
 
-$text-danger-color: $red-01;
+$text-danger-color: $red;
 $text-danger-font-size: 18px;
 
-$text-success-color: $green-01;
+$text-success-color: $green;
 $text-success-font-size: 18px;
 
 $utility-margin: 40px;
@@ -36,3 +36,7 @@ $table-hover-background: $usabilla-blue;
 $text-large-font-size: 23px;
 
 $font-feature-settings: 'tnum';
+
+$button-danger-background: $red-01;
+$button-danger-hover-background: $red;
+$button-danger-active-background: $red;
