@@ -14,12 +14,12 @@ export function FreeEmailDirective () {
       }
 
       ngModel.$parsers.push(function (value: string): string {
-        if (!value || value.length == 0) return;
+        if (!value || value.length === 0) return;
 
         setAsFreeEmail(false);
 
-        var re = new RegExp('(gmail|yahoo|hotmail|live|outlook)', 'i');
-        var match = re.test(value);
+        let re = new RegExp('(gmail|yahoo|hotmail|live|outlook)', 'i');
+        let match = re.test(value);
 
         if (!match) {
           setAsFreeEmail(true);
@@ -28,7 +28,7 @@ export function FreeEmailDirective () {
         }
 
         return value;
-      })
+      });
     }
-  }
+  };
 }

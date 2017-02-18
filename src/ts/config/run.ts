@@ -8,13 +8,13 @@ export function Run (
   GameService: GameService
 ) {
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-    var states = ['select', 'create'];
+    const states = ['select', 'create'];
 
     if (states.indexOf(toState.name) !== -1) {
       return;
     }
 
-    var game = GameService.getCurrentGame();
+    const game = GameService.getCurrentGame();
 
     // If there is no current game then redirect to select game.
     if (angular.isUndefined(game)) {

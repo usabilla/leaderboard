@@ -55,7 +55,7 @@ export class PlayController {
   }
 
   onTimerStopped (event, data): void {
-    var time = PlayController.getTime(data);
+    let time = PlayController.getTime(data);
     this.GameService.setPlayerTime(this.player, time);
     this.$state.go('result');
   }

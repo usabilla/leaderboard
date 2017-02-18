@@ -25,7 +25,7 @@ export class RegisterController {
     if (this.$scope.playerForm.$invalid) {
       return;
     }
-    var registeredPlayer = this.GameService.registerPlayer(player);
+    let registeredPlayer = this.GameService.registerPlayer(player);
     if (angular.isUndefined(registeredPlayer)) {
       return;
     }

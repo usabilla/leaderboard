@@ -1,5 +1,5 @@
-var PouchDB = require('pouchdb');
-var _assign = require('lodash/assign');
+let PouchDB = require('pouchdb');
+let _assign = require('lodash/assign');
 
 // TODO: encapsulate all pouchdb implementation details in storage service
 export class StorageService {
@@ -61,6 +61,6 @@ export class StorageService {
         return this.objects.remove(doc);
       }).catch(err => {
         throw new Error(err);
-      })
+      });
   }
 }

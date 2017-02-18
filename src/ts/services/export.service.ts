@@ -10,16 +10,16 @@ export class ExportService {
   }
 
   generate (data, gameName: string): void {
-    var json = angular.isObject(data) ? data : angular.fromJson(data);
-    var csv = '';
+    let json = angular.isObject(data) ? data : angular.fromJson(data);
+    let csv = '';
 
     csv += this.getTitle(gameName) + '\r\n\n';
 
     if (this.showLabel) {
-      var row = '';
+      let row = '';
 
       // This loop will extract the label from 1st index of on array
-      for (var index in json[0]) {
+      for (let index in json[0]) {
         // Now convert each value to string and comma-separated
         row += index + ',';
       }
@@ -31,11 +31,11 @@ export class ExportService {
     }
 
     // 1st loop is to extract each row
-    for (var i = 0; i < json.length; i++) {
-      var row = '';
+    for (let i = 0; i < json.length; i++) {
+      let row = '';
 
       // 2nd loop will extract each column and convert it in string comma-separated
-      for (var index in json[i]) {
+      for (let index in json[i]) {
         row += '' + json[i][index] + ',';
       }
 
@@ -45,20 +45,20 @@ export class ExportService {
       csv += row + '\r\n';
     }
 
-    if (csv == '') {
+    if (csv === '') {
       alert('Invalid data');
       return;
     }
 
     // Generate a file name
     // this will remove the blank-spaces from the title and replace it with an underscore
-    var fileName = this.getTitle(gameName).replace(/ /g, '_');
+    let fileName = this.getTitle(gameName).replace(/ /g, '_');
 
     // Initialize file format you want csv or xls
-    var uri = this.format + ',' + encodeURI(csv);
+    let uri = this.format + ',' + encodeURI(csv);
 
     // this trick will generate a temp <a /> tag
-    var link = document.createElement('a');
+    let link = document.createElement('a');
     link.href = uri;
 
     // set the visibility hidden so it will not effect on your web-layout

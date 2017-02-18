@@ -7,7 +7,9 @@
     "test:watch": "karma start karma.config.js",
     "start": "./script/start.sh",
     "package": "./script/package.sh",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint:fix": "yarn lint -- --fix"
   },
   "author": {
     "name": "Spyros Ioakeimidis",
@@ -79,6 +81,7 @@
     "rimraf": "^2.5.4",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1",
+    "tslint": "^4.4.2",
     "typescript": "^2.1.6",
     "wallaby-webpack": "^0.0.33",
     "webpack": "^2.2.1",

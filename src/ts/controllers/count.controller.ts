@@ -15,7 +15,7 @@ export class CountController {
 
     this.player = this.GameService.getCurrentPlayer();
 
-    this.$scope.$on('timer-tick', this.onTimerTick.bind(this))
+    this.$scope.$on('timer-tick', this.onTimerTick.bind(this));
   }
 
   begin () {
@@ -23,11 +23,11 @@ export class CountController {
   }
 
   onTimerTick (event, args: {millis: number}): void {
-    var millis = args.millis;
+    const millis = args.millis;
     if (millis < 1000) {
       return;
     }
-    var countSound = millis / 1000;
+    const countSound = millis / 1000;
     this.AudioService.playSound(countSound.toString());
   }
 }

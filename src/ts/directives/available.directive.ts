@@ -17,11 +17,11 @@ export function AvailableDirective (GameService: GameService) {
       }
 
       ngModel.$parsers.push(function (value: string): string {
-        if (!value || value.length == 0) return;
+        if (!value || value.length === 0) return;
 
         setAsAvailable(false);
 
-        var player = new Player();
+        let player = new Player();
         player.workEmail = value;
 
         if (GameService.isPlayerRegistered(player)) {
@@ -31,7 +31,7 @@ export function AvailableDirective (GameService: GameService) {
         }
 
         return value;
-      })
+      });
     }
-  }
+  };
 }
