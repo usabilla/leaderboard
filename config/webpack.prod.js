@@ -16,8 +16,7 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.DedupePlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
       mangle: {
         keep_fnames: true
