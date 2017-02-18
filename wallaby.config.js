@@ -3,7 +3,7 @@ const webpackConfig = require('./webpack.config.js');
 
 webpackConfig.entryPatterns = ['src/**/*.spec.js'];
 
-module.exports = function () {
+module.exports = function() {
   return {
     debug: true,
     files: [
@@ -18,12 +18,10 @@ module.exports = function () {
     ],
     postprocessor: wallabyWebpack(webpackConfig),
     env: {
-      type: 'browser',
-      runner: require('phantomjs2-ext').path,
-      params: {runner: '--web-security=false'}
+      kind: 'electron'
     },
     testFramework: 'jasmine',
-    bootstrap: function () {
+    bootstrap: function() {
       window.__moduleBundler.loadTests();
     }
   }
