@@ -13,8 +13,8 @@ export function FileDirective () {
       ngModel: angular.INgModelController
     ) {
       element.bind('change', function (event: Event) {
-        var files = (event.target as FileTarget).files;
-        var file = files[0];
+        let files = (event.target as FileTarget).files;
+        let file = files[0];
 
         ngModel.$setViewValue(file);
         scope.$apply();

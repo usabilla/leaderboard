@@ -1,7 +1,7 @@
 import {Player} from './player.model';
-var _pull = require('lodash/pull');
-var _orderBy = require('lodash/orderBy');
-var _findIndex = require('lodash/findIndex');
+let _pull = require('lodash/pull');
+let _orderBy = require('lodash/orderBy');
+let _findIndex = require('lodash/findIndex');
 
 export class Game {
   players: Player[] = [];
@@ -40,6 +40,6 @@ export class Game {
       name: this.name,
       players: this.players,
       playAudioFilePath: this.playAudioFilePath
-    }
+    };
   }
 }

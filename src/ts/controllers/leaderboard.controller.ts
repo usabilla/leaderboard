@@ -33,7 +33,7 @@ export class LeaderboardController {
   }
 
   load (): void {
-    var restPlayers = this.players.slice(8);
+    let restPlayers = this.players.slice(8);
     this.players = this.players.concat(restPlayers);
     this.show = false;
   }

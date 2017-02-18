@@ -39,7 +39,7 @@ export class EditGameController {
       .then(() => {
         this.$scope.$apply(() => {
           this.success = true;
-          this.saving = false
+          this.saving = false;
         });
       });
   }

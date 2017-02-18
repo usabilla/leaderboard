@@ -3,8 +3,8 @@ import {Player} from '../models/player.model';
 import {StorageService} from './storage.service';
 import {AudioService} from './audio.service';
 
-var randomstring = require('randomstring');
-var _forEach = require('lodash/forEach');
+let randomstring = require('randomstring');
+let _forEach = require('lodash/forEach');
 
 export class GameService {
   private currentPlayer: Player;
@@ -28,7 +28,7 @@ export class GameService {
       return;
     }
 
-    var game = new Game();
+    let game = new Game();
 
     game._id = randomstring.generate();
     game.name = name;
@@ -48,10 +48,10 @@ export class GameService {
     // TODO: games and players should be created only once not every time we want to get them
     return this.StorageService.getAll()
       .then((docs) => {
-        var games = [];
+        let games = [];
 
         _forEach(docs, (doc) => {
-          var game = new Game();
+          let game = new Game();
 
           game._id = doc.doc._id;
           game.name = doc.doc.name;
@@ -62,7 +62,7 @@ export class GameService {
           }
 
           _forEach(doc.doc.players, (playerObject) => {
-            var player = new Player();
+            let player = new Player();
 
             player.firstName = playerObject.firstName;
             player.lastName = playerObject.lastName;
@@ -99,7 +99,7 @@ export class GameService {
       return;
     }
 
-    var newPlayer = new Player();
+    let newPlayer = new Player();
     newPlayer.firstName = object.firstName;
     newPlayer.lastName = object.lastName;
     newPlayer.workEmail = object.workEmail;
@@ -169,13 +169,13 @@ export class GameService {
    * @returns {number|undefined}
    */
   getBestTime (): number {
-    var players = this.currentGame.getPlayers();
+    let players = this.currentGame.getPlayers();
 
     if (players.length <= 1) {
       return;
     }
 
-    var index = (this.previousPosition === 1) ? 1 : 0;
+    let index = (this.previousPosition === 1) ? 1 : 0;
 
     return players[index].time;
   }
@@ -186,7 +186,7 @@ export class GameService {
    * @returns {number|undefined}
    */
   getPlayerPosition (player: Player): number {
-    var index = this.currentGame.getPlayerPosition(player);
+    let index = this.currentGame.getPlayerPosition(player);
     return index === -1 ? undefined : index + 1;
   }
 
