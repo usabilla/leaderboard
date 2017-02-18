@@ -12,7 +12,7 @@ electron-packager dist \
     --asar-unpack=protocol-link.html \
     --platform=darwin \
     --arch=x64 \
-    --electron-version=1.4.15 \
+    --electron-version=1.6.0 \
     --overwrite \
     --icon=assets/app-icons/mac/app.icns \
     --prune=true \
