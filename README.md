@@ -8,22 +8,22 @@ The game was developed for high resolution and for people to be able to see it c
 
 Install node modules
 
-```sh
-$ npm i
+```bash
+$ yarn
 ```
 
 To build game for production (currently only for darwin)
 
-```sh
-$ npm run package
+```bash
+$ yarn package
 ```
 
 `out/Leaderboard-darwin-x64` contains the electron application, which you can then distribute.
 
 For development
 
-```sh
-$ npm start
+```bash
+$ yarn start
 ```
 
 The game is built with
@@ -33,6 +33,6 @@ The game is built with
 - [Electron](http://electron.atom.io/)
 - [Uikit](http://getuikit.com/)
 - [PouchDB](https://pouchdb.com/)
-- [Webpack](https://webpack.github.io/)
+- [Webpack](https://webpack.js.org/)
 
 and several other awesome packages!
