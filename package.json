@@ -33,7 +33,7 @@
   "main": "main.js",
   "license": "MIT",
   "dependencies": {
-    "angucomplete-alt": "^2.4.2",
+    "angucomplete-alt": "^3.0.0",
     "angular": "^1.5.8",
     "angular-audio": "^1.7.3",
     "angular-hotkeys": "^1.7.0",
