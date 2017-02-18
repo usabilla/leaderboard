@@ -2,7 +2,7 @@
 
 rimraf dist && \
 
-webpack --config config/webpack.prod.js --progress --profile --bail && \
+webpack --config config/webpack.prod.js --profile --bail && \
 
 cp package.json main.js menu.js dist && \
 
@@ -12,7 +12,7 @@ electron-packager dist \
     --asar-unpack=protocol-link.html \
     --platform=darwin \
     --arch=x64 \
-    --version=1.3.5 \
+    --electron-version=1.4.15 \
     --overwrite \
     --icon=assets/app-icons/mac/app.icns \
     --prune=true \
