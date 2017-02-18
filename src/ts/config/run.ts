@@ -1,4 +1,5 @@
 import {GameService} from '../services/game.service';
+import * as angular from 'angular';
 
 /*@ngInject*/
 export function Run (

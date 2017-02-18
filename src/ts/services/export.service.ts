@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 export class ExportService {
   title = 'Usabilla Leaderboard';
   showLabel = true;

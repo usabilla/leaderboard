@@ -9,30 +9,30 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.ts']
+    extensions: ['.js', '.ts']
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loaders: ['ng-annotate', 'ts']
+        loaders: ['ng-annotate-loader', 'ts-loader']
       },
       {
         test: /\.html$/,
-        loader: 'html'
+        loader: 'html-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file?name=images/[name].[hash].[ext]'
+        loader: 'file-loader?name=images/[name].[hash].[ext]'
       },
       {
         test: /\.mp3$/,
-        loader: 'file?name=sounds/[name].[ext]'
+        loader: 'file-loader?name=sounds/[name].[ext]'
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass')
+        loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader!sass-loader'})
       }
     ]
   },

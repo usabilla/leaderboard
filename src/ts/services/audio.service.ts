@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 export class AudioService {
   sounds: {[key: string]: any};
 

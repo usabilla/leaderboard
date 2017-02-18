@@ -1,5 +1,6 @@
 import {GameService} from '../services/game.service';
 import {Player} from '../models/player.model';
+import * as angular from 'angular';
 
 interface RegisterControllerScope extends angular.IScope {
   playerForm: angular.IFormController;

@@ -10,6 +10,7 @@ import {FileDirective} from './directives/file.directive';
 import {Run} from './config/run';
 import {Config} from './config/config';
 import '../scss/style.scss';
+import * as angular from 'angular';
 
 angular.module('usabilla.leaderboard', [
     'ui.router',

@@ -1,6 +1,7 @@
 import {AudioService} from '../services/audio.service';
 import {GameService} from '../services/game.service';
 import {Player} from '../models/player.model';
+import * as angular from 'angular';
 
 export class PlayController {
   private player: Player;
