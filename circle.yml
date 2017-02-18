@@ -1,0 +1,13 @@
+machine:
+  node:
+    version: $(cat $HOME/$CIRCLE_PROJECT_REPONAME/.nvmrc)
+
+dependencies:
+  cache_directories:
+    - ~/.cache/yarn
+  override:
+    - yarn install
+
+test:
+  override:
+    - yarn test
