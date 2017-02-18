@@ -1,19 +1,20 @@
 import * as angular from 'angular';
+import * as _ from 'lodash';
 
 export class AudioService {
-  sounds: {[key: string]: any};
+  sounds: {[key: string]: any} = {};
 
   /*@ngInject*/
-  constructor (private ngAudio) {
-    this.sounds = {
-      'buzzer': this.loadSound(require('../../sounds/buzzer.mp3')),
-      'first': this.loadSound(require('../../sounds/first.mp3')),
-      '1': this.loadSound(require('../../sounds/1.mp3')),
-      '2': this.loadSound(require('../../sounds/2.mp3')),
-      '3': this.loadSound(require('../../sounds/3.mp3')),
-      '4': this.loadSound(require('../../sounds/4.mp3')),
-      '5': this.loadSound(require('../../sounds/5.mp3'))
-    };
+  constructor (private ngAudio, sounds) {
+    this.sounds = this.setupSounds(sounds);
+  }
+
+  setupSounds (sounds) {
+    const setupSounds = {};
+    _.map(sounds, (soundAudioFiePath: string, soundType: string) => {
+      setupSounds[soundType] = this.loadSound(soundAudioFiePath);
+    });
+    return setupSounds;
   }
 
   loadSound (path: string): void {
