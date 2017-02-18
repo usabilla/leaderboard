@@ -1,6 +1,6 @@
 machine:
   node:
-    version: $(cat $HOME/$CIRCLE_PROJECT_REPONAME/usabilla.js/.nvmrc)
+    version: $(cat $HOME/$CIRCLE_PROJECT_REPONAME/.nvmrc)
 
 dependencies:
   cache_directories:
