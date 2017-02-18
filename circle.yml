@@ -1,0 +1,7 @@
+machine:
+  node:
+    version: $(cat $HOME/$CIRCLE_PROJECT_REPONAME/usabilla.js/.nvmrc)
+
+dependencies:
+  cache_directories:
+    - ~/.cache/yarn
