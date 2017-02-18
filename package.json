@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Leaderboard, a timing game",
   "scripts": {
+    "test": "karma start karma.config.js --single-run",
+    "test:watch": "karma start karma.config.js",
     "start": "./script/start.sh",
     "package": "./script/package.sh",
     "commit": "git-cz"
@@ -67,6 +69,10 @@
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.22.0",
     "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-electron": "^5.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-webpack": "^2.0.2",
     "ng-annotate-loader": "^0.2.0",
     "node-sass": "^4.5.0",
     "phantomjs2-ext": "^0.2.2",
