@@ -18,6 +18,11 @@ module.exports = function(config) {
     ],
 
 
+    mime: {
+      'text/x-typescript': ['ts']
+    },
+
+
     // list of files to exclude
     exclude: [],
 
