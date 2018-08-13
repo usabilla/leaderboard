@@ -45,7 +45,7 @@
     "humanize-duration": "^3.9.1",
     "lodash": "^4.15.0",
     "moment": "^2.14.1",
-    "pouchdb": "^6.0.4",
+    "pouchdb": "6.0.4",
     "randomstring": "^1.1.5",
     "uikit": "^2.27.1"
   },
@@ -53,7 +53,6 @@
     "@types/angular": "^1.6.6",
     "@types/angular-hotkeys": "^0.0.31",
     "@types/angular-ui-router": "^1.1.36",
-    "@types/core-js": "^0.9.35",
     "@types/jasmine": "^2.5.43",
     "@types/jquery": "^2.0.40",
     "@types/node": "^7.0.5",
